@@ -1,0 +1,73 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "CSPbwbyzqA6sfORicn4HFtIhF/c=",
+			"path": "github.com/davecgh/go-spew/spew",
+			"revision": "8991bc29aa16c548c550c7ff78260e27b9ab7c73",
+			"revisionTime": "2018-02-21T22:46:20Z"
+		},
+		{
+			"checksumSHA1": "WUtPqOvTzvtf4U6AYPwHpEkr3Do=",
+			"path": "github.com/newrelic/infra-integrations-sdk/args",
+			"revision": "370db6824c4d07b3a92e24c8d7307fe1d56b422e",
+			"revisionTime": "2018-11-02T07:56:48Z"
+		},
+		{
+			"checksumSHA1": "KaZLSd/JUZz/mqfW3jFd1j2QdWA=",
+			"path": "github.com/newrelic/infra-integrations-sdk/data/event",
+			"revision": "370db6824c4d07b3a92e24c8d7307fe1d56b422e",
+			"revisionTime": "2018-11-02T07:56:48Z"
+		},
+		{
+			"checksumSHA1": "EOoxXGqFDPkCvj7wec2S5kCXY2I=",
+			"path": "github.com/newrelic/infra-integrations-sdk/data/inventory",
+			"revision": "370db6824c4d07b3a92e24c8d7307fe1d56b422e",
+			"revisionTime": "2018-11-02T07:56:48Z"
+		},
+		{
+			"checksumSHA1": "39SDqHpLpE9J1nrIwYI+8ukzXJs=",
+			"path": "github.com/newrelic/infra-integrations-sdk/data/metric",
+			"revision": "370db6824c4d07b3a92e24c8d7307fe1d56b422e",
+			"revisionTime": "2018-11-02T07:56:48Z"
+		},
+		{
+			"checksumSHA1": "SmqfH71xpQsY3JjNHUNUVCq7pCA=",
+			"path": "github.com/newrelic/infra-integrations-sdk/integration",
+			"revision": "370db6824c4d07b3a92e24c8d7307fe1d56b422e",
+			"revisionTime": "2018-11-02T07:56:48Z"
+		},
+		{
+			"checksumSHA1": "6/DhD+/LhC/k3NaLgkpd6iE8b5E=",
+			"path": "github.com/newrelic/infra-integrations-sdk/log",
+			"revision": "370db6824c4d07b3a92e24c8d7307fe1d56b422e",
+			"revisionTime": "2018-11-02T07:56:48Z"
+		},
+		{
+			"checksumSHA1": "BsHp62Etporko0d+4GpVxrP2qtw=",
+			"path": "github.com/newrelic/infra-integrations-sdk/persist",
+			"revision": "370db6824c4d07b3a92e24c8d7307fe1d56b422e",
+			"revisionTime": "2018-11-02T07:56:48Z"
+		},
+		{
+			"checksumSHA1": "ljd3FhYRJ91cLZz3wsH9BQQ2JbA=",
+			"path": "github.com/pkg/errors",
+			"revision": "816c9085562cd7ee03e7f8188a1cfd942858cded",
+			"revisionTime": "2018-03-11T21:45:15Z"
+		},
+		{
+			"checksumSHA1": "LuFv4/jlrmFNnDb/5SCSEPAM9vU=",
+			"path": "github.com/pmezard/go-difflib/difflib",
+			"revision": "792786c7400a136282c1664665ae0a8db921c6c2",
+			"revisionTime": "2016-01-10T10:55:54Z"
+		},
+		{
+			"checksumSHA1": "v3LJdECGwUcLb9+Nk/Bu+xw6Ly8=",
+			"path": "github.com/stretchr/objx",
+			"revision": "9e1dfc121bca96d392da5d00591953bdb54ab306",
+			"revisionTime": "2018-06-26T19:55:58Z"
+		}
+	],
+	"rootPath": "github.com/newrelic/nr-varnish"
+}

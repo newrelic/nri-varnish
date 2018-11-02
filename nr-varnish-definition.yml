@@ -1,0 +1,26 @@
+name: com.newrelic.nr-varnish
+description: Reports status and metrics for nr-varnish service
+protocol_version: 1
+os: linux
+
+commands:
+  all_data:
+    command:
+      - ./bin/nr-nr-varnish
+    interval: 15
+  metrics:
+    command:
+      - ./bin/nr-nr-varnish
+      - --metrics
+    interval: 15
+  inventory:
+    command:
+      - ./bin/nr-nr-varnish
+      - --inventory
+    prefix: config/nr-nr-varnish
+    interval: 15
+  events:
+    command:
+    - ./bin/nr-nr-varnish
+    - --events
+    interval: 15
