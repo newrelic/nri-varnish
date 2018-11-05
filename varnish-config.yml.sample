@@ -1,16 +1,10 @@
 integration_name: com.newrelic.varnish
 
 instances:
-  - name: <INSTANCE IDENTIFIER>
-    command: metrics
+  - name: varnish_all
+    command: all_data
     arguments:
-      arg1: <ARG_VALUE>
+      params_config_file: <The location of the varnish.params configuration file. If omitted will look in /etc/default/varnish/varnish.params and /etc/sysconfig/varnish/varnish.params>
     labels:
-      key1: <LABEL_VALUE>
-
-  - name: <OTHER INSTANCE IDENTIFIER>
-    command: inventory
-    arguments:
-      arg1: <ARG_VALUE>
-    labels:
-      key1: <LABEL_VALUE>
+      env: production
+      role: varnish

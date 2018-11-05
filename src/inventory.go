@@ -14,7 +14,7 @@ import (
 // CollectInventory collects inventory from
 func CollectInventory(entity *integration.Entity, argList *args.ArgumentList) {
 	if err := collectParamsFile(entity, argList.ParamsConfigFile); err != nil {
-		log.Error("Error parsing params file '%s': %s", argList.ParamsConfigFile, err.Error())
+		log.Error("Error parsing params file: %s", argList.ParamsConfigFile, err.Error())
 	}
 }
 
