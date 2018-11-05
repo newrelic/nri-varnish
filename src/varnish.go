@@ -30,7 +30,7 @@ func main() {
 
 	// Collect inventory from files
 	if args.HasInventory() {
-		CollectInventory(entity, &args)
+		collectInventory(entity, &args)
 	}
 
 	if err = i.Publish(); err != nil {

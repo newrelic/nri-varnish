@@ -11,8 +11,8 @@ import (
 	"github.com/newrelic/nri-varnish/src/args"
 )
 
-// CollectInventory collects inventory from
-func CollectInventory(entity *integration.Entity, argList *args.ArgumentList) {
+// collectInventory collects inventory from
+func collectInventory(entity *integration.Entity, argList *args.ArgumentList) {
 	if err := collectParamsFile(entity, argList.ParamsConfigFile); err != nil {
 		log.Error("Error parsing params file: %s", argList.ParamsConfigFile, err.Error())
 	}
