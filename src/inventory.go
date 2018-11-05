@@ -1,33 +1,42 @@
 package main
 
 import (
-	"strings"
 	"bufio"
+	"errors"
 	"os"
+	"strings"
 
 	"github.com/newrelic/infra-integrations-sdk/integration"
-	"github.com/newrelic/nri-varnish/src/args"
 	"github.com/newrelic/infra-integrations-sdk/log"
+	"github.com/newrelic/nri-varnish/src/args"
 )
 
-// CollectInventory collects inventory from 
+// CollectInventory collects inventory from
 func CollectInventory(entity *integration.Entity, argList *args.ArgumentList) {
 	if err := collectParamsFile(entity, argList.ParamsConfigFile); err != nil {
 		log.Error("Error parsing params file '%s': %s", argList.ParamsConfigFile, err.Error())
 	}
-
-
 }
 
-func collectParamsFile(entity *integration.Entity, paramsLoc string) error {
-	
-
-	file, err := os.Open(paramsLoc)
+func collectParamsFile(entity *integration.Entity, argsParamLoc string) error {
+	// Find if file exists and if so where at
+	paramsLoc, err := determineParamsFileLoc(argsParamLoc)
 	if err != nil {
 		return err
 	}
-	defer file.Close()
 
+	// Open file
+	file, err := os.Open(*paramsLoc)
+	if err != nil {
+		return err
+	}
+	defer func() {
+		if err := file.Close(); err != nil {
+			log.Warn("Error closing file %s: %s", *paramsLoc, err.Error())
+		}
+	}()
+
+	// Parse parameters
 	params, err := parseParamsFile(file)
 	if err != nil {
 		return err
@@ -35,16 +44,42 @@ func collectParamsFile(entity *integration.Entity, paramsLoc string) error {
 
 	// Set all values as inventory items
 	for key, value := range params {
-		setInventoryItem(entity, "params/" + key, value)
+		setInventoryItem(entity, "params/"+key, value)
 	}
 
 	return nil
 }
 
-func determineParamsFileLoc() (string, error) {
-	if _, err := os.Stat(paramsLoc); os.IsNotExist(err) {
-		return err
+// Known locations of varnish.params on specific Linux Distros
+const (
+	debianUbuntuParamsLoc = "/etc/default/varnish/varnish.params"
+	rhelCentosParamsLoc   = "/etc/sysconfig/varnish/varnish.params"
+)
+
+// determineParamsFileLoc checks if the params file is present. If
+// argsParamLoc is not specify will check in known locations on
+// Debian/Ubuntu and RHEL/CentOS systems.
+func determineParamsFileLoc(argsParamLoc string) (*string, error) {
+	if argsParamLoc != "" {
+		if _, err := os.Stat(argsParamLoc); os.IsNotExist(err) {
+			return nil, err
+		}
+		return &argsParamLoc, nil
 	}
+
+	// Try Debian/Ubuntu path
+	paramsLoc := debianUbuntuParamsLoc
+	if _, err := os.Stat(paramsLoc); !os.IsNotExist(err) {
+		return &paramsLoc, nil
+	}
+
+	// Try RHEL/CentOS
+	paramsLoc = rhelCentosParamsLoc
+	if _, err := os.Stat(paramsLoc); !os.IsNotExist(err) {
+		return &paramsLoc, nil
+	}
+
+	return nil, errors.New("varnish.params file could not be found")
 }
 
 func parseParamsFile(file *os.File) (map[string]string, error) {

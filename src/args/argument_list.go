@@ -8,6 +8,6 @@ import (
 // ArgumentList struct that holds all Varnish arguments
 type ArgumentList struct {
 	sdkArgs.DefaultArgumentList
-	VCLConfigFile string `default:"" help:"The location of the .vcl configuration file. If omitted will search for default.vcl"`
+	VCLConfigFile    string `default:"" help:"The location of the .vcl configuration file. If omitted will search for default.vcl"`
 	ParamsConfigFile string `default:"" help:"The location of the varnish.params configuration file. If omitted will search in typical install locations"`
 }

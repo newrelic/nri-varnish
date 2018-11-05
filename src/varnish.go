@@ -28,12 +28,10 @@ func main() {
 
 	// Collect inventory from files
 	if args.HasInventory() {
-		
+
 	}
 
 	// entity := i.LocalEntity()
-
-
 
 	if err = i.Publish(); err != nil {
 		log.Error(err.Error())
