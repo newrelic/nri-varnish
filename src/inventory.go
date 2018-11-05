@@ -96,6 +96,8 @@ func parseParamsFile(file *os.File) (map[string]string, error) {
 		// Param line
 		if equal := strings.Index(line, "="); equal > 0 {
 			key, value := strings.TrimSpace(line[:equal]), strings.TrimSpace(line[equal+1:])
+			// Trim encasing quotes
+			value = strings.Trim(value, `"`)
 			params[key] = value
 		}
 	}

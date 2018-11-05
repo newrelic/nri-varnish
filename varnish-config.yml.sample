@@ -1,4 +1,4 @@
-integration_name: com.newrelic.nr-varnish
+integration_name: com.newrelic.varnish
 
 instances:
   - name: <INSTANCE IDENTIFIER>

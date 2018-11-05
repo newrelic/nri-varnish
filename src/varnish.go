@@ -26,12 +26,12 @@ func main() {
 	// Setup logging with verbose
 	log.SetupLogging(args.Verbose)
 
+	entity := i.LocalEntity()
+
 	// Collect inventory from files
 	if args.HasInventory() {
-
+		CollectInventory(entity, &args)
 	}
-
-	// entity := i.LocalEntity()
 
 	if err = i.Publish(); err != nil {
 		log.Error(err.Error())

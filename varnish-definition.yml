@@ -1,4 +1,4 @@
-name: com.newrelic.nr-varnish
+name: com.newrelic.arnish
 description: Reports status and metrics for nr-varnish service
 protocol_version: 1
 os: linux
