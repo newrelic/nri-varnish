@@ -1,0 +1,10 @@
+integration_name: com.newrelic.varnish
+
+instances:
+  - name: varnish_all
+    command: all_data
+    arguments:
+      params_config_file: <The location of the varnish.params configuration file. If omitted will look in /etc/default/varnish/varnish.params and /etc/sysconfig/varnish/varnish.params>
+    labels:
+      env: production
+      role: varnish
