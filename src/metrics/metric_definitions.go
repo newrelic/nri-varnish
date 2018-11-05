@@ -1,4 +1,4 @@
-package main
+package metrics
 
 // varnishDefinition represents the data to be fed to the VarnishSample event
 type varnishDefinition struct {
@@ -142,9 +142,9 @@ type varnishDefinition struct {
 	mainGunzip               interface{} `metric_name:"main.gunzip" source_type:"Rate"`
 	mainGunzipTest           interface{} `metric_name:"main.gunzipTest" source_type:"Rate"`
 
-	locks    []*lockDefinition
-	mempools []*mempoolDefinition
-	storages []*storageDefinition
+	locks    map[string]*lockDefinition
+	mempools map[string]*mempoolDefinition
+	storages map[string]*storageDefinition
 }
 
 // lockDefinition represents the data for a VarnishLockSample event
