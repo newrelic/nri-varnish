@@ -97,7 +97,9 @@ func setLockValue(lockMap map[string]*lockDefinition, fullStatName string, statV
 	lockName, statName := parseStatName(fullStatName)
 	lock, ok := lockMap[lockName]
 	if !ok {
-		lock = &lockDefinition{}
+		lock = &lockDefinition{
+			name: lockName,
+		}
 		lockMap[lockName] = lock
 	}
 
@@ -123,7 +125,9 @@ func setStorageValue(storageMap map[string]*storageDefinition, fullStatName stri
 	storageName, statName := parseStatName(fullStatName)
 	storage, ok := storageMap[storageName]
 	if !ok {
-		storage = &storageDefinition{}
+		storage = &storageDefinition{
+			name: storageName,
+		}
 		storageMap[storageName] = storage
 	}
 
@@ -136,7 +140,9 @@ func setMempoolValue(mempoolMap map[string]*mempoolDefinition, fullStatName stri
 	mempoolName, statName := parseStatName(fullStatName)
 	mempool, ok := mempoolMap[mempoolName]
 	if !ok {
-		mempool = &mempoolDefinition{}
+		mempool = &mempoolDefinition{
+			name: mempoolName,
+		}
 		mempoolMap[mempoolName] = mempool
 	}
 
@@ -164,7 +170,7 @@ func setValue(v interface{}, statName string, metricValue interface{}) error {
 	value := reflect.ValueOf(v).Elem()
 	t := value.Type()
 
-	statValue := reflect.ValueOf(metricValue).Elem()
+	statValue := reflect.ValueOf(metricValue)
 
 	for i := 0; i < t.NumField(); i++ {
 		f := t.Field(i)
