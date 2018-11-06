@@ -51,7 +51,7 @@ func TestCollectInventory_Normal(t *testing.T) {
 		},
 	}
 
-	CollectInventory(entity, argList)
+	collectInventory(entity, argList)
 
 	out := entity.Inventory.Items()
 	if !reflect.DeepEqual(out, expected) {
@@ -71,7 +71,7 @@ func TestCollectInventory_NoParamsFile(t *testing.T) {
 
 	expected := inventory.Items{}
 
-	CollectInventory(entity, argList)
+	collectInventory(entity, argList)
 
 	out := entity.Inventory.Items()
 	if !reflect.DeepEqual(out, expected) {
