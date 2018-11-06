@@ -6,6 +6,7 @@ import (
 	"github.com/newrelic/infra-integrations-sdk/integration"
 	"github.com/newrelic/infra-integrations-sdk/log"
 	"github.com/newrelic/nri-varnish/src/args"
+	"github.com/newrelic/nri-varnish/src/metrics"
 )
 
 const (
@@ -31,6 +32,13 @@ func main() {
 	// Collect inventory from files
 	if args.HasInventory() {
 		collectInventory(entity, &args)
+	}
+
+	if args.HasMetrics() {
+		if err := metrics.CollectMetrics(entity, i); err != nil {
+			log.Error("Error collecting metrics: %s", err.Error())
+			os.Exit(1)
+		}
 	}
 
 	if err = i.Publish(); err != nil {
