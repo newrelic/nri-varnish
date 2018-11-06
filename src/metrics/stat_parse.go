@@ -72,10 +72,10 @@ func parseAndSetStat(varnishSystem *varnishDefinition, fullStatName string, stat
 		setLockValue(varnishSystem.locks, fullStatName, statValue)
 	} else if strings.HasPrefix(fullStatName, "SMF.") || strings.HasPrefix(fullStatName, "SMU.") || strings.HasPrefix(fullStatName, "SMA.") {
 		//storage
-		setStorageValue(varnishSystem.storages, fullStatName, setValue)
+		setStorageValue(varnishSystem.storages, fullStatName, statValue)
 	} else if strings.HasPrefix(fullStatName, "MEMPOOL.") {
 		// mempools
-		setMempoolValue(varnishSystem.mempools, fullStatName, setValue)
+		setMempoolValue(varnishSystem.mempools, fullStatName, statValue)
 	} else {
 		//main sample
 		setSystemValue(varnishSystem, fullStatName, statValue)
@@ -98,7 +98,7 @@ func setLockValue(lockMap map[string]*lockDefinition, fullStatName string, statV
 	lock, ok := lockMap[lockName]
 	if !ok {
 		lock = &lockDefinition{
-			name: lockName,
+			Name: lockName,
 		}
 		lockMap[lockName] = lock
 	}
@@ -126,7 +126,7 @@ func setStorageValue(storageMap map[string]*storageDefinition, fullStatName stri
 	storage, ok := storageMap[storageName]
 	if !ok {
 		storage = &storageDefinition{
-			name: storageName,
+			Name: storageName,
 		}
 		storageMap[storageName] = storage
 	}
@@ -141,7 +141,7 @@ func setMempoolValue(mempoolMap map[string]*mempoolDefinition, fullStatName stri
 	mempool, ok := mempoolMap[mempoolName]
 	if !ok {
 		mempool = &mempoolDefinition{
-			name: mempoolName,
+			Name: mempoolName,
 		}
 		mempoolMap[mempoolName] = mempool
 	}
