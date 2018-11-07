@@ -97,9 +97,7 @@ func setLockValue(lockMap map[string]*lockDefinition, fullStatName string, statV
 	lockName, statName := parseStatName(fullStatName)
 	lock, ok := lockMap[lockName]
 	if !ok {
-		lock = &lockDefinition{
-			Name: lockName,
-		}
+		lock = new(lockDefinition)
 		lockMap[lockName] = lock
 	}
 
@@ -112,7 +110,7 @@ func setBackendValue(backendMap map[string]*backendDefinition, fullStatName stri
 	backendName, statName := parseStatName(fullStatName)
 	backend, ok := backendMap[backendName]
 	if !ok {
-		backend = &backendDefinition{}
+		backend = new(backendDefinition)
 		backendMap[backendName] = backend
 	}
 
@@ -125,9 +123,7 @@ func setStorageValue(storageMap map[string]*storageDefinition, fullStatName stri
 	storageName, statName := parseStatName(fullStatName)
 	storage, ok := storageMap[storageName]
 	if !ok {
-		storage = &storageDefinition{
-			Name: storageName,
-		}
+		storage = new(storageDefinition)
 		storageMap[storageName] = storage
 	}
 
@@ -140,9 +136,7 @@ func setMempoolValue(mempoolMap map[string]*mempoolDefinition, fullStatName stri
 	mempoolName, statName := parseStatName(fullStatName)
 	mempool, ok := mempoolMap[mempoolName]
 	if !ok {
-		mempool = &mempoolDefinition{
-			Name: mempoolName,
-		}
+		mempool = new(mempoolDefinition)
 		mempoolMap[mempoolName] = mempool
 	}
 

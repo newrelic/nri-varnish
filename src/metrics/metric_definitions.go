@@ -149,7 +149,6 @@ type varnishDefinition struct {
 
 // lockDefinition represents the data for a VarnishLockSample event
 type lockDefinition struct {
-	Name      string      `metric_name:"lock" source_type:"Attribute"`
 	Created   interface{} `stat_name:"creat" metric_name:"lock.created" source_type:"Rate"`
 	Destroyed interface{} `stat_name:"destroy" metric_name:"lock.destroyed" source_type:"Rate"`
 	LockOps   interface{} `stat_name:"locks" metric_name:"lock.locks" source_type:"Rate"`
@@ -157,7 +156,6 @@ type lockDefinition struct {
 
 // mempoolDefinition represents the data for a VarnishMempoolSample event
 type mempoolDefinition struct {
-	Name          string      `metric_name:"memoryPool" source_type:"Attribute"`
 	Live          interface{} `stat_name:"live" metric_name:"mempool.live" source_type:"Gauge"`
 	Pool          interface{} `stat_name:"pool" metric_name:"mempool.pool" source_type:"Gauge"`
 	ReqSize       interface{} `stat_name:"sz_wanted" metric_name:"mempool.requestSizeInBytes" source_type:"Gauge"`
@@ -173,7 +171,6 @@ type mempoolDefinition struct {
 
 // storageDefinition represents the data for a VarnishStorageSample event
 type storageDefinition struct {
-	Name            string      `metric_name:"storage" source_type:"Attribute"`
 	AllocReqs       interface{} `stat_name:"c_req" metric_name:"storage.allocReqs" source_type:"Rate"`
 	AllocFails      interface{} `stat_name:"c_fail" metric_name:"storage.allocFails" source_type:"Rate"`
 	Alloc           interface{} `stat_name:"c_bytes" metric_name:"storage.allocInBytes" source_type:"Rate"`

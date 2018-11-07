@@ -182,7 +182,6 @@ func Test_parseStats_Full(t *testing.T) {
 
 		locks: map[string]*lockDefinition{
 			"sma": {
-				Name:      "sma",
 				Created:   float64(2),
 				Destroyed: float64(0),
 				LockOps:   float64(4),
@@ -190,7 +189,6 @@ func Test_parseStats_Full(t *testing.T) {
 		},
 		storages: map[string]*storageDefinition{
 			"Transient": {
-				Name:            "Transient",
 				AllocReqs:       float64(0),
 				AllocFails:      float64(0),
 				Alloc:           float64(0),
@@ -202,7 +200,6 @@ func Test_parseStats_Full(t *testing.T) {
 		},
 		mempools: map[string]*mempoolDefinition{
 			"sess1": {
-				Name:          "sess1",
 				Live:          float64(0),
 				Pool:          float64(10),
 				ReqSize:       float64(512),

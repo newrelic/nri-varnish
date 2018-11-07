@@ -69,30 +69,31 @@ func processVarnishSystem(systemEntity *integration.Entity, varnishSystem *varni
 
 	// Process lock samples
 	for lockName, lock := range varnishSystem.locks {
-		if err := processSubSample(lock, "VarnishLockSample", systemEntity); err != nil {
+		if err := processSubSample(lock, "VarnishLockSample", "lock", lockName, systemEntity); err != nil {
 			log.Warn("Error setting metrics for Lock %s: %s", lockName, err.Error())
 		}
 	}
 
 	// Process mempool samples
 	for mempoolName, mempool := range varnishSystem.mempools {
-		if err := processSubSample(mempool, "VarnishMempoolSample", systemEntity); err != nil {
+		if err := processSubSample(mempool, "VarnishMempoolSample", "memoryPool", mempoolName, systemEntity); err != nil {
 			log.Warn("Error setting metrics for Mempool %s: %s", mempoolName, err.Error())
 		}
 	}
 
 	// Process storage samples
 	for storageName, storage := range varnishSystem.storages {
-		if err := processSubSample(storage, "VarnishStorageSample", systemEntity); err != nil {
+		if err := processSubSample(storage, "VarnishStorageSample", "storage", storageName, systemEntity); err != nil {
 			log.Warn("Error setting metrics for Storage %s: %s", storageName, err.Error())
 		}
 	}
 }
 
-func processSubSample(subStructure interface{}, sampleName string, systemEntity *integration.Entity) error {
+func processSubSample(subStructure interface{}, sampleName, idAttribute, idAttributeValue string, systemEntity *integration.Entity) error {
 	metricSet := systemEntity.NewMetricSet(sampleName,
 		metric.Attribute{Key: "displayName", Value: systemEntity.Metadata.Name},
 		metric.Attribute{Key: "entityName", Value: systemEntity.Metadata.Namespace + ":" + systemEntity.Metadata.Name},
+		metric.Attribute{Key: idAttribute, Value: idAttributeValue},
 	)
 
 	return metricSet.MarshalMetrics(subStructure)
