@@ -23,7 +23,7 @@ func TestCollectMetrics(t *testing.T) {
 		t.Fatalf("Unexpected error %s", err.Error())
 	}
 
-	systemEntity, err := i.Entity("test", "varnish")
+	systemEntity, err := i.Entity("test", "instance")
 	if err != nil {
 		t.Fatalf("Unexpected error %s", err.Error())
 	}
