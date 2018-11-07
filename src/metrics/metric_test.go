@@ -11,8 +11,12 @@ import (
 )
 
 func TestCollectMetrics(t *testing.T) {
+	setENV(t, "GO_WANT_HELPER_PROCESS", "1")
 	ExecCommand = fakeExecCommand
-	defer func() { ExecCommand = exec.Command }()
+	defer func() {
+		os.Unsetenv("GO_WANT_HELPER_PROCESS")
+		ExecCommand = exec.Command
+	}()
 
 	i, err := integration.New("test", "1.0.0")
 	if err != nil {
@@ -131,11 +135,42 @@ func findBackendEntity(i *integration.Integration) *integration.Entity {
 	return nil
 }
 
+func TestCollectMetrics_ExecError(t *testing.T) {
+	setENV(t, "GO_WANT_HELPER_PROCESS", "1")
+	setENV(t, "GO_WANT_ERROR", "1")
+	ExecCommand = fakeExecCommand
+
+	defer func() {
+		ExecCommand = exec.Command
+		os.Unsetenv("GO_WANT_ERROR")
+		os.Unsetenv("GO_WANT_HELPER_PROCESS")
+	}()
+
+	i, err := integration.New("test", "1.0.0")
+	if err != nil {
+		t.Fatalf("Unexpected error %s", err.Error())
+	}
+
+	systemEntity, err := i.Entity("test", "varnish")
+	if err != nil {
+		t.Fatalf("Unexpected error %s", err.Error())
+	}
+
+	if err := CollectMetrics(systemEntity, i); err == nil {
+		t.Error("Expected error")
+	}
+}
+
+func setENV(t *testing.T, envName, value string) {
+	if err := os.Setenv(envName, value); err != nil {
+		t.Fatalf("Failed to set env %s: %s", envName, err.Error())
+	}
+}
+
 func fakeExecCommand(command string, args ...string) (cmd *exec.Cmd) {
 	cs := []string{"-test.run=TestHelperProcess", "--", command}
 	cs = append(cs, args...)
 	cmd = exec.Command(os.Args[0], cs...)
-	cmd.Env = []string{"GO_WANT_HELPER_PROCESS=1"}
 	return cmd
 }
 
@@ -145,6 +180,10 @@ func TestHelperProcess(*testing.T) {
 		return
 	}
 
-	fmt.Fprintf(os.Stdout, varnishStatTestResult)
-	os.Exit(0)
+	if os.Getenv("GO_WANT_ERROR") == "1" {
+		os.Exit(2)
+	} else {
+		fmt.Fprintf(os.Stdout, varnishStatTestResult)
+		os.Exit(0)
+	}
 }
