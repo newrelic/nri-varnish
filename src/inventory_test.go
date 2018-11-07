@@ -15,7 +15,10 @@ func TestCollectInventory_Normal(t *testing.T) {
 		t.Fatalf("Unexpected error %s", err.Error())
 	}
 
-	entity := i.LocalEntity()
+	entity, err := i.Entity("test", "varnish")
+	if err != nil {
+		t.Fatalf("Unexpected error %s", err.Error())
+	}
 
 	argList := &args.ArgumentList{
 		ParamsConfigFile: "testdata/varnish.params",

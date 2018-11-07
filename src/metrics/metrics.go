@@ -9,11 +9,13 @@ import (
 	"github.com/newrelic/infra-integrations-sdk/log"
 )
 
-var execCommand = exec.Command
+// ExecCommand holds the exec.Command function. Meant
+// to be overridden for testing
+var ExecCommand = exec.Command
 
 // CollectMetrics collects metrics from varnishstat command
 func CollectMetrics(systemEntity *integration.Entity, i *integration.Integration) error {
-	statOutput, err := execCommand("varnishstat", "-j").Output()
+	statOutput, err := ExecCommand("varnishstat", "-j").Output()
 	if err != nil {
 		log.Error("Error running varnishstat command: %s", err.Error())
 		return err

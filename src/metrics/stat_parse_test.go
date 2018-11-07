@@ -5,15 +5,14 @@ import (
 	"testing"
 )
 
-func Test_parseStats_Full(t *testing.T) {
-	input := `{
+const varnishStatTestResult = `{
 	"timestamp": "2018-11-05T17:22:34",
 	"MGT.uptime": {
 		"description": "Management process uptime",
 		"flag": "c", "format": "d",
 		"value": 253792
 	},
-	"MAIN.summs": {
+	"MAIN.threads": {
 		"description": "stat summ operations",
 		"flag": "c", "format": "i",
 		"value": 4
@@ -61,12 +60,12 @@ func Test_parseStats_Full(t *testing.T) {
 	"SMA.Transient.g_bytes": {
 		"description": "Bytes outstanding",
 		"flag": "g", "format": "B",
-		"value": 0
+		"value": 40
 	},
 	"SMA.Transient.g_space": {
 		"description": "Bytes available",
 		"flag": "g", "format": "B",
-		"value": 0
+		"value": 60
 	},
 	"MEMPOOL.sess1.live": {
 		"description": "In use",
@@ -175,9 +174,11 @@ func Test_parseStats_Full(t *testing.T) {
 	}
 }`
 
+func Test_parseStats_Full(t *testing.T) {
+
 	expectedVarnishSystem := &varnishDefinition{
-		MgtUptime: float64(253792),
-		MainSumms: float64(4),
+		MgtUptime:   float64(253792),
+		MainThreads: float64(4),
 
 		locks: map[string]*lockDefinition{
 			"sma": {
@@ -195,8 +196,8 @@ func Test_parseStats_Full(t *testing.T) {
 				Alloc:           float64(0),
 				Free:            float64(0),
 				AllocOustanding: float64(0),
-				Outstanding:     float64(0),
-				Available:       float64(0),
+				Outstanding:     float64(40),
+				Available:       float64(60),
 			},
 		},
 		mempools: map[string]*mempoolDefinition{
@@ -232,7 +233,7 @@ func Test_parseStats_Full(t *testing.T) {
 		},
 	}
 
-	varnishSystem, backends, err := parseStats([]byte(input))
+	varnishSystem, backends, err := parseStats([]byte(varnishStatTestResult))
 	if err != nil {
 		t.Fatalf("Unexpected error %s", err.Error())
 	}

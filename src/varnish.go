@@ -33,7 +33,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	systemEntity, err := i.Entity(args.InstanceName, "Varnish")
+	systemEntity, err := i.Entity(args.InstanceName, "varnish")
 	if err != nil {
 		log.Error("Error creating system entity: %s", err.Error())
 		os.Exit(1)
