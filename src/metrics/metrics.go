@@ -26,7 +26,7 @@ func CollectMetrics(systemEntity *integration.Entity, i *integration.Integration
 	}
 
 	// create backend entities and set metrics
-	processBackends(backends, i)
+	processBackends(systemEntity.Metadata.Name, backends, i)
 
 	// process metrics for varnishSystem
 	processVarnishSystem(systemEntity, varnishSystem)
@@ -34,7 +34,7 @@ func CollectMetrics(systemEntity *integration.Entity, i *integration.Integration
 	return nil
 }
 
-func processBackends(backends map[string]*backendDefinition, i *integration.Integration) {
+func processBackends(instanceName string, backends map[string]*backendDefinition, i *integration.Integration) {
 	for backendName, def := range backends {
 		entity, err := i.Entity(backendName, "backend")
 		if err != nil {
@@ -45,6 +45,7 @@ func processBackends(backends map[string]*backendDefinition, i *integration.Inte
 		metricSet := entity.NewMetricSet("VarnishBackendSample",
 			metric.Attribute{Key: "displayName", Value: entity.Metadata.Name},
 			metric.Attribute{Key: "entityName", Value: entity.Metadata.Namespace + ":" + entity.Metadata.Name},
+			metric.Attribute{Key: "varnishInstance", Value: instanceName},
 		)
 
 		if err := metricSet.MarshalMetrics(def); err != nil {

@@ -12,13 +12,13 @@ import (
 )
 
 // collectInventory collects inventory from
-func collectInventory(entity *integration.Entity, argList *args.ArgumentList) {
-	if err := collectParamsFile(entity, argList.ParamsConfigFile); err != nil {
+func collectInventory(systemEntity *integration.Entity, argList *args.ArgumentList) {
+	if err := collectParamsFile(systemEntity, argList.ParamsConfigFile); err != nil {
 		log.Error("Error parsing params file: %s", argList.ParamsConfigFile, err.Error())
 	}
 }
 
-func collectParamsFile(entity *integration.Entity, argsParamLoc string) error {
+func collectParamsFile(systemEntity *integration.Entity, argsParamLoc string) error {
 	// Find if file exists and if so where at
 	paramsLoc, err := determineParamsFileLoc(argsParamLoc)
 	if err != nil {
@@ -44,7 +44,7 @@ func collectParamsFile(entity *integration.Entity, argsParamLoc string) error {
 
 	// Set all values as inventory items
 	for key, value := range params {
-		setInventoryItem(entity, "params/"+key, value)
+		setInventoryItem(systemEntity, "params/"+key, value)
 	}
 
 	return nil

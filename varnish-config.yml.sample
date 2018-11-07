@@ -5,6 +5,7 @@ instances:
     command: all_data
     arguments:
       params_config_file: <The location of the varnish.params configuration file. If omitted will look in /etc/default/varnish/varnish.params and /etc/sysconfig/varnish/varnish.params>
+      instance_name: <User defined name to identify data from this instance in New Relic>
     labels:
       env: production
       role: varnish
