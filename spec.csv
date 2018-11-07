@@ -146,12 +146,12 @@ varnish,net.backend.responseBodyInBytes,rate,true,Response body bytes
 varnish,net.backend.pipeHeaderInBytes,rate,true,Pipe request header bytes
 varnish,net.backend.pipeOutInBytes,rate,true,Piped bytes to backend
 varnish,net.backend.pipeInInBytes,rate,true,Piped bytes from backend
-varnish,backend.connectionnections,gauge,true,Concurrent connections to backend
+varnish,backend.connections,gauge,true,Concurrent connections to backend
 varnish,net.backend.requests,rate,true,Backend requests sent
 varnish,backend.unhealtyFetches,rate,true,Fetches not attempted due to backend being unhealthy
 varnish,backend.busyFetches,rate,true,Fetches not attempted due to backend being busy
-varnish,backend.connectionnectionsFailed,rate,true,Connections failed
-varnish,backend.connectionnectionsNotAttempted,rate,true,Connection opens not attempted
+varnish,backend.connectionsFailed,rate,true,Connections failed
+varnish,backend.connectionsNotAttempted,rate,true,Connection opens not attempted
 varnish,lock.created,rate,true,Created locks
 varnish,lock.destroyed,rate,true,Destroyed locks
 varnish,lock.locks,rate,true,Lock operations
