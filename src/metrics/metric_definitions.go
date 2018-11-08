@@ -2,7 +2,7 @@ package metrics
 
 // varnishDefinition represents the data to be fed to the VarnishSample event
 type varnishDefinition struct {
-	MgtUptime                interface{} `stat_name:"uptime" metric_name:"mgt.uptimeInMilliseconds" source_type:"Rate"`
+	MgtUptime                interface{} `stat_name:"MGT.uptime" metric_name:"mgt.uptimeInMilliseconds" source_type:"Gauge"`
 	MgtChildStart            interface{} `stat_name:"child_start" metric_name:"mgt.childStart" source_type:"Rate"`
 	MgtChildExit             interface{} `stat_name:"child_exit" metric_name:"mgt.childExit" source_type:"Rate"`
 	MgtChildStop             interface{} `stat_name:"child_stop" metric_name:"mgt.childStop" source_type:"Rate"`
@@ -10,7 +10,7 @@ type varnishDefinition struct {
 	MgtChildDump             interface{} `stat_name:"child_dump" metric_name:"mgt.childDump" source_type:"Rate"`
 	MgtChildPanic            interface{} `stat_name:"child_panic" metric_name:"mgt.childPanic" source_type:"Rate"`
 	MainSumms                interface{} `stat_name:"summs" metric_name:"main.summs" source_type:"Rate"`
-	MainUptime               interface{} `stat_name:"uptime" metric_name:"main.uptimeInMilliseconds" source_type:"Rate"`
+	MainUptime               interface{} `stat_name:"MAIN.uptime" metric_name:"main.uptimeInMilliseconds" source_type:"Gauge"`
 	SessionConnections       interface{} `stat_name:"sess_conn" metric_name:"session.connections" source_type:"Rate"`
 	SessionDrops             interface{} `stat_name:"sess_drop" metric_name:"session.drops" source_type:"Rate"`
 	SessionFail              interface{} `stat_name:"sess_fail" metric_name:"session.fail" source_type:"Rate"`

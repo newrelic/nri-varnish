@@ -151,6 +151,11 @@ func parseStatName(fullStatName string) (entityName, statname string) {
 	stringParts := strings.Split(fullStatName, ".")
 	statname = stringParts[len(stringParts)-1]
 
+	// special case for uptime
+	if statname == "uptime" {
+		statname = stringParts[0] + "." + statname
+	}
+
 	// Get middle chunk of strings
 	entityParts := stringParts[1 : len(stringParts)-1]
 	entityName = strings.Join(entityParts, ".")
