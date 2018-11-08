@@ -13,7 +13,7 @@ varnish,session.drops,rate,true,Sessions dropped
 varnish,session.fail,rate,true,Session accept failures
 varnish,net.400Errors,rate,true,"Client requests received, subject to 400 errors"
 varnish,net.417Errors,rate,true,"Client requests received, subject to 417 errors"
-varnish,net.requestuests,rate,true,Good client requests received
+varnish,net.requests,rate,true,Good client requests received
 varnish,cache.hits,rate,true,Cache hits
 varnish,cache.graceHits,rate,true,Cache grace hits
 varnish,cache.passHits,rate,true,Cache hits for pass.
