@@ -192,7 +192,7 @@ type backendDefinition struct {
 	PipeIn          interface{} `stat_name:"pipe_in" metric_name:"net.backend.pipeInInBytes" source_type:"Rate"`
 	Connections     interface{} `stat_name:"conn" metric_name:"backend.connections" source_type:"Gauge"`
 	Req             interface{} `stat_name:"req" metric_name:"net.backend.requests" source_type:"Rate"`
-	UnhealtyFetches interface{} `stat_name:"unhealty" metric_name:"backend.unhealtyFetches" source_type:"Rate"`
+	UnhealtyFetches interface{} `stat_name:"unhealthy" metric_name:"backend.unhealthyFetches" source_type:"Rate"`
 	BusyFetches     interface{} `stat_name:"busy" metric_name:"backend.busyFetches" source_type:"Rate"`
 	ConFailed       interface{} `stat_name:"fail" metric_name:"backend.connectionsFailed" source_type:"Rate"`
 	ConNotAttempted interface{} `stat_name:"helddown" metric_name:"backend.connectionsNotAttempted" source_type:"Rate"`
