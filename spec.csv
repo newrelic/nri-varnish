@@ -148,7 +148,7 @@ varnish,net.backend.pipeOutInBytes,rate,true,Piped bytes to backend
 varnish,net.backend.pipeInInBytes,rate,true,Piped bytes from backend
 varnish,backend.connections,gauge,true,Concurrent connections to backend
 varnish,net.backend.requests,rate,true,Backend requests sent
-varnish,backend.unhealtyFetches,rate,true,Fetches not attempted due to backend being unhealthy
+varnish,backend.unhealthyFetches,rate,true,Fetches not attempted due to backend being unhealthy
 varnish,backend.busyFetches,rate,true,Fetches not attempted due to backend being busy
 varnish,backend.connectionsFailed,rate,true,Connections failed
 varnish,backend.connectionsNotAttempted,rate,true,Connection opens not attempted
