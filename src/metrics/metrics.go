@@ -17,13 +17,13 @@ var ExecCommand = exec.Command
 func CollectMetrics(systemEntity *integration.Entity, i *integration.Integration) error {
 	statOutput, err := ExecCommand("varnishstat", "-j").Output()
 	if err != nil {
-		log.Error("Error running varnishstat command: %s", err.Error())
+		log.Debug("Error running varnishstat command: %s", err.Error())
 		return err
 	}
 
 	varnishSystem, backends, err := parseStats(statOutput)
 	if err != nil {
-		log.Error("Error parsing varnishstat output: %s", err.Error())
+		log.Debug("Error parsing varnishstat output: %s", err.Error())
 		return err
 	}
 
