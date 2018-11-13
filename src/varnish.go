@@ -3,27 +3,20 @@ package main
 import (
 	"os"
 
-	sdkArgs "github.com/newrelic/infra-integrations-sdk/args"
-	"github.com/newrelic/infra-integrations-sdk/data/event"
-	"github.com/newrelic/infra-integrations-sdk/data/metric"
 	"github.com/newrelic/infra-integrations-sdk/integration"
 	"github.com/newrelic/infra-integrations-sdk/log"
+	"github.com/newrelic/nri-varnish/src/args"
+	"github.com/newrelic/nri-varnish/src/metrics"
 )
 
-type argumentList struct {
-	sdkArgs.DefaultArgumentList
-}
-
 const (
-	integrationName    = "com.newrelic.nr-varnish"
+	integrationName    = "com.newrelic.varnish"
 	integrationVersion = "0.1.0"
 )
 
-var (
-	args argumentList
-)
-
 func main() {
+	var args args.ArgumentList
+
 	// Create Integration
 	i, err := integration.New(integrationName, integrationVersion, integration.Args(&args))
 	if err != nil {
@@ -31,31 +24,30 @@ func main() {
 		os.Exit(1)
 	}
 
-	entity := i.LocalEntity()
+	// Setup logging with verbose
+	log.SetupLogging(args.Verbose)
 
-	// Add Event
-	if args.All() || args.Events {
-		err = entity.AddEvent(event.New("restart", "status"))
-		if err != nil {
-			log.Error(err.Error())
-		}
+	// validate arguments
+	if err := args.Validate(); err != nil {
+		log.Error("Error input validation failure: %s", err.Error())
+		os.Exit(1)
 	}
 
-	// Add Inventory item
-	if args.All() || args.Inventory {
-		err = entity.SetInventoryItem("instance", "version", "3.0.1")
-		if err != nil {
-			log.Error(err.Error())
-		}
+	systemEntity, err := i.Entity(args.InstanceName, "instance")
+	if err != nil {
+		log.Error("Error creating system entity: %s", err.Error())
+		os.Exit(1)
 	}
 
-	// Add Metric
-	if args.All() || args.Metrics {
-		m := entity.NewMetricSet("CustomSample")
+	// Collect inventory from files
+	if args.HasInventory() {
+		collectInventory(systemEntity, &args)
+	}
 
-		err = m.SetMetric("some-data", 4000, metric.GAUGE)
-		if err != nil {
-			log.Error(err.Error())
+	if args.HasMetrics() {
+		if err := metrics.CollectMetrics(systemEntity, i); err != nil {
+			log.Error("Error collecting metrics: %s", err.Error())
+			os.Exit(1)
 		}
 	}
 

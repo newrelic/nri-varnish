@@ -1,0 +1,175 @@
+integration,metric_name,metric_type,metric_enabled,metric_description
+varnish,mgt.uptimeInMilliseconds,rate,true,Management process uptime
+varnish,mgt.childStart,rate,true,Child process started
+varnish,mgt.childExit,rate,true,Child process normal exit
+varnish,mgt.childStop,rate,true,Child process unexpected exit
+varnish,mgt.childDied,rate,true,Child process died (signal)
+varnish,mgt.childDump,rate,true,Child process core dumped
+varnish,mgt.childPanic,rate,true,Child process panic
+varnish,main.summs,rate,true,Number of times per-thread statistics were summed into the global counters.
+varnish,main.uptimeInMilliseconds,rate,true,Child process uptime
+varnish,session.connections,rate,true,Sessions accepted
+varnish,session.drops,rate,true,Sessions dropped
+varnish,session.fail,rate,true,Session accept failures
+varnish,net.400Errors,rate,true,"Client requests received, subject to 400 errors"
+varnish,net.417Errors,rate,true,"Client requests received, subject to 417 errors"
+varnish,net.requests,rate,true,Good client requests received
+varnish,cache.hits,rate,true,Cache hits
+varnish,cache.graceHits,rate,true,Cache grace hits
+varnish,cache.passHits,rate,true,Cache hits for pass.
+varnish,cache.missHits,rate,true,Cache hits for miss.
+varnish,cache.misses,rate,true,Cache misses
+varnish,backend.connectionSuccess,rate,true,Backend conn. success
+varnish,backend.connectionUnHealthy,rate,true,Backend conn. not attempted
+varnish,backend.connectionBusy,rate,true,Backend conn. too many
+varnish,backend.connectionFails,rate,true,Backend conn. failures
+varnish,backend.connectionReuses,rate,true,Backend conn. reuses
+varnish,backend.connectionRecycles,rate,true,Backend conn. recycles
+varnish,backend.connectionRetries,rate,true,Backend conn. retry
+varnish,fetch.head,rate,true,Fetch no body (HEAD)
+varnish,fetch.contentLength,rate,true,Fetch with Length
+varnish,fetch.chuncked,rate,true,Fetch chunked
+varnish,fetch.eof,rate,true,Fetch EOF
+varnish,fetch.bad,rate,true,Fetch bad T-E
+varnish,fetch.noBody,rate,true,Fetch no body
+varnish,fetch.noBody1xx,rate,true,Fetch no body (1xx)
+varnish,fetch.noBody204,rate,true,Fetch no body (204)
+varnish,fetch.noBody304,rate,true,Fetch no body (304)
+varnish,fetch.failed,rate,true,Fetch failed (all causes)
+varnish,fetch.noThreadFail,rate,true,Fetch failed (no thread)
+varnish,main.pools,gauge,true,Number of thread pools
+varnish,main.threads,gauge,true,Total number of threads
+varnish,main.threadsLimited,rate,true,Threads hit max
+varnish,main.threadsCreated,rate,true,Threads created
+varnish,main.threadsDestroyed,rate,true,Threads destroyed
+varnish,main.threadsFailed,rate,true,Thread creation failed
+varnish,main.sessQueueLength,gauge,true,Length of session queue
+varnish,main.busySleep,rate,true,Number of requests sent to sleep on busy objhdr
+varnish,main.busyWakeup,rate,true,Number of requests woken after sleep on busy objhdr
+varnish,main.busyKilled,rate,true,Number of requests killed after sleep on busy objhdr
+varnish,sess.queued,rate,true,Sessions queued for thread
+varnish,sess.dropped,rate,true,Sessions dropped for thread
+varnish,main.reqDropped,rate,true,Requests dropped
+varnish,main.objects,gauge,true,object structs made
+varnish,main.unresurrectedObjects,gauge,true,unresurrected objects
+varnish,main.objectcores,gauge,true,objectcore structs made
+varnish,main.objectheads,gauge,true,objecthead structs made
+varnish,main.backends,gauge,true,Number of backends
+varnish,main.expired,rate,true,Number of expired objects
+varnish,lru.nuked,rate,true,Number of LRU nuked objects
+varnish,lru.moved,rate,true,Number of LRU moved objects
+varnish,lru.limited,rate,true,Reached nuke_limit
+varnish,net.httpOverflow,rate,true,HTTP header overflows
+varnish,main.sessions,rate,true,Total sessions seen
+varnish,main.pipeSessions,rate,true,Total pipe sessions seen
+varnish,main.passedRequests,rate,true,Total pass-ed requests seen
+varnish,backend.fetches,rate,true,Total backend fetches initiated
+varnish,main.syntheticResponses,rate,true,Total synthethic responses made
+varnish,net.request.headerInBytes,rate,true,Request header bytes
+varnish,net.request.bodyInBytes,rate,true,Request body bytes
+varnish,net.response.headerInBytes,rate,true,Response header bytes
+varnish,net.response.bodyInBytes,rate,true,Response body bytes
+varnish,net.pipereq.headerInBytes,rate,true,Pipe request header bytes
+varnish,net.pipe.inInBytes,rate,true,Piped bytes from client
+varnish,net.pipe.outInBytes,rate,true,Piped bytes to client
+varnish,sess.closed,rate,true,Session Closed
+varnish,sess.closedError,rate,true,Session Closed with error
+varnish,sess.readAhead,rate,true,Session Read Ahead
+varnish,sess.herd,rate,true,Number of times the timeout_linger triggered
+varnish,sess.clientClose,rate,true,Number of session closes with REM_CLOSE (Client Closed)
+varnish,sess.clientReqClose,rate,true,Number of session closes with REQ_CLOSE (Client requested close)
+varnish,sess.requestHTTP10Close,rate,true,Number of session closes with Error REQ_HTTP10 (Proto < HTTP/1.1)
+varnish,sess.badClose,rate,true,Number of session closes with Error RX_BAD (Received bad req/resp)
+varnish,sess.bodyFailClose,rate,true,Number of session closes with Error RX_BODY (Failure receiving req.body)
+varnish,sess.junkClose,rate,true,Number of session closes with Error RX_JUNK (Received junk data)
+varnish,sess.overflowClose,rate,true,Number of session closes with Error RX_OVERFLOW (Received buffer overflow)
+varnish,sess.timeoutClose,rate,true,Number of session closes with Error RX_TIMEOUT (Receive timeout)
+varnish,sess.pipeTxnClose,rate,true,Number of session closes with TX_PIPE (Piped transaction)
+varnish,sess.errorTxnClose,rate,true,Number of session closes with Error TX_ERROR (Error transaction)
+varnish,sess.eofTxnClose,rate,true,Number of session closes with TX_EOF (EOF transmission)
+varnish,sess.backendClose,rate,true,Number of session closes with RESP_CLOSE (Backend/VCL requested close)
+varnish,sess.overloadClose,rate,true,Number of session closes with Error OVERLOAD (Out of some resource)
+varnish,sess.pipeOverflowClose,rate,true,Number of session closes with Error PIPE_OVERFLOW (Session pipe overflow)
+varnish,sess.shortRangeClose,rate,true,Number of session closes with Error RANGE_SHORT (Insufficient data for range)
+varnish,sess.requestHTTP20Close,rate,true,Number of session closes with Error REQ_HTTP20 (HTTP2 not accepted)
+varnish,sess.vclFailClose,rate,true,Number of session closes with Error VCL_FAILURE (VCL failure)
+varnish,workspace.deliveryFail,rate,true,Delivery failed due to insufficient workspace.
+varnish,workspace.backendOverflow,rate,true,Number of times we ran out of space in workspace_backend.
+varnish,workspace.clientOverflow,rate,true,Number of times we ran out of space in workspace_client.
+varnish,workspace.threadOverflow,rate,true,Number of times we ran out of space in workspace_thread.
+varnish,workspace.sessionOverflow,rate,true,Number of times we ran out of space in workspace_session.
+varnish,shm.records,rate,true,SHM records
+varnish,shm.writes,rate,true,SHM writes
+varnish,shm.flushes,rate,true,SHM flushes due to overflow
+varnish,shm.contentions,rate,true,SHM MTX contention
+varnish,shm.cycles,rate,true,SHM cycles through buffer
+varnish,backend.requests,rate,true,Backend requests made
+varnish,main.vclLoaded,gauge,true,Number of loaded VCLs in total
+varnish,main.vclAvailable,gauge,true,Number of VCLs available
+varnish,main.vclDiscarded,gauge,true,Number of discarded VCLs
+varnish,main.vclFails,rate,true,VCL failures
+varnish,main.bans,gauge,true,Count of bans
+varnish,bans.completed,gauge,true,Number of bans marked 'completed'
+varnish,bans.obj,gauge,true,Number of bans using obj.*
+varnish,bans.req,gauge,true,Number of bans using req.*
+varnish,bans.added,rate,true,Bans added
+varnish,bans.deleted,rate,true,Bans deleted
+varnish,bans.tested,rate,true,Bans tested against objects (lookup)
+varnish,bans.lookupKilled,rate,true,Objects killed by bans (lookup)
+varnish,bans.lurkerTested,rate,true,Bans tested against objects (lurker)
+varnish,bans.lookupTestsTested,rate,true,Ban tests tested against objects (lookup)
+varnish,bans.lurkerTestsTested,rate,true,Ban tests tested against objects (lurker)
+varnish,bans.lurkerKilled,rate,true,Objects killed by bans (lurker)
+varnish,bans.cutoffLurkerKilled,rate,true,Objects killed by bans for cutoff (lurker)
+varnish,bans.dups,rate,true,Bans superseded by other bans
+varnish,bans.lurkerCon,rate,true,Lurker gave way for lookup
+varnish,bans.persistedInBytes,gauge,true,Bytes used by the persisted ban lists
+varnish,bans.fragmentationInBytes,gauge,true,Extra bytes in persisted ban lists due to fragmentation
+varnish,main.purgeOperations,rate,true,Number of purge operations executed
+varnish,main.purgeObjects,rate,true,Number of purged objects
+varnish,main.expiredMailed,rate,true,Number of objects mailed to expiry thread
+varnish,main.expiredReceived,rate,true,Number of objects received by expiry thread
+varnish,hcb.noLock,rate,true,HCB Lookups without lock
+varnish,hcb.lock,rate,true,HCB Lookups with lock
+varnish,hcb.inserts,rate,true,HCB Inserts
+varnish,esi.errors,rate,true,ESI parse errors (unlock)
+varnish,esi.warnings,rate,true,ESI parse warnings (unlock)
+varnish,main.vmodsLoaded,gauge,true,Loaded VMODs
+varnish,main.gzip,rate,true,Gzip operations
+varnish,main.gunzip,rate,true,Gunzip operations
+varnish,main.gunzipTest,rate,true,Test gunzip operations
+varnish,backend.happy,gauge,true,Happy health probes
+varnish,net.backend.requestHeaderInBytes,rate,true,Request header bytes
+varnish,net.backend.requestBodyInBytes,rate,true,Request body bytes
+varnish,net.backend.responseHeaderInBytes,rate,true,Response header bytes
+varnish,net.backend.responseBodyInBytes,rate,true,Response body bytes
+varnish,net.backend.pipeHeaderInBytes,rate,true,Pipe request header bytes
+varnish,net.backend.pipeOutInBytes,rate,true,Piped bytes to backend
+varnish,net.backend.pipeInInBytes,rate,true,Piped bytes from backend
+varnish,backend.connections,gauge,true,Concurrent connections to backend
+varnish,net.backend.requests,rate,true,Backend requests sent
+varnish,backend.unhealthyFetches,rate,true,Fetches not attempted due to backend being unhealthy
+varnish,backend.busyFetches,rate,true,Fetches not attempted due to backend being busy
+varnish,backend.connectionsFailed,rate,true,Connections failed
+varnish,backend.connectionsNotAttempted,rate,true,Connection opens not attempted
+varnish,lock.created,rate,true,Created locks
+varnish,lock.destroyed,rate,true,Destroyed locks
+varnish,lock.locks,rate,true,Lock operations
+varnish,mempool.live,gauge,true,In use 
+varnish,mempool.pool,gauge,true,In Pool
+varnish,mempool.requestSizeInBytes,gauge,true,Size requested
+varnish,mempool.allocatedSizeInBytes,gauge,true,Size allocated
+varnish,mempool.allocs,rate,true,Allocations
+varnish,mempool.frees,rate,true,Frees
+varnish,mempool.recycles,rate,true,Recycled from pool
+varnish,mempool.timeouts,rate,true,Timed out from pool
+varnish,mempool.tooSmall,rate,true,Too small to recycle
+varnish,mempool.surplus,rate,true,Too many for pool
+varnish,mempool.ranDry,rate,true,Pool ran dry
+varnish,storage.allocReqs,rate,true,Allocator requests
+varnish,storage.allocFails,rate,true,Allocator failures
+varnish,storage.allocInBytes,rate,true,Bytes allocated
+varnish,storage.freeInBytes,rate,true,Bytes freed
+varnish,storage.allocOustanding,gauge,true,Allocations outstanding
+varnish,storage.outstandingInBytes,gauge,true,Bytes outstanding
+varnish,storage.availableInBytes,gauge,true,Bytes available
