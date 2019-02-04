@@ -1,6 +1,6 @@
 name: com.newrelic.varnish
 description: Reports status and metrics for nr-varnish service
-protocol_version: 1
+protocol_version: 2
 os: linux
 
 commands:
