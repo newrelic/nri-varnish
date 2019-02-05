@@ -11,7 +11,7 @@ import (
 
 const (
 	integrationName    = "com.newrelic.varnish"
-	integrationVersion = "0.1.0"
+	integrationVersion = "1.0.0"
 )
 
 func main() {
