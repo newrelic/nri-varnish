@@ -33,8 +33,7 @@ func main() {
 		os.Exit(1)
 	}
 
-  entityIDAttr := integration.IDAttribute{Key: "instanceName", Value: args.InstanceName}
-	systemEntity, err := i.Entity(args.InstanceName, "va-instance", entityIDAttr)
+	systemEntity, err := i.Entity(args.InstanceName, "va-instance")
 	if err != nil {
 		log.Error("Error creating system entity: %s", err.Error())
 		os.Exit(1)
