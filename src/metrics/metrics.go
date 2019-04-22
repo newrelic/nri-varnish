@@ -38,7 +38,7 @@ func CollectMetrics(systemEntity *integration.Entity, i *integration.Integration
 
 func processBackends(instanceName string, backends map[string]*backendDefinition, i *integration.Integration) {
 	for backendName, def := range backends {
-    entityIDAttr := integration.IDAttribute{Key: "instanceName", Value: instanceName}
+		entityIDAttr := integration.IDAttribute{Key: "instanceName", Value: instanceName}
 		entity, err := i.Entity(backendName, "va-backend", entityIDAttr)
 		if err != nil {
 			log.Debug("Error creating entity for Backend %s: %s", backendName, err.Error())
