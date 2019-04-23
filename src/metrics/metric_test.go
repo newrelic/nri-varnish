@@ -106,6 +106,7 @@ func TestCollectMetrics(t *testing.T) {
 		"displayName":                       "boot.web1",
 		"entityName":                        "va-backend:boot.web1",
 		"event_type":                        "VarnishBackendSample",
+		"reportingEntityKey":                "localhost",
 		"backend.happy":                     float64(0),
 		"net.backend.requestHeaderInBytes":  float64(0),
 		"net.backend.requestBodyInBytes":    float64(0),
