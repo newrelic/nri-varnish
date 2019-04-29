@@ -23,7 +23,7 @@ func TestCollectMetrics(t *testing.T) {
 		t.Fatalf("Unexpected error %s", err.Error())
 	}
 
-	systemEntity, err := i.Entity("test", "instance")
+	systemEntity, err := i.Entity("test", "va-instance")
 	if err != nil {
 		t.Fatalf("Unexpected error %s", err.Error())
 	}
@@ -104,9 +104,9 @@ func TestCollectMetrics(t *testing.T) {
 
 	expectedBackendMetrics := map[string]interface{}{
 		"displayName":                       "boot.web1",
-		"entityName":                        "backend:boot.web1",
+		"entityName":                        "va-backend:boot.web1",
 		"event_type":                        "VarnishBackendSample",
-		"varnishInstance":                   systemEntity.Metadata.Name,
+		"reportingEntityKey":                "localhost",
 		"backend.happy":                     float64(0),
 		"net.backend.requestHeaderInBytes":  float64(0),
 		"net.backend.requestBodyInBytes":    float64(0),
@@ -127,7 +127,7 @@ func TestCollectMetrics(t *testing.T) {
 
 func findBackendEntity(i *integration.Integration) *integration.Entity {
 	for _, entity := range i.Entities {
-		if entity.Metadata.Namespace == "backend" {
+		if entity.Metadata.Namespace == "va-backend" {
 			return entity
 		}
 	}
@@ -151,7 +151,7 @@ func TestCollectMetrics_ExecError(t *testing.T) {
 		t.Fatalf("Unexpected error %s", err.Error())
 	}
 
-	systemEntity, err := i.Entity("test", "varnish")
+	systemEntity, err := i.Entity("test", "va-varnish")
 	if err != nil {
 		t.Fatalf("Unexpected error %s", err.Error())
 	}

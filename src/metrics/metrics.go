@@ -38,7 +38,8 @@ func CollectMetrics(systemEntity *integration.Entity, i *integration.Integration
 
 func processBackends(instanceName string, backends map[string]*backendDefinition, i *integration.Integration) {
 	for backendName, def := range backends {
-		entity, err := i.Entity(backendName, "backend")
+		entityIDAttr := integration.IDAttribute{Key: "instanceName", Value: instanceName}
+		entity, err := i.EntityReportedBy("localhost", backendName, "va-backend", entityIDAttr)
 		if err != nil {
 			log.Debug("Error creating entity for Backend %s: %s", backendName, err.Error())
 			continue
@@ -47,7 +48,6 @@ func processBackends(instanceName string, backends map[string]*backendDefinition
 		metricSet := entity.NewMetricSet("VarnishBackendSample",
 			metric.Attribute{Key: "displayName", Value: entity.Metadata.Name},
 			metric.Attribute{Key: "entityName", Value: entity.Metadata.Namespace + ":" + entity.Metadata.Name},
-			metric.Attribute{Key: "varnishInstance", Value: instanceName},
 		)
 
 		if err := metricSet.MarshalMetrics(def); err != nil {

@@ -11,7 +11,7 @@ import (
 
 const (
 	integrationName    = "com.newrelic.varnish"
-	integrationVersion = "1.0.0"
+	integrationVersion = "2.0.0"
 )
 
 func main() {
@@ -33,7 +33,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	systemEntity, err := i.Entity(args.InstanceName, "instance")
+	systemEntity, err := i.EntityReportedBy("localhost", args.InstanceName, "va-instance")
 	if err != nil {
 		log.Error("Error creating system entity: %s", err.Error())
 		os.Exit(1)
