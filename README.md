@@ -6,6 +6,8 @@ Metric data is obtained from [varnishstat](https://varnish-cache.org/docs/trunk/
 
 Inventory data is read from the `varnish.params` file.
 
+See our [documentation web site](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/varnish-monitoring-integration) for more details.
+
 ## Requirements
 
 No requirements at this time.
