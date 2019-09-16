@@ -156,6 +156,11 @@ func parseStatName(fullStatName string) (entityName, statname string) {
 		statname = stringParts[0] + "." + statname
 	}
 
+	// When the fullStatName contains no prefixes, just return it
+	if len(stringParts) == 1 {
+		return
+	}
+
 	// Get middle chunk of strings
 	entityParts := stringParts[1 : len(stringParts)-1]
 	entityName = strings.Join(entityParts, ".")

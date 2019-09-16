@@ -40,6 +40,7 @@ func TestCollectMetrics(t *testing.T) {
 			"event_type":               "VarnishSample",
 			"mgt.uptimeInMilliseconds": float64(253792),
 			"main.threads":             float64(4),
+			"backend.connectionFails":  float64(0),
 		},
 		{ // lock
 			"displayName":    systemEntity.Metadata.Name,

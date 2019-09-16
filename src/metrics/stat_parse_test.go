@@ -7,6 +7,11 @@ import (
 
 const varnishStatTestResult = `{
 	"timestamp": "2018-11-05T17:22:34",
+	"backend_fail": {
+    "value": 0, 
+    "flag": "a", 
+    "description": "Backend conn. failures"
+  },
 	"MGT.uptime": {
 		"description": "Management process uptime",
 		"flag": "c", "format": "d",
@@ -177,8 +182,9 @@ const varnishStatTestResult = `{
 func Test_parseStats_Full(t *testing.T) {
 
 	expectedVarnishSystem := &varnishDefinition{
-		MgtUptime:   float64(253792),
-		MainThreads: float64(4),
+		MgtUptime:       float64(253792),
+		MainThreads:     float64(4),
+		BackendConFails: float64(0),
 
 		locks: map[string]*lockDefinition{
 			"sma": {
