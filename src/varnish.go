@@ -1,3 +1,4 @@
+//go:generate goversioninfo
 package main
 
 import (
@@ -11,7 +12,7 @@ import (
 
 const (
 	integrationName    = "com.newrelic.varnish"
-	integrationVersion = "2.0.1"
+	integrationVersion = "2.0.2"
 )
 
 func main() {
