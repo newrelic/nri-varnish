@@ -6,6 +6,6 @@ os: windows
 commands:
   all_data:
     command:
-      - ./bin/nr-varnish.exe
+      - .\bin\nr-varnish.exe
     interval: 15
     prefix: config/varnish
