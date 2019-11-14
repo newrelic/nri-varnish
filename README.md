@@ -30,7 +30,7 @@ You can view your data in Insights by creating your own custom NRQL queries. To 
 ## Compatibility
 
 * Supported OS: No limitations
-* Varnish Cache versions: 5.X+
+* Varnish Cache versions: 1.X+
 
 ## Integration Development usage
 
