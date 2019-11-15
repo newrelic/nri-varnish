@@ -1,11 +1,11 @@
 name: com.newrelic.varnish
-description: Reports status and metrics for nr-varnish service
+description: Reports status and metrics for nri-varnish service
 protocol_version: 2
 os: linux
 
 commands:
   all_data:
     command:
-      - ./bin/nr-varnish
+      - ./bin/nri-varnish
     interval: 15
     prefix: config/varnish
