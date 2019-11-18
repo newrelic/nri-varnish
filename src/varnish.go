@@ -12,7 +12,7 @@ import (
 
 const (
 	integrationName    = "com.newrelic.varnish"
-	integrationVersion = "2.0.2"
+	integrationVersion = "2.1.0"
 )
 
 func main() {
