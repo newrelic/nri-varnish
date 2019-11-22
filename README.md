@@ -16,7 +16,7 @@ No requirements at this time.
 
 - download an archive file for the `Varnish Cache` Integration
 - extract `varnish-definition.yml` and `/bin` directory into `/var/db/newrelic-infra/newrelic-integrations`
-- add execute permissions for the binary file `nr-varnish` (if required)
+- add execute permissions for the binary file `nri-varnish` (if required)
 - extract `varnish-config.yml.sample` into `/etc/newrelic-infra/integrations.d`
 
 ## Usage
@@ -40,13 +40,13 @@ Assuming that you have source code you can build and run the Varnish Cache Integ
 ```bash
 $ make
 ```
-* The command above will execute tests for the Varnish Cache Integration and build an executable file called `nr-varnish` in `bin` directory.
+* The command above will execute tests for the Varnish Cache Integration and build an executable file called `nri-varnish` in `bin` directory.
 ```bash
-$ ./bin/nr-varnish
+$ ./bin/nri-varnish
 ```
-* If you want to know more about usage of `./nr-varnish` check
+* If you want to know more about usage of `./nri-varnish` check
 ```bash
-$ ./bin/nr-varnish -help
+$ ./bin/nri-varnish -help
 ```
 
 For managing external dependencies [govendor tool](https://github.com/kardianos/govendor) is used. It is required to lock all external dependencies to specific version (if possible) into vendor directory.
