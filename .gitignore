@@ -7,6 +7,7 @@
 _obj
 _test
 bin
+dist
 
 # Architecture specific extensions/prefixes
 *.[568vq]
@@ -38,3 +39,5 @@ Session.vim
 # VSCode
 .vscode
 debug
+
+*.gpg
