@@ -45,13 +45,19 @@ nfpms:
     formats:
       - deb
     bindir: "/var/db/newrelic-infra/newrelic-integrations/bin"
-    files:
-      "CHANGELOG.md": "/usr/share/doc/nri-varnish/CHANGELOG.md"
-      "README.md":  "/usr/share/doc/nri-varnish/README.md"
-      "LICENSE": "/usr/share/doc/nri-varnish/LICENSE"
-    config_files:
-      "varnish-definition.yml": "/var/db/newrelic-infra/newrelic-integrations/varnish-definition.yml"
-      "varnish-config.yml.sample": "/etc/newrelic-infra/integrations.d/varnish-config.yml.sample"
+    contents:
+      - src: CHANGELOG.md
+        dst: /usr/share/doc/nri-varnish/CHANGELOG.md
+      - src: README.md
+        dst: /usr/share/doc/nri-varnish/README.md
+      - src: LICENSE
+        dst: /usr/share/doc/nri-varnish/LICENSE
+      - src: varnish-config.yml.sample
+        dst: /etc/newrelic-infra/integrations.d/varnish-config.yml.sample
+        type: config
+      - src: varnish-definition.yml
+        dst: /var/db/newrelic-infra/newrelic-integrations/varnish-definition.yml
+        type: config
     dependencies:
       - "newrelic-infra"
 
@@ -68,13 +74,19 @@ nfpms:
     formats:
       - rpm
     bindir: "/var/db/newrelic-infra/newrelic-integrations/bin"
-    files:
-      "CHANGELOG.md": "/usr/share/doc/nri-varnish/CHANGELOG.md"
-      "README.md":  "/usr/share/doc/nri-varnish/README.md"
-      "LICENSE": "/usr/share/doc/nri-varnish/LICENSE"
-    config_files:
-      "varnish-definition.yml": "/var/db/newrelic-infra/newrelic-integrations/varnish-definition.yml"
-      "varnish-config.yml.sample": "/etc/newrelic-infra/integrations.d/varnish-config.yml.sample"
+    contents:
+      - src: CHANGELOG.md
+        dst: /usr/share/doc/nri-varnish/CHANGELOG.md
+      - src: README.md
+        dst: /usr/share/doc/nri-varnish/README.md
+      - src: LICENSE
+        dst: /usr/share/doc/nri-varnish/LICENSE
+      - src: varnish-config.yml.sample
+        dst: /etc/newrelic-infra/integrations.d/varnish-config.yml.sample
+        type: config
+      - src: varnish-definition.yml
+        dst: /var/db/newrelic-infra/newrelic-integrations/varnish-definition.yml
+        type: config
     dependencies:
       - "newrelic-infra"
     overrides:
