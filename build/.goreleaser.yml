@@ -1,0 +1,116 @@
+builds:
+  - id: nri-varnish-nix
+    main: ./src
+    binary: nri-varnish
+    gobinary: "go1.9.7"
+    ldflags:
+      - -s -w -X main.integrationVersion={{.Version}} -X main.gitCommit={{.Commit}} -X main.buildDate={{.Date}}
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - 386
+      - amd64
+      - arm
+      - arm64
+    ignore:
+      - goos: darwin
+        goarch: 386
+
+  - id: nri-varnish-win
+    main: ./src
+    binary: nri-varnish
+    gobinary: "go1.9.7"
+    ldflags:
+      - -s -w -X main.integrationVersion={{.Version}} -X main.gitCommit={{.Commit}} -X main.buildDate={{.Date}}
+    goos:
+      - windows
+    goarch:
+      - 386
+      - amd64
+    hooks:
+      pre: build/windows/set_exe_properties.sh {{ .Env.TAG }} "varnish"
+
+nfpms:
+  - id: nri-varnish-deb
+    builds:
+      - nri-varnish-nix
+    file_name_template: "{{ .ProjectName }}_{{ .Version }}-1_{{ .Arch }}"
+    vendor: "New Relic, Inc."
+    homepage: "https://www.newrelic.com/infrastructure"
+    maintainer: "New Relic Infrastructure Team <infrastructure-eng@newrelic.com>"
+    description: "New Relic Infrastructure varnish Integration extend the core New Relic\nInfrastructure agent's capabilities to allow you to collect metric and\nlive state data from varnish components."
+    license: "https://newrelic.com/terms (also see LICENSE installed with this package)"
+    # Formats to be generated.
+    formats:
+      - deb
+    bindir: "/var/db/newrelic-infra/newrelic-integrations/bin"
+    contents:
+      - src: CHANGELOG.md
+        dst: /usr/share/doc/nri-varnish/CHANGELOG.md
+      - src: README.md
+        dst: /usr/share/doc/nri-varnish/README.md
+      - src: LICENSE
+        dst: /usr/share/doc/nri-varnish/LICENSE
+      - src: varnish-config.yml.sample
+        dst: /etc/newrelic-infra/integrations.d/varnish-config.yml.sample
+      - src: varnish-definition.yml
+        dst: /var/db/newrelic-infra/newrelic-integrations/varnish-definition.yml
+        type: config
+    dependencies:
+      - "newrelic-infra"
+
+  - id: nri-varnish-rpm
+    builds:
+      - nri-varnish-nix
+    file_name_template: "{{ .ProjectName }}-{{ .Version }}-{{ .Arch }}"
+    vendor: "New Relic, Inc."
+    homepage: "https://www.newrelic.com/infrastructure"
+    maintainer: "New Relic Infrastructure Team <infrastructure-eng@newrelic.com>"
+    description: "New Relic Infrastructure varnish Integration extend the core New Relic\nInfrastructure agent's capabilities to allow you to collect metric and\nlive state data from varnish components."
+    license: "https://newrelic.com/terms (also see LICENSE installed with this package)"
+    # Formats to be generated.
+    formats:
+      - rpm
+    bindir: "/var/db/newrelic-infra/newrelic-integrations/bin"
+    contents:
+      - src: CHANGELOG.md
+        dst: /usr/share/doc/nri-varnish/CHANGELOG.md
+      - src: README.md
+        dst: /usr/share/doc/nri-varnish/README.md
+      - src: LICENSE
+        dst: /usr/share/doc/nri-varnish/LICENSE
+      - src: varnish-config.yml.sample
+        dst: /etc/newrelic-infra/integrations.d/varnish-config.yml.sample
+      - src: varnish-definition.yml
+        dst: /var/db/newrelic-infra/newrelic-integrations/varnish-definition.yml
+        type: config
+    dependencies:
+      - "newrelic-infra"
+    overrides:
+      rpm:
+        replacements:
+          amd64: 1.x86_64
+
+archives:
+  - id: nri-varnish-nix
+    builds:
+      - nri-varnish-nix
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Version }}_{{ .Arch }}_dirty"
+    files:
+      - varnish-config.yml.sample
+      - varnish-definition.yml
+    format: tar.gz
+
+  - id: nri-varnish-win
+    builds:
+      - nri-varnish-win
+    name_template: "{{ .ProjectName }}-{{ .Arch }}.{{ .Version }}_dirty"
+    files:
+      - varnish-win-config.yml.sample
+      - varnish-win-definition.yml
+    format: zip
+
+# we use custom publisher for fixing archives and signing them
+release:
+  disable: true
