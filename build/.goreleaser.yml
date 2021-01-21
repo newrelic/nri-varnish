@@ -54,7 +54,6 @@ nfpms:
         dst: /usr/share/doc/nri-varnish/LICENSE
       - src: varnish-config.yml.sample
         dst: /etc/newrelic-infra/integrations.d/varnish-config.yml.sample
-        type: config
       - src: varnish-definition.yml
         dst: /var/db/newrelic-infra/newrelic-integrations/varnish-definition.yml
         type: config
@@ -83,7 +82,6 @@ nfpms:
         dst: /usr/share/doc/nri-varnish/LICENSE
       - src: varnish-config.yml.sample
         dst: /etc/newrelic-infra/integrations.d/varnish-config.yml.sample
-        type: config
       - src: varnish-definition.yml
         dst: /var/db/newrelic-infra/newrelic-integrations/varnish-definition.yml
         type: config
