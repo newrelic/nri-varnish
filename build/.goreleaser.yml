@@ -107,7 +107,7 @@ archives:
       - nri-varnish-win
     name_template: "{{ .ProjectName }}-{{ .Arch }}.{{ .Version }}_dirty"
     files:
-      - varnish-win-config.yml.sample
+      - varnish-config.yml.sample
       - varnish-win-definition.yml
     format: zip
 
