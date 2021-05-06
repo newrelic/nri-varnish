@@ -34,7 +34,7 @@ func TestCollectMetrics(t *testing.T) {
 
 	// System Entity Check
 	expectedMetrics := []map[string]interface{}{
-		{ //main
+		{ // main
 			"displayName":              systemEntity.Metadata.Name,
 			"entityName":               systemEntity.Metadata.Namespace + ":" + systemEntity.Metadata.Name,
 			"event_type":               "VarnishSample",
@@ -184,6 +184,7 @@ func TestHelperProcess(*testing.T) {
 	if os.Getenv("GO_WANT_ERROR") == "1" {
 		os.Exit(2)
 	} else {
+		// nolint
 		fmt.Fprintf(os.Stdout, varnishStatTestResult)
 		os.Exit(0)
 	}

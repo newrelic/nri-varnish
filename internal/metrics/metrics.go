@@ -4,7 +4,8 @@ package metrics
 import (
 	"os/exec"
 
-	"github.com/newrelic/infra-integrations-sdk/data/metric"
+	"github.com/newrelic/infra-integrations-sdk/data/attribute"
+
 	"github.com/newrelic/infra-integrations-sdk/integration"
 	"github.com/newrelic/infra-integrations-sdk/log"
 )
@@ -46,8 +47,8 @@ func processBackends(instanceName string, backends map[string]*backendDefinition
 		}
 
 		metricSet := entity.NewMetricSet("VarnishBackendSample",
-			metric.Attribute{Key: "displayName", Value: entity.Metadata.Name},
-			metric.Attribute{Key: "entityName", Value: entity.Metadata.Namespace + ":" + entity.Metadata.Name},
+			attribute.Attribute{Key: "displayName", Value: entity.Metadata.Name},
+			attribute.Attribute{Key: "entityName", Value: entity.Metadata.Namespace + ":" + entity.Metadata.Name},
 		)
 
 		if err := metricSet.MarshalMetrics(def); err != nil {
@@ -59,8 +60,8 @@ func processBackends(instanceName string, backends map[string]*backendDefinition
 
 func processVarnishSystem(systemEntity *integration.Entity, varnishSystem *varnishDefinition) {
 	metricSet := systemEntity.NewMetricSet("VarnishSample",
-		metric.Attribute{Key: "displayName", Value: systemEntity.Metadata.Name},
-		metric.Attribute{Key: "entityName", Value: systemEntity.Metadata.Namespace + ":" + systemEntity.Metadata.Name},
+		attribute.Attribute{Key: "displayName", Value: systemEntity.Metadata.Name},
+		attribute.Attribute{Key: "entityName", Value: systemEntity.Metadata.Namespace + ":" + systemEntity.Metadata.Name},
 	)
 
 	if err := metricSet.MarshalMetrics(varnishSystem); err != nil {
@@ -91,9 +92,9 @@ func processVarnishSystem(systemEntity *integration.Entity, varnishSystem *varni
 
 func processSubSample(subStructure interface{}, sampleName, idAttribute, idAttributeValue string, systemEntity *integration.Entity) error {
 	metricSet := systemEntity.NewMetricSet(sampleName,
-		metric.Attribute{Key: "displayName", Value: systemEntity.Metadata.Name},
-		metric.Attribute{Key: "entityName", Value: systemEntity.Metadata.Namespace + ":" + systemEntity.Metadata.Name},
-		metric.Attribute{Key: idAttribute, Value: idAttributeValue},
+		attribute.Attribute{Key: "displayName", Value: systemEntity.Metadata.Name},
+		attribute.Attribute{Key: "entityName", Value: systemEntity.Metadata.Namespace + ":" + systemEntity.Metadata.Name},
+		attribute.Attribute{Key: idAttribute, Value: idAttributeValue},
 	)
 
 	return metricSet.MarshalMetrics(subStructure)

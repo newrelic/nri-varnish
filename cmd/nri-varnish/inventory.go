@@ -8,7 +8,7 @@ import (
 
 	"github.com/newrelic/infra-integrations-sdk/integration"
 	"github.com/newrelic/infra-integrations-sdk/log"
-	"github.com/newrelic/nri-varnish/src/args"
+	"github.com/newrelic/nri-varnish/internal/args"
 )
 
 // collectInventory collects inventory from varnish.params file

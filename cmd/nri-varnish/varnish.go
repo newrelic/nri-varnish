@@ -9,8 +9,8 @@ import (
 
 	"github.com/newrelic/infra-integrations-sdk/integration"
 	"github.com/newrelic/infra-integrations-sdk/log"
-	"github.com/newrelic/nri-varnish/src/args"
-	"github.com/newrelic/nri-varnish/src/metrics"
+	"github.com/newrelic/nri-varnish/internal/args"
+	"github.com/newrelic/nri-varnish/internal/metrics"
 )
 
 const (

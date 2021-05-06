@@ -180,7 +180,6 @@ const varnishStatTestResult = `{
 }`
 
 func Test_parseStats_Full(t *testing.T) {
-
 	expectedVarnishSystem := &varnishDefinition{
 		MgtUptime:       float64(253792),
 		MainThreads:     float64(4),

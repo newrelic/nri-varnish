@@ -68,16 +68,16 @@ func getStatValue(stat interface{}) (interface{}, error) {
 func parseAndSetStat(varnishSystem *varnishDefinition, fullStatName string, statValue interface{}) {
 	// Parse out into structs
 	if strings.HasPrefix(fullStatName, "LCK.") {
-		//locks
+		// locks
 		setLockValue(varnishSystem.locks, fullStatName, statValue)
 	} else if strings.HasPrefix(fullStatName, "SMF.") || strings.HasPrefix(fullStatName, "SMU.") || strings.HasPrefix(fullStatName, "SMA.") {
-		//storage
+		// storage
 		setStorageValue(varnishSystem.storages, fullStatName, statValue)
 	} else if strings.HasPrefix(fullStatName, "MEMPOOL.") {
 		// mempools
 		setMempoolValue(varnishSystem.mempools, fullStatName, statValue)
 	} else {
-		//main sample
+		// main sample
 		setSystemValue(varnishSystem, fullStatName, statValue)
 	}
 }

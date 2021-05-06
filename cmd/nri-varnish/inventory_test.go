@@ -6,7 +6,7 @@ import (
 
 	"github.com/newrelic/infra-integrations-sdk/data/inventory"
 	"github.com/newrelic/infra-integrations-sdk/integration"
-	"github.com/newrelic/nri-varnish/src/args"
+	"github.com/newrelic/nri-varnish/internal/args"
 )
 
 func TestCollectInventory_Normal(t *testing.T) {
