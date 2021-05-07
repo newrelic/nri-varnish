@@ -1,12 +1,12 @@
 golang:
-  github.com/newrelic/nri-varnish/src/args:
+  github.com/newrelic/nri-varnish/internal/args:
     license: MIT
     license_url: github.com/newrelic/nri-varnish/LICENSE
-    project_url: github.com/newrelic/nri-varnish/src/args
-  github.com/newrelic/nri-varnish/src/metrics:
+    project_url: github.com/newrelic/nri-varnish/internal/args
+  github.com/newrelic/nri-varnish/internal/metrics:
     license: MIT
     license_url: github.com/newrelic/nri-varnish/LICENSE
-    project_url: github.com/newrelic/nri-varnish/src/metrics
+    project_url: github.com/newrelic/nri-varnish/internal/metrics
   github.com/newrelic/nri-varnish/vendor/github.com/newrelic/infra-integrations-sdk/args:
     license: Unknown
     license_url: github.com/newrelic/nri-varnish/vendor/github.com/newrelic/infra-integrations-sdk/LICENSE
