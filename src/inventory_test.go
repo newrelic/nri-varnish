@@ -1,12 +1,13 @@
 package main
 
 import (
+
+	args2 "github.com/newrelic/nri-varnish/src/args"
 	"reflect"
 	"testing"
 
 	"github.com/newrelic/infra-integrations-sdk/data/inventory"
 	"github.com/newrelic/infra-integrations-sdk/integration"
-	"github.com/newrelic/nri-varnish/internal/args"
 )
 
 func TestCollectInventory_Normal(t *testing.T) {
@@ -20,7 +21,7 @@ func TestCollectInventory_Normal(t *testing.T) {
 		t.Fatalf("Unexpected error %s", err.Error())
 	}
 
-	argList := &args.ArgumentList{
+	argList := &args2.ArgumentList{
 		ParamsConfigFile: "testdata/varnish.params",
 	}
 
@@ -70,7 +71,7 @@ func TestCollectInventory_NoParamsFile(t *testing.T) {
 
 	entity := i.LocalEntity()
 
-	argList := &args.ArgumentList{}
+	argList := &args2.ArgumentList{}
 
 	expected := inventory.Items{}
 
