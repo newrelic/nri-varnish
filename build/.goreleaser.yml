@@ -3,7 +3,7 @@ builds:
     main: ./cmd/nri-varnish/main.go
     binary: nri-varnish
     ldflags:
-      - -s -w -X main.integrationVersion={{.Version}} -X main.gitCommit={{.Commit}} -X main.buildDate={{.Date}}
+      - -s -w -X github.com/newrelic/nri-varnish/cmd/main.integrationVersion={{.Version}} -X github.com/newrelic/nri-varnish/cmd/main.gitCommit={{.Commit}} -X github.com/newrelic/nri-varnish/cmd/main.buildDate={{.Date}}
     goos:
       - linux
       - darwin
@@ -20,7 +20,7 @@ builds:
     main: ./cmd/nri-varnish/main.go
     binary: nri-varnish
     ldflags:
-      - -s -w -X main.integrationVersion={{.Version}} -X main.gitCommit={{.Commit}} -X main.buildDate={{.Date}}
+      - -s -w -X github.com/newrelic/nri-varnish/cmd/main.integrationVersion={{.Version}} -X github.com/newrelic/nri-varnish/cmd/main.gitCommit={{.Commit}} -X github.com/newrelic/nri-varnish/cmd/main.buildDate={{.Date}}
     goos:
       - windows
     goarch:
