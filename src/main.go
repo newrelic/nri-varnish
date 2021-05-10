@@ -5,14 +5,14 @@ import (
 	"bufio"
 	"errors"
 	"fmt"
+	args2 "github.com/newrelic/nri-varnish/src/args"
+	metrics2 "github.com/newrelic/nri-varnish/src/metrics"
 	"os"
 	"runtime"
 	"strings"
 
 	"github.com/newrelic/infra-integrations-sdk/integration"
 	"github.com/newrelic/infra-integrations-sdk/log"
-	"github.com/newrelic/nri-varnish/internal/args"
-	"github.com/newrelic/nri-varnish/internal/metrics"
 )
 
 // Known locations of varnish.params on specific Linux Distros
@@ -29,7 +29,7 @@ var (
 )
 
 func main() {
-	var args args.ArgumentList
+	var args args2.ArgumentList
 
 	// Create Integration
 	i, err := integration.New(integrationName, integrationVersion, integration.Args(&args))
@@ -71,7 +71,7 @@ func main() {
 	}
 
 	if args.HasMetrics() {
-		if err := metrics.CollectMetrics(systemEntity, i); err != nil {
+		if err := metrics2.CollectMetrics(systemEntity, i); err != nil {
 			log.Error("Error collecting metrics: %s", err.Error())
 			os.Exit(1)
 		}
@@ -83,7 +83,7 @@ func main() {
 }
 
 // collectInventory collects inventory from varnish.params file
-func collectInventory(systemEntity *integration.Entity, argList *args.ArgumentList) {
+func collectInventory(systemEntity *integration.Entity, argList *args2.ArgumentList) {
 	if err := collectParamsFile(systemEntity, argList.ParamsConfigFile); err != nil {
 		log.Error("Error parsing params file %s: %s", argList.ParamsConfigFile, err.Error())
 	}

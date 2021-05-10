@@ -1,9 +1,9 @@
 builds:
-  - id: nri-varnish-nix
-    main: ./cmd/nri-varnish/main.go
+  - id: nri-nix
+    main: ./src
     binary: nri-varnish
     ldflags:
-      - -s -w -X github.com/newrelic/nri-varnish/cmd/main.integrationVersion={{.Version}} -X github.com/newrelic/nri-varnish/cmd/main.gitCommit={{.Commit}} -X github.com/newrelic/nri-varnish/cmd/main.buildDate={{.Date}}
+      - -s -w -X main.integrationVersion={{.Version}} -X main.gitCommit={{.Commit}} -X main.buildDate={{.Date}}
     goos:
       - linux
       - darwin
@@ -16,11 +16,11 @@ builds:
       - goos: darwin
         goarch: 386
 
-  - id: nri-varnish-win
-    main: ./cmd/nri-varnish/main.go
+  - id: nri-win
+    main: ./src
     binary: nri-varnish
     ldflags:
-      - -s -w -X github.com/newrelic/nri-varnish/cmd/main.integrationVersion={{.Version}} -X github.com/newrelic/nri-varnish/cmd/main.gitCommit={{.Commit}} -X github.com/newrelic/nri-varnish/cmd/main.buildDate={{.Date}}
+      - -s -w -X main.integrationVersion={{.Version}} -X main.gitCommit={{.Commit}} -X main.buildDate={{.Date}}
     goos:
       - windows
     goarch:
@@ -30,9 +30,9 @@ builds:
       pre: build/windows/set_exe_properties.sh {{ .Env.TAG }} "varnish"
 
 nfpms:
-  - id: nri-varnish-deb
+  - id: nri-deb
     builds:
-      - nri-varnish-nix
+      - nri-nix
     file_name_template: "{{ .ProjectName }}_{{ .Version }}-1_{{ .Arch }}"
     vendor: "New Relic, Inc."
     homepage: "https://www.newrelic.com/infrastructure"
@@ -58,9 +58,9 @@ nfpms:
     dependencies:
       - "newrelic-infra"
 
-  - id: nri-varnish-rpm
+  - id: nri-rpm
     builds:
-      - nri-varnish-nix
+      - nri-nix
     file_name_template: "{{ .ProjectName }}-{{ .Version }}-{{ .Arch }}"
     vendor: "New Relic, Inc."
     homepage: "https://www.newrelic.com/infrastructure"
@@ -91,18 +91,18 @@ nfpms:
           amd64: 1.x86_64
 
 archives:
-  - id: nri-varnish-nix
+  - id: nri-nix
     builds:
-      - nri-varnish-nix
+      - nri-nix
     name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Version }}_{{ .Arch }}_dirty"
     files:
       - varnish-config.yml.sample
       - varnish-definition.yml
     format: tar.gz
 
-  - id: nri-varnish-win
+  - id: nri-win
     builds:
-      - nri-varnish-win
+      - nri-win
     name_template: "{{ .ProjectName }}-{{ .Arch }}.{{ .Version }}_dirty"
     files:
       - varnish-config.yml.sample
