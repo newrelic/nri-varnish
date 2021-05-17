@@ -32,11 +32,6 @@ test:
 	@echo "=== $(INTEGRATION) === [ test ]: running unit tests..."
 	@go test -race ./... -count=1
 
-integration-test:
-	@echo "=== $(INTEGRATION) === [ test ]: running integration tests..."
-	@go test -v -tags=integration ./tests/. || (ret=$$?; docker-compose -f tests/docker-compose.yml down && exit $$ret)
-	@docker-compose -f tests/docker-compose.yml down
-
 install: compile
 	@echo "=== $(INTEGRATION) === [ install ]: installing bin/$(BINARY_NAME)..."
 	@sudo install -D --mode=755 --owner=root --strip $(ROOT)bin/$(BINARY_NAME) $(INTEGRATIONS_DIR)/bin/$(BINARY_NAME)
@@ -47,4 +42,4 @@ install: compile
 include $(CURDIR)/build/ci.mk
 include $(CURDIR)/build/release.mk
 
-.PHONY: all build clean tools tools-update validate compile test
+.PHONY: all build clean tools tools-update validate compile install test
