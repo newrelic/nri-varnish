@@ -8,10 +8,10 @@ import (
 const varnishStatTestResult = `{
 	"timestamp": "2018-11-05T17:22:34",
 	"backend_fail": {
-    "value": 0, 
-    "flag": "a", 
-    "description": "Backend conn. failures"
-  },
+		"value": 0,
+		"flag": "a",
+		"description": "Backend conn. failures"
+	},
 	"MGT.uptime": {
 		"description": "Management process uptime",
 		"flag": "c", "format": "d",
@@ -236,6 +236,145 @@ func Test_parseStats_Full(t *testing.T) {
 	}
 
 	varnishSystem, backends, err := parseStats([]byte(varnishStatTestResult))
+	if err != nil {
+		t.Fatalf("Unexpected error %s", err.Error())
+	}
+
+	if !reflect.DeepEqual(varnishSystem, expectedVarnishSystem) {
+		t.Fatalf("Expected System of %+v got %+v", expectedVarnishSystem, varnishSystem)
+	}
+
+	if !reflect.DeepEqual(backends, expectedBackends) {
+		t.Fatalf("Expected Backends of %+v got %+v", expectedBackends, backends)
+	}
+}
+
+const varnishStatV1TestResult = `{
+	"version": 1,
+	"timestamp": "2021-06-23T15:25:46",
+	"counters": {
+		"MGT.uptime": {
+			"description": "Management process uptime",
+			"flag": "c",
+			"format": "d",
+			"value": 4173714
+		},
+		"MAIN.threads": {
+			"description": "Total number of threads",
+			"flag": "g",
+			"format": "i",
+			"value": 200
+		},
+		"LCK.backend.creat": {
+			"description": "Created locks",
+			"flag": "c",
+			"format": "i",
+			"value": 2
+		},
+		"LCK.backend.destroy": {
+			"description": "Destroyed locks",
+			"flag": "c",
+			"format": "i",
+			"value": 0
+		},
+		"LCK.backend.locks": {
+			"description": "Lock Operations",
+			"flag": "c",
+			"format": "i",
+			"value": 94958
+		},
+		"SMA.Transient.g_bytes": {
+			"description": "Bytes outstanding",
+			"flag": "g", "format": "B",
+			"value": 40
+		},
+		"SMA.Transient.g_space": {
+			"description": "Bytes available",
+			"flag": "g", "format": "B",
+			"value": 60
+		},
+		"MEMPOOL.busyobj.live": {
+			"description": "In use",
+			"flag": "g",
+			"format": "i",
+			"value": 0
+		},
+		"MEMPOOL.busyobj.pool": {
+			"description": "In Pool",
+			"flag": "g",
+			"format": "i",
+			"value": 10
+		},
+		"VBE.reload_20210601_145132_6770.upstream_1.fail_eacces": {
+			"description": "Connections failed with EACCES or EPERM",
+			"flag": "c",
+			"format": "i",
+			"value": 0
+		},
+		"VBE.reload_20210601_145132_6770.upstream_1.fail_eaddrnotavail": {
+			"description": "Connections failed with EADDRNOTAVAIL",
+			"flag": "c",
+			"format": "i",
+			"value": 0
+		},
+		"VBE.reload_20210601_145132_6770.upstream_1.fail_econnrefused": {
+			"description": "Connections failed with ECONNREFUSED",
+			"flag": "c",
+			"format": "i",
+			"value": 0
+		},
+		"VBE.reload_20210601_145132_6770.upstream_1.fail_enetunreach": {
+			"description": "Connections failed with ENETUNREACH",
+			"flag": "c",
+			"format": "i",
+			"value": 0
+		},
+		"VBE.reload_20210601_145132_6770.upstream_1.fail_etimedout": {
+			"description": "Connections failed ETIMEDOUT",
+			"flag": "c",
+			"format": "i",
+			"value": 0
+		}
+	}
+}`
+
+func Test_parseStats_FullV1(t *testing.T) {
+	expectedVarnishSystem := &varnishDefinition{
+		MgtUptime:   float64(4173714),
+		MainThreads: float64(200),
+
+		locks: map[string]*lockDefinition{
+			"backend": {
+				Created:   float64(2),
+				Destroyed: float64(0),
+				LockOps:   float64(94958),
+			},
+		},
+		storages: map[string]*storageDefinition{
+			"Transient": {
+				Outstanding: float64(40),
+				Available:   float64(60),
+			},
+		},
+		mempools: map[string]*mempoolDefinition{
+			"busyobj": {
+				Live: float64(0),
+				Pool: float64(10),
+			},
+		},
+	}
+
+	expectedBackends := map[string]*backendDefinition{
+		"reload_20210601_145132_6770.upstream_1": {
+			ConFailedEaccess:       float64(0),
+			ConFailedEaddrnotavail: float64(0),
+			ConFailedEconnrefused:  float64(0),
+			ConFailedEnetunreach:   float64(0),
+			ConFailedEtimedout:     float64(0),
+		},
+	}
+
+	varnishSystem, backends, err := parseStats([]byte(varnishStatV1TestResult))
 	if err != nil {
 		t.Fatalf("Unexpected error %s", err.Error())
 	}
