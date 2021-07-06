@@ -24,30 +24,57 @@ func parseStats(statsData []byte) (*varnishDefinition, map[string]*backendDefini
 
 	backends := make(map[string]*backendDefinition)
 
-	for fullStatName, entry := range stats {
-		if fullStatName == "timestamp" {
-			// skip the timestamp field
+	version, ok := stats["version"].(float64)
+	if !ok {
+		log.Debug("No 'version' key found, assuming legacy varnishstat format")
+		version = 0
+	}
+
+	if version < 0 || version > 1 {
+		log.Debug("Unknown varnishstat results version: %d", version)
+		return varnishSystem, backends, nil
+	}
+
+	for key, entry := range stats {
+		if key == "timestamp" || key == "version" {
+			// skip the timestamp and version fields
 			continue
 		}
 
-		// retrieve value
-		statValue, err := getStatValue(entry)
-		if err != nil {
-			log.Debug("Error parsing metric '%s': %s", fullStatName, err.Error())
-			continue
+		if version == 0 {
+			processStat(key, entry, varnishSystem, backends)
+		} else if version == 1 {
+			if key == "counters" {
+				counters, ok := entry.(map[string]interface{})
+				if !ok {
+					log.Debug("Error parsing 'counters': non object map type %T", entry)
+					continue
+				}
+				for fullStatName, statEntry := range counters {
+					processStat(fullStatName, statEntry, varnishSystem, backends)
+				}
+			}
 		}
-
-		if strings.HasPrefix(fullStatName, "VBE.") {
-			// backends
-			setBackendValue(backends, fullStatName, statValue)
-		} else {
-			// all other metrics under varnish system
-			parseAndSetStat(varnishSystem, fullStatName, statValue)
-		}
-
 	}
 
 	return varnishSystem, backends, nil
+}
+
+func processStat(fullStatName string, entry interface{}, varnishSystem *varnishDefinition, backends map[string]*backendDefinition) {
+	// retrieve value
+	statValue, err := getStatValue(entry)
+	if err != nil {
+		log.Debug("Error parsing metric '%s': %s", fullStatName, err.Error())
+		return
+	}
+
+	if strings.HasPrefix(fullStatName, "VBE.") {
+		// backends
+		setBackendValue(backends, fullStatName, statValue)
+	} else {
+		// all other metrics under varnish system
+		parseAndSetStat(varnishSystem, fullStatName, statValue)
+	}
 }
 
 // getStatValue retrieves the "value" field from the underlying map
