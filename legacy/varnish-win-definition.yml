@@ -1,10 +1,11 @@
-integrations:
-- name: nri-varnish
-  env:
-    instance_name: <User defined name to identify data from this instance in New Relic>
-    params_config_file: <The location of the varnish.params configuration file. If omitted will look in /etc/default/varnish/varnish.params and /etc/sysconfig/varnish/varnish.params>
-  interval: 15s
-  labels:
-    env: production
-    role: varnish
-  inventory_source: config/varnish
+name: com.newrelic.varnish
+description: Reports status and metrics for nr-varnish service. Legacy file kept for compatibility.
+protocol_version: 2
+os: windows
+
+commands:
+  all_data:
+    command:
+      - .\bin\nri-varnish.exe
+    interval: 15
+    prefix: config/varnish
