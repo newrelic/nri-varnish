@@ -28,7 +28,7 @@ func TestCollectMetrics(t *testing.T) {
 		t.Fatalf("Unexpected error %s", err.Error())
 	}
 
-	if err := CollectMetrics(systemEntity, i); err != nil {
+	if err := CollectMetrics(systemEntity, i, ""); err != nil {
 		t.Fatalf("Unexpected error: %s", err.Error())
 	}
 
@@ -157,7 +157,7 @@ func TestCollectMetrics_ExecError(t *testing.T) {
 		t.Fatalf("Unexpected error %s", err.Error())
 	}
 
-	if err := CollectMetrics(systemEntity, i); err == nil {
+	if err := CollectMetrics(systemEntity, i, ""); err == nil {
 		t.Error("Expected error")
 	}
 }

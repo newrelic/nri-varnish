@@ -12,6 +12,7 @@ type ArgumentList struct {
 	sdkArgs.DefaultArgumentList
 	ParamsConfigFile string `default:"" help:"The location of the varnish.params configuration file. If omitted will search in typical install locations"`
 	InstanceName     string `default:"" help:"User defined name to identify data from this instance in New Relic"`
+	VarnishName      string `default:"" help:"Optional. Specify the varnishd working directory (see varnishd -n)"`
 	ShowVersion      bool   `default:"false" help:"Print build information and exit"`
 }
 

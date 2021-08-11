@@ -15,8 +15,14 @@ import (
 var ExecCommand = exec.Command
 
 // CollectMetrics collects metrics from varnishstat command
-func CollectMetrics(systemEntity *integration.Entity, i *integration.Integration) error {
-	statOutput, err := ExecCommand("varnishstat", "-j").Output()
+func CollectMetrics(systemEntity *integration.Entity, i *integration.Integration, VarnishName string) error {
+	var argList = []string{"-j"}
+
+	if VarnishName != "" {
+		argList = append(argList, "-n", VarnishName)
+	}
+
+	statOutput, err := ExecCommand("varnishstat", argList...).Output()
 	if err != nil {
 		log.Debug("Error running varnishstat command: %s", err.Error())
 		return err

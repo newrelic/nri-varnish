@@ -71,7 +71,7 @@ func main() {
 	}
 
 	if args.HasMetrics() {
-		if err := metrics2.CollectMetrics(systemEntity, i); err != nil {
+		if err := metrics2.CollectMetrics(systemEntity, i, args.VarnishName); err != nil {
 			log.Error("Error collecting metrics: %s", err.Error())
 			os.Exit(1)
 		}
