@@ -2,9 +2,9 @@ integrations:
 - name: nri-varnish
   env:
 
-    instance_name: <User defined name to identify data from this instance in New Relic>
+    INSTANCE_NAME: <User defined name to identify data from this instance in New Relic>
 
-    params_config_file: <The location of the varnish.params configuration file. If omitted will look in /etc/default/varnish/varnish.params and /etc/sysconfig/varnish/varnish.params>
+    PARAMS_CONFIG_FILE: <The location of the varnish.params configuration file. If omitted will look in /etc/default/varnish/varnish.params and /etc/sysconfig/varnish/varnish.params>
 
   interval: 15s
   labels:
