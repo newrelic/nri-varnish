@@ -1,5 +1,5 @@
 name: com.newrelic.varnish
-description: Reports status and metrics for nri-varnish service. Legacy file kept for compatibility.
+description: Reports status and metrics for nri-varnish service
 protocol_version: 2
 os: linux
 
