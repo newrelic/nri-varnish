@@ -176,6 +176,16 @@ const varnishStatTestResult = `{
 		"description": "Backend requests sent",
 		"flag": "c", "format": "i",
 		"value": 1
+	},
+	"VBE.boot.web1.unhealthy": {
+		"description": "Backend requests sent",
+		"flag": "c", "format": "i",
+		"value": 1
+	},
+	"MSE_BOOK.book1.g_bytes": {
+		"description": "Number of bytes used in the book database.",
+		"flag": "g", "format": "B",
+		"value": 3189825536
 	}
 }`
 
@@ -218,20 +228,26 @@ func Test_parseStats_Full(t *testing.T) {
 				RanDry:        float64(0),
 			},
 		},
+		book: map[string]*bookDefinition{
+			"book1": {
+				Alloc: 			float64(3189825536),
+			},
+		},
 	}
 
 	expectedBackends := map[string]*backendDefinition{
 		"boot.web1": {
-			Happy:       float64(0),
-			ReqHeader:   float64(381),
-			ReqBody:     float64(0),
-			RespHeader:  float64(229),
-			RespBody:    float64(2326),
-			PipeHeader:  float64(0),
-			PipeOut:     float64(0),
-			PipeIn:      float64(0),
-			Connections: float64(0),
-			Req:         float64(1),
+			Happy:           float64(0),
+			ReqHeader:       float64(381),
+			ReqBody:         float64(0),
+			RespHeader:      float64(229),
+			RespBody:        float64(2326),
+			PipeHeader:      float64(0),
+			PipeOut:         float64(0),
+			PipeIn:          float64(0),
+			Connections:     float64(0),
+			Req:             float64(1),
+			UnhealtyFetches: float64(1),
 		},
 	}
 

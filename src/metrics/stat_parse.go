@@ -20,6 +20,7 @@ func parseStats(statsData []byte) (*varnishDefinition, map[string]*backendDefini
 		locks:    make(map[string]*lockDefinition),
 		mempools: make(map[string]*mempoolDefinition),
 		storages: make(map[string]*storageDefinition),
+		book:	  make(map[string]*bookDefinition),
 	}
 
 	backends := make(map[string]*backendDefinition)
@@ -110,6 +111,9 @@ func parseAndSetStat(varnishSystem *varnishDefinition, fullStatName string, stat
 	case "MEMPOOL":
 		// mempools
 		setMempoolValue(varnishSystem.mempools, fullStatName, statValue)
+	case "MSE_BOOK":
+		// book
+		setBookValue(varnishSystem.book, fullStatName, statValue)
 	default:
 		// main sample
 		setSystemValue(varnishSystem, fullStatName, statValue)
@@ -188,6 +192,19 @@ func setMempoolValue(mempoolMap map[string]*mempoolDefinition, fullStatName stri
 
 	if err := setValue(mempool, statName, statValue); err != nil {
 		log.Debug("Error setting metric value for stat '%s' on mempool '%s': %s", statName, mempoolName, err.Error())
+	}
+}
+
+func setBookValue(bookMap map[string]*bookDefinition, fullStatName string, statValue interface{}) {
+	bookName, statName := parseStatName(fullStatName)
+	book, ok := bookMap[bookName]
+	if !ok {
+		book = new(bookDefinition)
+		bookMap[bookName] = book
+	}
+
+	if err := setValue(book, statName, statValue); err != nil {
+		log.Debug("Error setting metric value for stat '%s' on mempool '%s': %s", statName, bookName, err.Error())
 	}
 }
 

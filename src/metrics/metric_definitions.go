@@ -156,6 +156,7 @@ type varnishDefinition struct {
 	locks    map[string]*lockDefinition
 	mempools map[string]*mempoolDefinition
 	storages map[string]*storageDefinition
+	book	 map[string]*bookDefinition
 }
 
 // lockDefinition represents the data for a VarnishLockSample event
@@ -180,6 +181,10 @@ type mempoolDefinition struct {
 	TooSmall      interface{} `stat_name:"toosmall" metric_name:"mempool.tooSmall" source_type:"Rate"`
 	Surplus       interface{} `stat_name:"surplus" metric_name:"mempool.surplus" source_type:"Rate"`
 	RanDry        interface{} `stat_name:"randry" metric_name:"mempool.ranDry" source_type:"Rate"`
+}
+
+type bookDefinition struct {
+	Alloc           interface{} `stat_name:"g_bytes" metric_name:"book.allocInBytes" source_type:"Gauge"`
 }
 
 // storageDefinition represents the data for a VarnishStorageSample event

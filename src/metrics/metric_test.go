@@ -81,6 +81,13 @@ func TestCollectMetrics(t *testing.T) {
 			"mempool.surplus":              float64(0),
 			"mempool.ranDry":               float64(0),
 		},
+		{ // book
+			"displayName":              systemEntity.Metadata.Name,
+			"entityName":               systemEntity.Metadata.Namespace + ":" + systemEntity.Metadata.Name,
+			"event_type":               "VarnishBookSample",
+			"book":						"book1",
+			"book.allocInBytes": 		float64(0),
+		},
 	}
 
 	for _, set := range systemEntity.Metrics {
@@ -118,6 +125,7 @@ func TestCollectMetrics(t *testing.T) {
 		"net.backend.pipeInInBytes":         float64(0),
 		"backend.connections":               float64(0),
 		"net.backend.requests":              float64(0),
+		"backend.unhealthyFetches": 		 float64(0),
 	}
 
 	backendResult := backendEntity.Metrics[0].Metrics
