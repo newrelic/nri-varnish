@@ -86,7 +86,7 @@ func TestCollectMetrics(t *testing.T) {
 			"entityName":               systemEntity.Metadata.Namespace + ":" + systemEntity.Metadata.Name,
 			"event_type":               "VarnishBookSample",
 			"book":						"book1",
-			"book.allocInBytes": 		float64(0),
+			"book.allocInBytes": 		float64(3189825536),
 		},
 	}
 

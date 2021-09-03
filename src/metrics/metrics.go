@@ -94,6 +94,13 @@ func processVarnishSystem(systemEntity *integration.Entity, varnishSystem *varni
 			log.Warn("Error setting metrics for Storage %s: %s", storageName, err.Error())
 		}
 	}
+
+	// Process book samples
+	for storageName, storage := range varnishSystem.book {
+		if err := processSubSample(storage, "VarnishBookSample", "book", storageName, systemEntity); err != nil {
+			log.Warn("Error setting metrics for Book %s: %s", storageName, err.Error())
+		}
+	}
 }
 
 func processSubSample(subStructure interface{}, sampleName, idAttribute, idAttributeValue string, systemEntity *integration.Entity) error {
