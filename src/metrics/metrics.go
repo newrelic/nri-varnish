@@ -96,9 +96,9 @@ func processVarnishSystem(systemEntity *integration.Entity, varnishSystem *varni
 	}
 
 	// Process book samples
-	for storageName, storage := range varnishSystem.book {
-		if err := processSubSample(storage, "VarnishBookSample", "book", storageName, systemEntity); err != nil {
-			log.Warn("Error setting metrics for Book %s: %s", storageName, err.Error())
+	for bookName, book := range varnishSystem.book {
+		if err := processSubSample(book, "VarnishBookSample", "book", bookName, systemEntity); err != nil {
+			log.Warn("Error setting metrics for Book %s: %s", bookName, err.Error())
 		}
 	}
 }
