@@ -186,6 +186,16 @@ const varnishStatTestResult = `{
 		"description": "Number of bytes used in the book database.",
 		"flag": "g", "format": "B",
 		"value": 3189825536
+	},
+	"MSE_BOOK.book1.g_space": {
+		"description": "Number of bytes available in the book database.",
+		"flag": "g", "format": "B",
+		"value": 2178883584
+	},
+	"MSE_BOOK.book1.c_waterlevel_purge": {
+		"description": "Number of objects purged to achieve database waterlevel",
+		"flag": "c", "format": "i",
+		"value": 106000
 	}
 }`
 
@@ -231,6 +241,8 @@ func Test_parseStats_Full(t *testing.T) {
 		book: map[string]*bookDefinition{
 			"book1": {
 				Alloc: 			float64(3189825536),
+				Available:		float64(2178883584),
+				PurgeObjects: 	float64(106000),
 			},
 		},
 	}

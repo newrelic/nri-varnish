@@ -82,11 +82,13 @@ func TestCollectMetrics(t *testing.T) {
 			"mempool.ranDry":               float64(0),
 		},
 		{ // book
-			"displayName":              systemEntity.Metadata.Name,
-			"entityName":               systemEntity.Metadata.Namespace + ":" + systemEntity.Metadata.Name,
-			"event_type":               "VarnishBookSample",
-			"book":						"book1",
-			"book.allocInBytes": 		float64(3189825536),
+			"displayName":              	systemEntity.Metadata.Name,
+			"entityName":               	systemEntity.Metadata.Namespace + ":" + systemEntity.Metadata.Name,
+			"event_type":               	"VarnishBookSample",
+			"book":							"book1",
+			"book.allocInBytes": 			float64(3189825536),
+			"book.availableInBytes": 		float64(2178883584),
+			"book.purgeObjects": 			float64(0),
 		},
 	}
 

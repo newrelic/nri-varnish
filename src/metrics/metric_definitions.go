@@ -185,6 +185,8 @@ type mempoolDefinition struct {
 
 type bookDefinition struct {
 	Alloc           interface{} `stat_name:"g_bytes" metric_name:"book.allocInBytes" source_type:"Gauge"`
+	Available       interface{} `stat_name:"g_space" metric_name:"book.availableInBytes" source_type:"Gauge"`
+	PurgeObjects	interface{} `stat_name:"c_waterlevel_purge" metric_name:"book.purgeObjects" source_type:"Rate"`
 }
 
 // storageDefinition represents the data for a VarnishStorageSample event
