@@ -240,9 +240,9 @@ func Test_parseStats_Full(t *testing.T) {
 		},
 		book: map[string]*bookDefinition{
 			"book1": {
-				Alloc: 			float64(3189825536),
-				Available:		float64(2178883584),
-				PurgeObjects: 	float64(106000),
+				Alloc:        float64(3189825536),
+				Available:    float64(2178883584),
+				PurgeObjects: float64(106000),
 			},
 		},
 	}

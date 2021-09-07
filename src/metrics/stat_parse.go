@@ -20,7 +20,7 @@ func parseStats(statsData []byte) (*varnishDefinition, map[string]*backendDefini
 		locks:    make(map[string]*lockDefinition),
 		mempools: make(map[string]*mempoolDefinition),
 		storages: make(map[string]*storageDefinition),
-		book:	  make(map[string]*bookDefinition),
+		book:     make(map[string]*bookDefinition),
 	}
 
 	backends := make(map[string]*backendDefinition)
