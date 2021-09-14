@@ -24,56 +24,63 @@ func parseStats(statsData []byte) (*varnishDefinition, map[string]*backendDefini
 
 	backends := make(map[string]*backendDefinition)
 
-	version, ok := stats["version"].(float64)
-	if !ok {
-		log.Debug("No 'version' key found, assuming legacy varnishstat format")
-		version = 0
+	version, err := statsVersion(stats)
+	if err != nil {
+		return nil, nil, err
 	}
 
-	if version < 0 || version > 1 {
-		log.Debug("Unknown varnishstat results version: %d", version)
-		return varnishSystem, backends, nil
-	}
+	switch version {
+	case 0:
+		processStats(stats, varnishSystem, backends)
 
-	for key, entry := range stats {
-		if key == "timestamp" || key == "version" {
-			// skip the timestamp and version fields
-			continue
+	case 1:
+		counters, ok := stats["counters"].(map[string]interface{})
+		if !ok {
+			return nil, nil, fmt.Errorf("No 'counters' key found")
 		}
 
-		if version == 0 {
-			processStat(key, entry, varnishSystem, backends)
-		} else if version == 1 {
-			if key == "counters" {
-				counters, ok := entry.(map[string]interface{})
-				if !ok {
-					log.Debug("Error parsing 'counters': non object map type %T", entry)
-					continue
-				}
-				for fullStatName, statEntry := range counters {
-					processStat(fullStatName, statEntry, varnishSystem, backends)
-				}
-			}
-		}
+		processStats(counters, varnishSystem, backends)
+
+	default:
+		return nil, nil, fmt.Errorf("Unsupported varnishstat results version: %v", version)
 	}
 
 	return varnishSystem, backends, nil
 }
 
-func processStat(fullStatName string, entry interface{}, varnishSystem *varnishDefinition, backends map[string]*backendDefinition) {
-	// retrieve value
-	statValue, err := getStatValue(entry)
-	if err != nil {
-		log.Debug("Error parsing metric '%s': %s", fullStatName, err.Error())
-		return
+func statsVersion(stats map[string]interface{}) (version float64, err error) {
+	// From varnish 6.5 varnishstats changes json schema adding "version" entry.
+	// https://varnish-cache.org/docs/6.5/whats-new/upgrading-6.5.html#varnishstat
+	if ver, exists := stats["version"]; exists {
+		var ok bool
+		if version, ok = ver.(float64); !ok {
+			return version, fmt.Errorf("fail to cast 'version' from: %t", ver)
+		}
 	}
+	return version, nil
+}
 
-	if strings.HasPrefix(fullStatName, "VBE.") {
-		// backends
-		setBackendValue(backends, fullStatName, statValue)
-	} else {
+func processStats(stats map[string]interface{}, varnishSystem *varnishDefinition, backends map[string]*backendDefinition) {
+	// retrieve value
+	for fullStatName, entry := range stats {
+		if fullStatName == "timestamp" {
+			continue
+		}
+
+		statValue, err := getStatValue(entry)
+		if err != nil {
+			log.Debug("Error parsing metric '%s': %s", fullStatName, err.Error())
+			continue
+		}
+
+		if strings.HasPrefix(fullStatName, "VBE.") {
+			// backends
+			setBackendValue(backends, fullStatName, statValue)
+			continue
+		}
 		// all other metrics under varnish system
 		parseAndSetStat(varnishSystem, fullStatName, statValue)
+
 	}
 }
 

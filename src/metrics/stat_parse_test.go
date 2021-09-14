@@ -338,6 +338,59 @@ const varnishStatV1TestResult = `{
 	}
 }`
 
+func Test_parseStats_uknownVersion(t *testing.T) {
+	testCases := []struct {
+		name       string
+		stats      string
+		expectFail bool
+	}{
+		{
+			"empty ok",
+			`{ "version": 0 }`,
+			false,
+		},
+		{
+			"bad json",
+			`{ "version": 0, }`,
+			true,
+		},
+		{
+			"unknown schema version",
+			`{ "version": 9.1 }`,
+			true,
+		},
+		{
+			"string version fail to cast",
+			`{ "version": "asdf" }`,
+			true,
+		},
+		{
+			"v1 missing counters entry",
+			`{
+				"version": 1,
+				"timestamp": "2021-06-23T15:25:46",
+				"MGT.uptime": {
+					"description": "Management process uptime",
+					"flag": "c",
+					"format": "d",
+					"value": 4173714
+				}
+			}`,
+			true,
+		},
+	}
+
+	for _, tc := range testCases {
+		_, _, err := parseStats([]byte(tc.stats))
+		if tc.expectFail && err == nil {
+			t.Errorf("Test Case %s Failed: did not return error", tc.name)
+		}
+		if !tc.expectFail && err != nil {
+			t.Errorf("Test Case %s Failed: return error: %s", tc.name, err)
+		}
+	}
+}
+
 func Test_parseStats_FullV1(t *testing.T) {
 	expectedVarnishSystem := &varnishDefinition{
 		MgtUptime:   float64(4173714),
