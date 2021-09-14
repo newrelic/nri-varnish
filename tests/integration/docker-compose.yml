@@ -1,10 +1,25 @@
 version: '3.1'
 
 services:
-  nri-varnish:
-    container_name: integration_nri-varnish_1
+  nri-varnish-stats-v0:
+    container_name: varnish-stats-v0
     build:
       context: ../../
+      args: 
+        VARNISH_TAG: "6.4"
+      dockerfile: tests/integration/Dockerfile
+    volumes:
+    - ./varnish/default.vcl:/etc/varnish/default.vcl
+    # Fake varnish params file used to test inventory collection.
+    - ../../src/testdata/varnish.params:/testdata/varnish.params
+
+  nri-varnish-stats-v1:
+    container_name: varnish-stats-v1
+    build:
+      context: ../../
+      args: 
+        # Varnish 6.5 introduces new stats schema version 1 https://varnish-cache.org/docs/6.5/whats-new/upgrading-6.5.html#varnishstat
+        VARNISH_TAG: "6.6"
       dockerfile: tests/integration/Dockerfile
     volumes:
     - ./varnish/default.vcl:/etc/varnish/default.vcl

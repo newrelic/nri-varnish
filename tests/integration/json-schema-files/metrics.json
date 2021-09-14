@@ -44,94 +44,94 @@
                     "type": "object",
                     "properties": {
                       "backend.connectionBusy": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "backend.connectionFails": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "backend.connectionRecycles": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "backend.connectionRetries": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "backend.connectionReuses": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "backend.connectionSuccess": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "backend.connectionUnHealthy": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "backend.fetches": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "backend.requests": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "bans.added": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "bans.completed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "bans.cutoffLurkerKilled": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "bans.deleted": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "bans.dups": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "bans.fragmentationInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "bans.lookupKilled": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "bans.lookupTestsTested": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "bans.lurkerCon": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "bans.lurkerKilled": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "bans.lurkerTested": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "bans.lurkerTestsTested": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "bans.obj": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "bans.persistedInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "bans.req": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "bans.tested": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "cache.graceHits": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "cache.hits": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "cache.missHits": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "cache.misses": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "cache.passHits": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "displayName": {
                         "type": "string"
@@ -140,334 +140,334 @@
                         "type": "string"
                       },
                       "esi.errors": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "esi.warnings": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "event_type": {
                         "type": "string"
                       },
                       "fetch.bad": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "fetch.chuncked": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "fetch.contentLength": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "fetch.eof": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "fetch.failed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "fetch.head": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "fetch.noBody": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "fetch.noBody1xx": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "fetch.noBody204": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "fetch.noBody304": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "fetch.noThreadFail": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "hcb.inserts": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "hcb.lock": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "hcb.noLock": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lru.limited": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lru.moved": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lru.nuked": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.backends": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.bans": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.busyKilled": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.busySleep": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.busyWakeup": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.expired": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.expiredMailed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.expiredReceived": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.gunzip": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.gunzipTest": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.gzip": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.objectcores": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.objectheads": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.objects": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.passedRequests": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.pipeSessions": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.pools": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.purgeObjects": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.purgeOperations": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.reqDropped": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.sessQueueLength": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.sessions": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.summs": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.syntheticResponses": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.threads": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.threadsCreated": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.threadsDestroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.threadsFailed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.threadsLimited": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.unresurrectedObjects": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.uptimeInMilliseconds": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.vclAvailable": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.vclDiscarded": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.vclFails": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.vclLoaded": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "main.vmodsLoaded": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mgt.childDied": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mgt.childDump": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mgt.childExit": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mgt.childPanic": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mgt.childStart": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mgt.childStop": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mgt.uptimeInMilliseconds": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "net.400Errors": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "net.417Errors": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "net.httpOverflow": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "net.pipe.inInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "net.pipe.outInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "net.pipereq.headerInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "net.request.bodyInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "net.request.headerInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "net.requests": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "net.response.bodyInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "net.response.headerInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
                       },
                       "sess.backendClose": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.badClose": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.bodyFailClose": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.clientClose": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.clientReqClose": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.closed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.closedError": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.dropped": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.eofTxnClose": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.errorTxnClose": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.herd": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.junkClose": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.overflowClose": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.overloadClose": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.pipeOverflowClose": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.pipeTxnClose": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.queued": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.readAhead": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.requestHTTP10Close": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.requestHTTP20Close": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.shortRangeClose": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.timeoutClose": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "sess.vclFailClose": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "session.connections": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "session.fail": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "shm.contentions": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "shm.cycles": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "shm.flushes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "shm.records": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "shm.writes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "workspace.backendOverflow": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "workspace.clientOverflow": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "workspace.deliveryFail": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "workspace.sessionOverflow": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "workspace.threadOverflow": {
-                        "type": "integer"
+                        "type": "number"
                       }
                     },
                     "required": [
@@ -631,13 +631,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -670,13 +670,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -709,13 +709,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -748,13 +748,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -787,13 +787,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -826,13 +826,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -865,13 +865,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -904,13 +904,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -943,13 +943,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -982,13 +982,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -1021,13 +1021,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -1060,13 +1060,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -1099,13 +1099,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -1138,13 +1138,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -1177,13 +1177,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -1216,13 +1216,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -1255,13 +1255,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -1294,13 +1294,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -1333,13 +1333,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -1372,13 +1372,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -1411,13 +1411,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -1450,13 +1450,13 @@
                         "type": "string"
                       },
                       "lock.created": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.destroyed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "lock.locks": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -1489,37 +1489,37 @@
                         "type": "string"
                       },
                       "mempool.allocatedSizeInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.allocs": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.frees": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.live": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.pool": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.ranDry": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.recycles": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.requestSizeInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.surplus": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.timeouts": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.tooSmall": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -1560,37 +1560,37 @@
                         "type": "string"
                       },
                       "mempool.allocatedSizeInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.allocs": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.frees": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.live": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.pool": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.ranDry": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.recycles": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.requestSizeInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.surplus": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.timeouts": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.tooSmall": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -1631,37 +1631,37 @@
                         "type": "string"
                       },
                       "mempool.allocatedSizeInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.allocs": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.frees": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.live": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.pool": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.ranDry": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.recycles": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.requestSizeInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.surplus": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.timeouts": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.tooSmall": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -1702,37 +1702,37 @@
                         "type": "string"
                       },
                       "mempool.allocatedSizeInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.allocs": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.frees": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.live": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.pool": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.ranDry": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.recycles": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.requestSizeInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.surplus": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.timeouts": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.tooSmall": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -1773,37 +1773,37 @@
                         "type": "string"
                       },
                       "mempool.allocatedSizeInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.allocs": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.frees": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.live": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.pool": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.ranDry": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.recycles": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.requestSizeInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.surplus": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.timeouts": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "mempool.tooSmall": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"
@@ -1847,25 +1847,25 @@
                         "type": "string"
                       },
                       "storage.allocFails": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "storage.allocInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "storage.allocOustanding": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "storage.allocReqs": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "storage.availableInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "storage.freeInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "storage.outstandingInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       }
                     },
                     "required": [
@@ -1902,25 +1902,25 @@
                         "type": "string"
                       },
                       "storage.allocFails": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "storage.allocInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "storage.allocOustanding": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "storage.allocReqs": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "storage.availableInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "storage.freeInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "storage.outstandingInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       }
                     },
                     "required": [
@@ -2001,22 +2001,22 @@
                     "type": "object",
                     "properties": {
                       "backend.busyFetches": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "backend.connections": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "backend.connectionsFailed": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "backend.connectionsNotAttempted": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "backend.happy": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "backend.unhealthyFetches": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "displayName": {
                         "type": "string"
@@ -2028,28 +2028,28 @@
                         "type": "string"
                       },
                       "net.backend.pipeHeaderInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "net.backend.pipeInInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "net.backend.pipeOutInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "net.backend.requestBodyInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "net.backend.requestHeaderInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "net.backend.requests": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "net.backend.responseBodyInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "net.backend.responseHeaderInBytes": {
-                        "type": "integer"
+                        "type": "number"
                       },
                       "reportingEntityKey": {
                         "type": "string"

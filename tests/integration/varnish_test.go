@@ -14,15 +14,57 @@ import (
 )
 
 const (
-	defaultContainer     = "integration_nri-varnish_1"
+	varnishStatsV0       = "varnish-stats-v0"
+	varnishStatsV1       = "varnish-stats-v1"
 	defaultBinPath       = "/nri-varnish"
 	schemasPath          = "json-schema-files"
 	metricSchemasFile    = "metrics.json"
 	inventorySchemasFile = "inventory.json"
 )
 
+func Test_integration_test(t *testing.T) {
+	t.Parallel()
+
+	containers := []string{varnishStatsV0, varnishStatsV1}
+
+	testCases := []struct {
+		name       string
+		envs       []string
+		schemaFile string
+	}{
+		{
+			"collects metrics only",
+			[]string{"METRICS=true"},
+			metricSchemasFile,
+		},
+		{
+			"collects inventory only",
+			[]string{"INVENTORY=true", "PARAMS_CONFIG_FILE=/testdata/varnish.params"},
+			inventorySchemasFile,
+		},
+	}
+
+	for _, tc := range testCases {
+		tc.envs = append(tc.envs, "INSTANCE_NAME=test")
+		for _, container := range containers {
+			stdout, stderr := runIntegration(t, container, tc.envs...)
+			assert.Empty(t, stderr)
+
+			varnishSchemaPath := filepath.Join(schemasPath, tc.schemaFile)
+			jsonschema.Validate(t, varnishSchemaPath, stdout)
+		}
+	}
+}
+
+func Test_integration_not_able_to_find_params(t *testing.T) {
+	t.Parallel()
+
+	_, stderr := runIntegration(t, varnishStatsV0, "INSTANCE_NAME=test", "INVENTORY=true")
+	assert.Contains(t, stderr, "Error parsing params file")
+}
+
 // Returns the standard output, or fails testing if the command returned an error
-func runIntegration(t *testing.T, envVars ...string) (string, string) {
+func runIntegration(t *testing.T, container string, envVars ...string) (string, string) {
 	t.Helper()
 
 	command := make([]string, 0)
@@ -30,41 +72,11 @@ func runIntegration(t *testing.T, envVars ...string) (string, string) {
 
 	timeout := 10 * time.Second
 
-	stdout, stderr := helpers.ExecInContainer(t, timeout, defaultContainer, command, envVars...)
+	stdout, stderr := helpers.ExecInContainer(t, timeout, container, command, envVars...)
 
 	if stderr != "" {
 		t.Logf("Integration command Standard Error: %s", stderr)
 	}
 
 	return stdout, stderr
-}
-
-func Test_integration_collects_metrics(t *testing.T) {
-	t.Parallel()
-
-	stdout, stderr := runIntegration(t, "INSTANCE_NAME=test", "METRICS=true")
-	assert.Empty(t, stderr)
-
-	varnishSchemaPath := filepath.Join(schemasPath, metricSchemasFile)
-	jsonschema.Validate(t, varnishSchemaPath, stdout)
-}
-
-func Test_integration_collects_inventory(t *testing.T) {
-	t.Parallel()
-
-	stdout, stderr := runIntegration(t, "INSTANCE_NAME=test", "INVENTORY=true", "PARAMS_CONFIG_FILE=/testdata/varnish.params")
-	assert.Empty(t, stderr)
-
-	varnishSchemaPath := filepath.Join(schemasPath, inventorySchemasFile)
-	jsonschema.Validate(t, varnishSchemaPath, stdout)
-}
-
-func Test_integration_not_able_to_find_params(t *testing.T) {
-	t.Parallel()
-
-	stdout, stderr := runIntegration(t, "INSTANCE_NAME=test")
-	assert.Contains(t, stderr, "Error parsing params file")
-
-	varnishSchemaPath := filepath.Join(schemasPath, metricSchemasFile)
-	jsonschema.Validate(t, varnishSchemaPath, stdout)
 }
