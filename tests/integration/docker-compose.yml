@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+  nri-varnish:
+    container_name: integration_nri-varnish_1
+    build:
+      context: ../../
+      dockerfile: tests/integration/Dockerfile
+    volumes:
+    - ./varnish/default.vcl:/etc/varnish/default.vcl
+    # Fake varnish params file used to test inventory collection.
+    - ../../src/testdata/varnish.params:/testdata/varnish.params
