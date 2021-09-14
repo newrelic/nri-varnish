@@ -1,0 +1,180 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "protocol_version": {
+      "type": "string"
+    },
+    "integration_version": {
+      "type": "string"
+    },
+    "data": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "entity": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "id_attributes": {
+                  "type": "array",
+                  "items": {}
+                }
+              },
+              "required": [
+                "name",
+                "type",
+                "id_attributes"
+              ]
+            },
+            "metrics": {
+              "type": "array",
+              "items": {}
+            },
+            "inventory": {
+              "type": "object",
+              "properties": {
+                "params/RELOAD_VCL": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "value"
+                  ]
+                },
+                "params/VARNISH_ADMIN_LISTEN_ADDRESS": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "value"
+                  ]
+                },
+                "params/VARNISH_ADMIN_LISTEN_PORT": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "value"
+                  ]
+                },
+                "params/VARNISH_GROUP": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "value"
+                  ]
+                },
+                "params/VARNISH_LISTEN_PORT": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "value"
+                  ]
+                },
+                "params/VARNISH_SECRET_FILE": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "value"
+                  ]
+                },
+                "params/VARNISH_STORAGE": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "value"
+                  ]
+                },
+                "params/VARNISH_USER": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "value"
+                  ]
+                },
+                "params/VARNISH_VCL_CONF": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "value"
+                  ]
+                }
+              },
+              "required": [
+                "params/RELOAD_VCL",
+                "params/VARNISH_ADMIN_LISTEN_ADDRESS",
+                "params/VARNISH_ADMIN_LISTEN_PORT",
+                "params/VARNISH_GROUP",
+                "params/VARNISH_LISTEN_PORT",
+                "params/VARNISH_SECRET_FILE",
+                "params/VARNISH_STORAGE",
+                "params/VARNISH_USER",
+                "params/VARNISH_VCL_CONF"
+              ]
+            },
+            "events": {
+              "type": "array",
+              "items": {}
+            }
+          },
+          "required": [
+            "entity",
+            "metrics",
+            "inventory",
+            "events"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "name",
+    "protocol_version",
+    "integration_version",
+    "data"
+  ]
+}
