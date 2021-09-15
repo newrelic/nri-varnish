@@ -15,11 +15,11 @@ import (
 var ExecCommand = exec.Command
 
 // CollectMetrics collects metrics from varnishstat command
-func CollectMetrics(systemEntity *integration.Entity, i *integration.Integration, VarnishName string) error {
-	var argList = []string{"-j"}
+func CollectMetrics(systemEntity *integration.Entity, i *integration.Integration, varnishName string) error {
+	argList := []string{"-j"}
 
-	if VarnishName != "" {
-		argList = append(argList, "-n", VarnishName)
+	if varnishName != "" {
+		argList = append(argList, "-n", varnishName)
 	}
 
 	statOutput, err := ExecCommand("varnishstat", argList...).Output()

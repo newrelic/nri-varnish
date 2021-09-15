@@ -474,3 +474,38 @@ func Test_setValue_NoField(t *testing.T) {
 		t.Error("Expected error")
 	}
 }
+
+func Test_prefix(t *testing.T) {
+	testCases := []struct {
+		name   string
+		intput string
+		output string
+	}{
+		{
+			"string with prefix",
+			"Foo.bar",
+			"Foo",
+		},
+		{
+			"string with multiple prefix",
+			"Foo.bar.baz",
+			"Foo",
+		},
+		{
+			"string without prefix",
+			"Foobar",
+			"",
+		},
+		{
+			"string with prefix without chars",
+			".Foobar",
+			"",
+		},
+	}
+
+	for _, tc := range testCases {
+		if out := splitPrefix(tc.intput, "."); out != tc.output {
+			t.Errorf("Test Case %s Failed: output: '%s' ,didn't match expected one: '%s'", tc.name, out, tc.output)
+		}
+	}
+}

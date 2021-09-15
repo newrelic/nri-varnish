@@ -5,11 +5,12 @@ import (
 	"bufio"
 	"errors"
 	"fmt"
-	args2 "github.com/newrelic/nri-varnish/src/args"
-	metrics2 "github.com/newrelic/nri-varnish/src/metrics"
 	"os"
 	"runtime"
 	"strings"
+
+	args2 "github.com/newrelic/nri-varnish/src/args"
+	metrics2 "github.com/newrelic/nri-varnish/src/metrics"
 
 	"github.com/newrelic/infra-integrations-sdk/integration"
 	"github.com/newrelic/infra-integrations-sdk/log"
@@ -54,7 +55,7 @@ func main() {
 	log.SetupLogging(args.Verbose)
 
 	// validate arguments
-	if err := args.Validate(); err != nil {
+	if err = args.Validate(); err != nil {
 		log.Error("Error input validation failure: %s", err.Error())
 		os.Exit(1)
 	}
@@ -71,7 +72,7 @@ func main() {
 	}
 
 	if args.HasMetrics() {
-		if err := metrics2.CollectMetrics(systemEntity, i, args.VarnishName); err != nil {
+		if err = metrics2.CollectMetrics(systemEntity, i, args.VarnishName); err != nil {
 			log.Error("Error collecting metrics: %s", err.Error())
 			os.Exit(1)
 		}
@@ -102,7 +103,7 @@ func collectParamsFile(systemEntity *integration.Entity, argsParamLoc string) er
 		return err
 	}
 	defer func() {
-		if err := file.Close(); err != nil {
+		if err = file.Close(); err != nil {
 			log.Warn("Error closing file %s: %s", *paramsLoc, err.Error())
 		}
 	}()
