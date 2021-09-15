@@ -1,0 +1,2105 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "protocol_version": {
+        "type": "string"
+      },
+      "integration_version": {
+        "type": "string"
+      },
+      "data": {
+        "type": "array",
+        "items": [
+          {
+            "type": "object",
+            "properties": {
+              "entity": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "id_attributes": {
+                    "type": "array",
+                    "items": {}
+                  }
+                },
+                "required": [
+                  "name",
+                  "type",
+                  "id_attributes"
+                ]
+              },
+              "metrics": {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "backend.connectionBusy": {
+                        "type": "number"
+                      },
+                      "backend.connectionFails": {
+                        "type": "number"
+                      },
+                      "backend.connectionRecycles": {
+                        "type": "number"
+                      },
+                      "backend.connectionRetries": {
+                        "type": "number"
+                      },
+                      "backend.connectionReuses": {
+                        "type": "number"
+                      },
+                      "backend.connectionSuccess": {
+                        "type": "number"
+                      },
+                      "backend.connectionUnHealthy": {
+                        "type": "number"
+                      },
+                      "backend.fetches": {
+                        "type": "number"
+                      },
+                      "backend.requests": {
+                        "type": "number"
+                      },
+                      "bans.added": {
+                        "type": "number"
+                      },
+                      "bans.completed": {
+                        "type": "number"
+                      },
+                      "bans.cutoffLurkerKilled": {
+                        "type": "number"
+                      },
+                      "bans.deleted": {
+                        "type": "number"
+                      },
+                      "bans.dups": {
+                        "type": "number"
+                      },
+                      "bans.fragmentationInBytes": {
+                        "type": "number"
+                      },
+                      "bans.lookupKilled": {
+                        "type": "number"
+                      },
+                      "bans.lookupTestsTested": {
+                        "type": "number"
+                      },
+                      "bans.lurkerCon": {
+                        "type": "number"
+                      },
+                      "bans.lurkerKilled": {
+                        "type": "number"
+                      },
+                      "bans.lurkerTested": {
+                        "type": "number"
+                      },
+                      "bans.lurkerTestsTested": {
+                        "type": "number"
+                      },
+                      "bans.obj": {
+                        "type": "number"
+                      },
+                      "bans.persistedInBytes": {
+                        "type": "number"
+                      },
+                      "bans.req": {
+                        "type": "number"
+                      },
+                      "bans.tested": {
+                        "type": "number"
+                      },
+                      "cache.graceHits": {
+                        "type": "number"
+                      },
+                      "cache.hits": {
+                        "type": "number"
+                      },
+                      "cache.missHits": {
+                        "type": "number"
+                      },
+                      "cache.misses": {
+                        "type": "number"
+                      },
+                      "cache.passHits": {
+                        "type": "number"
+                      },
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "esi.errors": {
+                        "type": "number"
+                      },
+                      "esi.warnings": {
+                        "type": "number"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "fetch.bad": {
+                        "type": "number"
+                      },
+                      "fetch.chuncked": {
+                        "type": "number"
+                      },
+                      "fetch.contentLength": {
+                        "type": "number"
+                      },
+                      "fetch.eof": {
+                        "type": "number"
+                      },
+                      "fetch.failed": {
+                        "type": "number"
+                      },
+                      "fetch.head": {
+                        "type": "number"
+                      },
+                      "fetch.noBody": {
+                        "type": "number"
+                      },
+                      "fetch.noBody1xx": {
+                        "type": "number"
+                      },
+                      "fetch.noBody204": {
+                        "type": "number"
+                      },
+                      "fetch.noBody304": {
+                        "type": "number"
+                      },
+                      "fetch.noThreadFail": {
+                        "type": "number"
+                      },
+                      "hcb.inserts": {
+                        "type": "number"
+                      },
+                      "hcb.lock": {
+                        "type": "number"
+                      },
+                      "hcb.noLock": {
+                        "type": "number"
+                      },
+                      "lru.limited": {
+                        "type": "number"
+                      },
+                      "lru.moved": {
+                        "type": "number"
+                      },
+                      "lru.nuked": {
+                        "type": "number"
+                      },
+                      "main.backends": {
+                        "type": "number"
+                      },
+                      "main.bans": {
+                        "type": "number"
+                      },
+                      "main.busyKilled": {
+                        "type": "number"
+                      },
+                      "main.busySleep": {
+                        "type": "number"
+                      },
+                      "main.busyWakeup": {
+                        "type": "number"
+                      },
+                      "main.expired": {
+                        "type": "number"
+                      },
+                      "main.expiredMailed": {
+                        "type": "number"
+                      },
+                      "main.expiredReceived": {
+                        "type": "number"
+                      },
+                      "main.gunzip": {
+                        "type": "number"
+                      },
+                      "main.gunzipTest": {
+                        "type": "number"
+                      },
+                      "main.gzip": {
+                        "type": "number"
+                      },
+                      "main.objectcores": {
+                        "type": "number"
+                      },
+                      "main.objectheads": {
+                        "type": "number"
+                      },
+                      "main.objects": {
+                        "type": "number"
+                      },
+                      "main.passedRequests": {
+                        "type": "number"
+                      },
+                      "main.pipeSessions": {
+                        "type": "number"
+                      },
+                      "main.pools": {
+                        "type": "number"
+                      },
+                      "main.purgeObjects": {
+                        "type": "number"
+                      },
+                      "main.purgeOperations": {
+                        "type": "number"
+                      },
+                      "main.reqDropped": {
+                        "type": "number"
+                      },
+                      "main.sessQueueLength": {
+                        "type": "number"
+                      },
+                      "main.sessions": {
+                        "type": "number"
+                      },
+                      "main.summs": {
+                        "type": "number"
+                      },
+                      "main.syntheticResponses": {
+                        "type": "number"
+                      },
+                      "main.threads": {
+                        "type": "number"
+                      },
+                      "main.threadsCreated": {
+                        "type": "number"
+                      },
+                      "main.threadsDestroyed": {
+                        "type": "number"
+                      },
+                      "main.threadsFailed": {
+                        "type": "number"
+                      },
+                      "main.threadsLimited": {
+                        "type": "number"
+                      },
+                      "main.unresurrectedObjects": {
+                        "type": "number"
+                      },
+                      "main.uptimeInMilliseconds": {
+                        "type": "number"
+                      },
+                      "main.vclAvailable": {
+                        "type": "number"
+                      },
+                      "main.vclDiscarded": {
+                        "type": "number"
+                      },
+                      "main.vclFails": {
+                        "type": "number"
+                      },
+                      "main.vclLoaded": {
+                        "type": "number"
+                      },
+                      "main.vmodsLoaded": {
+                        "type": "number"
+                      },
+                      "mgt.childDied": {
+                        "type": "number"
+                      },
+                      "mgt.childDump": {
+                        "type": "number"
+                      },
+                      "mgt.childExit": {
+                        "type": "number"
+                      },
+                      "mgt.childPanic": {
+                        "type": "number"
+                      },
+                      "mgt.childStart": {
+                        "type": "number"
+                      },
+                      "mgt.childStop": {
+                        "type": "number"
+                      },
+                      "mgt.uptimeInMilliseconds": {
+                        "type": "number"
+                      },
+                      "net.400Errors": {
+                        "type": "number"
+                      },
+                      "net.417Errors": {
+                        "type": "number"
+                      },
+                      "net.httpOverflow": {
+                        "type": "number"
+                      },
+                      "net.pipe.inInBytes": {
+                        "type": "number"
+                      },
+                      "net.pipe.outInBytes": {
+                        "type": "number"
+                      },
+                      "net.pipereq.headerInBytes": {
+                        "type": "number"
+                      },
+                      "net.request.bodyInBytes": {
+                        "type": "number"
+                      },
+                      "net.request.headerInBytes": {
+                        "type": "number"
+                      },
+                      "net.requests": {
+                        "type": "number"
+                      },
+                      "net.response.bodyInBytes": {
+                        "type": "number"
+                      },
+                      "net.response.headerInBytes": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      },
+                      "sess.backendClose": {
+                        "type": "number"
+                      },
+                      "sess.badClose": {
+                        "type": "number"
+                      },
+                      "sess.bodyFailClose": {
+                        "type": "number"
+                      },
+                      "sess.clientClose": {
+                        "type": "number"
+                      },
+                      "sess.clientReqClose": {
+                        "type": "number"
+                      },
+                      "sess.closed": {
+                        "type": "number"
+                      },
+                      "sess.closedError": {
+                        "type": "number"
+                      },
+                      "sess.dropped": {
+                        "type": "number"
+                      },
+                      "sess.eofTxnClose": {
+                        "type": "number"
+                      },
+                      "sess.errorTxnClose": {
+                        "type": "number"
+                      },
+                      "sess.herd": {
+                        "type": "number"
+                      },
+                      "sess.junkClose": {
+                        "type": "number"
+                      },
+                      "sess.overflowClose": {
+                        "type": "number"
+                      },
+                      "sess.overloadClose": {
+                        "type": "number"
+                      },
+                      "sess.pipeOverflowClose": {
+                        "type": "number"
+                      },
+                      "sess.pipeTxnClose": {
+                        "type": "number"
+                      },
+                      "sess.queued": {
+                        "type": "number"
+                      },
+                      "sess.readAhead": {
+                        "type": "number"
+                      },
+                      "sess.requestHTTP10Close": {
+                        "type": "number"
+                      },
+                      "sess.requestHTTP20Close": {
+                        "type": "number"
+                      },
+                      "sess.shortRangeClose": {
+                        "type": "number"
+                      },
+                      "sess.timeoutClose": {
+                        "type": "number"
+                      },
+                      "sess.vclFailClose": {
+                        "type": "number"
+                      },
+                      "session.connections": {
+                        "type": "number"
+                      },
+                      "session.fail": {
+                        "type": "number"
+                      },
+                      "shm.contentions": {
+                        "type": "number"
+                      },
+                      "shm.cycles": {
+                        "type": "number"
+                      },
+                      "shm.flushes": {
+                        "type": "number"
+                      },
+                      "shm.records": {
+                        "type": "number"
+                      },
+                      "shm.writes": {
+                        "type": "number"
+                      },
+                      "workspace.backendOverflow": {
+                        "type": "number"
+                      },
+                      "workspace.clientOverflow": {
+                        "type": "number"
+                      },
+                      "workspace.deliveryFail": {
+                        "type": "number"
+                      },
+                      "workspace.sessionOverflow": {
+                        "type": "number"
+                      },
+                      "workspace.threadOverflow": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "backend.connectionBusy",
+                      "backend.connectionFails",
+                      "backend.connectionRecycles",
+                      "backend.connectionRetries",
+                      "backend.connectionReuses",
+                      "backend.connectionSuccess",
+                      "backend.connectionUnHealthy",
+                      "backend.fetches",
+                      "backend.requests",
+                      "bans.added",
+                      "bans.completed",
+                      "bans.cutoffLurkerKilled",
+                      "bans.deleted",
+                      "bans.dups",
+                      "bans.fragmentationInBytes",
+                      "bans.lookupKilled",
+                      "bans.lookupTestsTested",
+                      "bans.lurkerCon",
+                      "bans.lurkerKilled",
+                      "bans.lurkerTested",
+                      "bans.lurkerTestsTested",
+                      "bans.obj",
+                      "bans.persistedInBytes",
+                      "bans.req",
+                      "bans.tested",
+                      "cache.graceHits",
+                      "cache.hits",
+                      "cache.missHits",
+                      "cache.misses",
+                      "cache.passHits",
+                      "displayName",
+                      "entityName",
+                      "esi.errors",
+                      "esi.warnings",
+                      "event_type",
+                      "fetch.bad",
+                      "fetch.chuncked",
+                      "fetch.contentLength",
+                      "fetch.eof",
+                      "fetch.failed",
+                      "fetch.head",
+                      "fetch.noBody",
+                      "fetch.noBody1xx",
+                      "fetch.noBody204",
+                      "fetch.noBody304",
+                      "fetch.noThreadFail",
+                      "hcb.inserts",
+                      "hcb.lock",
+                      "hcb.noLock",
+                      "lru.limited",
+                      "lru.moved",
+                      "lru.nuked",
+                      "main.backends",
+                      "main.bans",
+                      "main.busyKilled",
+                      "main.busySleep",
+                      "main.busyWakeup",
+                      "main.expired",
+                      "main.expiredMailed",
+                      "main.expiredReceived",
+                      "main.gunzip",
+                      "main.gunzipTest",
+                      "main.gzip",
+                      "main.objectcores",
+                      "main.objectheads",
+                      "main.objects",
+                      "main.passedRequests",
+                      "main.pipeSessions",
+                      "main.pools",
+                      "main.purgeObjects",
+                      "main.purgeOperations",
+                      "main.reqDropped",
+                      "main.sessQueueLength",
+                      "main.sessions",
+                      "main.summs",
+                      "main.syntheticResponses",
+                      "main.threads",
+                      "main.threadsCreated",
+                      "main.threadsDestroyed",
+                      "main.threadsFailed",
+                      "main.threadsLimited",
+                      "main.unresurrectedObjects",
+                      "main.uptimeInMilliseconds",
+                      "main.vclAvailable",
+                      "main.vclDiscarded",
+                      "main.vclFails",
+                      "main.vclLoaded",
+                      "main.vmodsLoaded",
+                      "mgt.childDied",
+                      "mgt.childDump",
+                      "mgt.childExit",
+                      "mgt.childPanic",
+                      "mgt.childStart",
+                      "mgt.childStop",
+                      "mgt.uptimeInMilliseconds",
+                      "net.400Errors",
+                      "net.417Errors",
+                      "net.httpOverflow",
+                      "net.pipe.inInBytes",
+                      "net.pipe.outInBytes",
+                      "net.pipereq.headerInBytes",
+                      "net.request.bodyInBytes",
+                      "net.request.headerInBytes",
+                      "net.requests",
+                      "net.response.bodyInBytes",
+                      "net.response.headerInBytes",
+                      "reportingEntityKey",
+                      "sess.backendClose",
+                      "sess.badClose",
+                      "sess.bodyFailClose",
+                      "sess.clientClose",
+                      "sess.clientReqClose",
+                      "sess.closed",
+                      "sess.closedError",
+                      "sess.dropped",
+                      "sess.eofTxnClose",
+                      "sess.errorTxnClose",
+                      "sess.herd",
+                      "sess.junkClose",
+                      "sess.overflowClose",
+                      "sess.overloadClose",
+                      "sess.pipeOverflowClose",
+                      "sess.pipeTxnClose",
+                      "sess.queued",
+                      "sess.readAhead",
+                      "sess.requestHTTP10Close",
+                      "sess.requestHTTP20Close",
+                      "sess.shortRangeClose",
+                      "sess.timeoutClose",
+                      "sess.vclFailClose",
+                      "session.connections",
+                      "session.fail",
+                      "shm.contentions",
+                      "shm.cycles",
+                      "shm.flushes",
+                      "shm.records",
+                      "shm.writes",
+                      "workspace.backendOverflow",
+                      "workspace.clientOverflow",
+                      "workspace.deliveryFail",
+                      "workspace.sessionOverflow",
+                      "workspace.threadOverflow"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "lock": {
+                        "type": "string"
+                      },
+                      "lock.created": {
+                        "type": "number"
+                      },
+                      "lock.destroyed": {
+                        "type": "number"
+                      },
+                      "lock.locks": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "lock",
+                      "lock.created",
+                      "lock.destroyed",
+                      "lock.locks",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "memoryPool": {
+                        "type": "string"
+                      },
+                      "mempool.allocatedSizeInBytes": {
+                        "type": "number"
+                      },
+                      "mempool.allocs": {
+                        "type": "number"
+                      },
+                      "mempool.frees": {
+                        "type": "number"
+                      },
+                      "mempool.live": {
+                        "type": "number"
+                      },
+                      "mempool.pool": {
+                        "type": "number"
+                      },
+                      "mempool.ranDry": {
+                        "type": "number"
+                      },
+                      "mempool.recycles": {
+                        "type": "number"
+                      },
+                      "mempool.requestSizeInBytes": {
+                        "type": "number"
+                      },
+                      "mempool.surplus": {
+                        "type": "number"
+                      },
+                      "mempool.timeouts": {
+                        "type": "number"
+                      },
+                      "mempool.tooSmall": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "memoryPool",
+                      "mempool.allocatedSizeInBytes",
+                      "mempool.allocs",
+                      "mempool.frees",
+                      "mempool.live",
+                      "mempool.pool",
+                      "mempool.ranDry",
+                      "mempool.recycles",
+                      "mempool.requestSizeInBytes",
+                      "mempool.surplus",
+                      "mempool.timeouts",
+                      "mempool.tooSmall",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "memoryPool": {
+                        "type": "string"
+                      },
+                      "mempool.allocatedSizeInBytes": {
+                        "type": "number"
+                      },
+                      "mempool.allocs": {
+                        "type": "number"
+                      },
+                      "mempool.frees": {
+                        "type": "number"
+                      },
+                      "mempool.live": {
+                        "type": "number"
+                      },
+                      "mempool.pool": {
+                        "type": "number"
+                      },
+                      "mempool.ranDry": {
+                        "type": "number"
+                      },
+                      "mempool.recycles": {
+                        "type": "number"
+                      },
+                      "mempool.requestSizeInBytes": {
+                        "type": "number"
+                      },
+                      "mempool.surplus": {
+                        "type": "number"
+                      },
+                      "mempool.timeouts": {
+                        "type": "number"
+                      },
+                      "mempool.tooSmall": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "memoryPool",
+                      "mempool.allocatedSizeInBytes",
+                      "mempool.allocs",
+                      "mempool.frees",
+                      "mempool.live",
+                      "mempool.pool",
+                      "mempool.ranDry",
+                      "mempool.recycles",
+                      "mempool.requestSizeInBytes",
+                      "mempool.surplus",
+                      "mempool.timeouts",
+                      "mempool.tooSmall",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "memoryPool": {
+                        "type": "string"
+                      },
+                      "mempool.allocatedSizeInBytes": {
+                        "type": "number"
+                      },
+                      "mempool.allocs": {
+                        "type": "number"
+                      },
+                      "mempool.frees": {
+                        "type": "number"
+                      },
+                      "mempool.live": {
+                        "type": "number"
+                      },
+                      "mempool.pool": {
+                        "type": "number"
+                      },
+                      "mempool.ranDry": {
+                        "type": "number"
+                      },
+                      "mempool.recycles": {
+                        "type": "number"
+                      },
+                      "mempool.requestSizeInBytes": {
+                        "type": "number"
+                      },
+                      "mempool.surplus": {
+                        "type": "number"
+                      },
+                      "mempool.timeouts": {
+                        "type": "number"
+                      },
+                      "mempool.tooSmall": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "memoryPool",
+                      "mempool.allocatedSizeInBytes",
+                      "mempool.allocs",
+                      "mempool.frees",
+                      "mempool.live",
+                      "mempool.pool",
+                      "mempool.ranDry",
+                      "mempool.recycles",
+                      "mempool.requestSizeInBytes",
+                      "mempool.surplus",
+                      "mempool.timeouts",
+                      "mempool.tooSmall",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "memoryPool": {
+                        "type": "string"
+                      },
+                      "mempool.allocatedSizeInBytes": {
+                        "type": "number"
+                      },
+                      "mempool.allocs": {
+                        "type": "number"
+                      },
+                      "mempool.frees": {
+                        "type": "number"
+                      },
+                      "mempool.live": {
+                        "type": "number"
+                      },
+                      "mempool.pool": {
+                        "type": "number"
+                      },
+                      "mempool.ranDry": {
+                        "type": "number"
+                      },
+                      "mempool.recycles": {
+                        "type": "number"
+                      },
+                      "mempool.requestSizeInBytes": {
+                        "type": "number"
+                      },
+                      "mempool.surplus": {
+                        "type": "number"
+                      },
+                      "mempool.timeouts": {
+                        "type": "number"
+                      },
+                      "mempool.tooSmall": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "memoryPool",
+                      "mempool.allocatedSizeInBytes",
+                      "mempool.allocs",
+                      "mempool.frees",
+                      "mempool.live",
+                      "mempool.pool",
+                      "mempool.ranDry",
+                      "mempool.recycles",
+                      "mempool.requestSizeInBytes",
+                      "mempool.surplus",
+                      "mempool.timeouts",
+                      "mempool.tooSmall",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "memoryPool": {
+                        "type": "string"
+                      },
+                      "mempool.allocatedSizeInBytes": {
+                        "type": "number"
+                      },
+                      "mempool.allocs": {
+                        "type": "number"
+                      },
+                      "mempool.frees": {
+                        "type": "number"
+                      },
+                      "mempool.live": {
+                        "type": "number"
+                      },
+                      "mempool.pool": {
+                        "type": "number"
+                      },
+                      "mempool.ranDry": {
+                        "type": "number"
+                      },
+                      "mempool.recycles": {
+                        "type": "number"
+                      },
+                      "mempool.requestSizeInBytes": {
+                        "type": "number"
+                      },
+                      "mempool.surplus": {
+                        "type": "number"
+                      },
+                      "mempool.timeouts": {
+                        "type": "number"
+                      },
+                      "mempool.tooSmall": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "memoryPool",
+                      "mempool.allocatedSizeInBytes",
+                      "mempool.allocs",
+                      "mempool.frees",
+                      "mempool.live",
+                      "mempool.pool",
+                      "mempool.ranDry",
+                      "mempool.recycles",
+                      "mempool.requestSizeInBytes",
+                      "mempool.surplus",
+                      "mempool.timeouts",
+                      "mempool.tooSmall",
+                      "reportingEntityKey"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      },
+                      "storage": {
+                        "type": "string"
+                      },
+                      "storage.allocFails": {
+                        "type": "number"
+                      },
+                      "storage.allocInBytes": {
+                        "type": "number"
+                      },
+                      "storage.allocOustanding": {
+                        "type": "number"
+                      },
+                      "storage.allocReqs": {
+                        "type": "number"
+                      },
+                      "storage.availableInBytes": {
+                        "type": "number"
+                      },
+                      "storage.freeInBytes": {
+                        "type": "number"
+                      },
+                      "storage.outstandingInBytes": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "reportingEntityKey",
+                      "storage",
+                      "storage.allocFails",
+                      "storage.allocInBytes",
+                      "storage.allocOustanding",
+                      "storage.allocReqs",
+                      "storage.availableInBytes",
+                      "storage.freeInBytes",
+                      "storage.outstandingInBytes"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      },
+                      "storage": {
+                        "type": "string"
+                      },
+                      "storage.allocFails": {
+                        "type": "number"
+                      },
+                      "storage.allocInBytes": {
+                        "type": "number"
+                      },
+                      "storage.allocOustanding": {
+                        "type": "number"
+                      },
+                      "storage.allocReqs": {
+                        "type": "number"
+                      },
+                      "storage.availableInBytes": {
+                        "type": "number"
+                      },
+                      "storage.freeInBytes": {
+                        "type": "number"
+                      },
+                      "storage.outstandingInBytes": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "reportingEntityKey",
+                      "storage",
+                      "storage.allocFails",
+                      "storage.allocInBytes",
+                      "storage.allocOustanding",
+                      "storage.allocReqs",
+                      "storage.availableInBytes",
+                      "storage.freeInBytes",
+                      "storage.outstandingInBytes"
+                    ]
+                  }
+                ]
+              },
+              "inventory": {
+                "type": "object"
+              },
+              "events": {
+                "type": "array",
+                "items": {}
+              }
+            },
+            "required": [
+              "entity",
+              "metrics",
+              "inventory",
+              "events"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "entity": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "id_attributes": {
+                    "type": "array",
+                    "items": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "Key": {
+                            "type": "string"
+                          },
+                          "Value": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "Key",
+                          "Value"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "name",
+                  "type",
+                  "id_attributes"
+                ]
+              },
+              "metrics": {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "backend.busyFetches": {
+                        "type": "number"
+                      },
+                      "backend.connections": {
+                        "type": "number"
+                      },
+                      "backend.connectionsFailed": {
+                        "type": "number"
+                      },
+                      "backend.connectionsNotAttempted": {
+                        "type": "number"
+                      },
+                      "backend.happy": {
+                        "type": "number"
+                      },
+                      "backend.unhealthyFetches": {
+                        "type": "number"
+                      },
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "entityName": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      },
+                      "net.backend.pipeHeaderInBytes": {
+                        "type": "number"
+                      },
+                      "net.backend.pipeInInBytes": {
+                        "type": "number"
+                      },
+                      "net.backend.pipeOutInBytes": {
+                        "type": "number"
+                      },
+                      "net.backend.requestBodyInBytes": {
+                        "type": "number"
+                      },
+                      "net.backend.requestHeaderInBytes": {
+                        "type": "number"
+                      },
+                      "net.backend.requests": {
+                        "type": "number"
+                      },
+                      "net.backend.responseBodyInBytes": {
+                        "type": "number"
+                      },
+                      "net.backend.responseHeaderInBytes": {
+                        "type": "number"
+                      },
+                      "reportingEntityKey": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "backend.busyFetches",
+                      "backend.connections",
+                      "backend.connectionsFailed",
+                      "backend.connectionsNotAttempted",
+                      "backend.happy",
+                      "backend.unhealthyFetches",
+                      "displayName",
+                      "entityName",
+                      "event_type",
+                      "net.backend.pipeHeaderInBytes",
+                      "net.backend.pipeInInBytes",
+                      "net.backend.pipeOutInBytes",
+                      "net.backend.requestBodyInBytes",
+                      "net.backend.requestHeaderInBytes",
+                      "net.backend.requests",
+                      "net.backend.responseBodyInBytes",
+                      "net.backend.responseHeaderInBytes",
+                      "reportingEntityKey"
+                    ]
+                  }
+                ]
+              },
+              "inventory": {
+                "type": "object"
+              },
+              "events": {
+                "type": "array",
+                "items": {}
+              }
+            },
+            "required": [
+              "entity",
+              "metrics",
+              "inventory",
+              "events"
+            ]
+          }
+        ]
+      }
+    },
+    "required": [
+      "name",
+      "protocol_version",
+      "integration_version",
+      "data"
+    ]
+  }

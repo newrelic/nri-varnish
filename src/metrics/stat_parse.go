@@ -24,13 +24,49 @@ func parseStats(statsData []byte) (*varnishDefinition, map[string]*backendDefini
 
 	backends := make(map[string]*backendDefinition)
 
+	version, err := statsVersion(stats)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	switch version {
+	case 0:
+		processStats(stats, varnishSystem, backends)
+
+	case 1:
+		counters, ok := stats["counters"].(map[string]interface{})
+		if !ok {
+			return nil, nil, fmt.Errorf("no 'counters' key found")
+		}
+
+		processStats(counters, varnishSystem, backends)
+
+	default:
+		return nil, nil, fmt.Errorf("unsupported varnishstat results version: %v", version)
+	}
+
+	return varnishSystem, backends, nil
+}
+
+func statsVersion(stats map[string]interface{}) (version float64, err error) {
+	// From varnish 6.5 varnishstats changes json schema adding "version" entry.
+	// https://varnish-cache.org/docs/6.5/whats-new/upgrading-6.5.html#varnishstat
+	if ver, exists := stats["version"]; exists {
+		var ok bool
+		if version, ok = ver.(float64); !ok {
+			return version, fmt.Errorf("fail to cast 'version' from: %t", ver)
+		}
+	}
+	return version, nil
+}
+
+func processStats(stats map[string]interface{}, varnishSystem *varnishDefinition, backends map[string]*backendDefinition) {
+	// retrieve value
 	for fullStatName, entry := range stats {
 		if fullStatName == "timestamp" {
-			// skip the timestamp field
 			continue
 		}
 
-		// retrieve value
 		statValue, err := getStatValue(entry)
 		if err != nil {
 			log.Debug("Error parsing metric '%s': %s", fullStatName, err.Error())
@@ -40,14 +76,11 @@ func parseStats(statsData []byte) (*varnishDefinition, map[string]*backendDefini
 		if strings.HasPrefix(fullStatName, "VBE.") {
 			// backends
 			setBackendValue(backends, fullStatName, statValue)
-		} else {
-			// all other metrics under varnish system
-			parseAndSetStat(varnishSystem, fullStatName, statValue)
+			continue
 		}
-
+		// all other metrics under varnish system
+		parseAndSetStat(varnishSystem, fullStatName, statValue)
 	}
-
-	return varnishSystem, backends, nil
 }
 
 // getStatValue retrieves the "value" field from the underlying map

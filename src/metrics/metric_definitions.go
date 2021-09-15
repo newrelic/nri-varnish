@@ -29,6 +29,8 @@ type varnishDefinition struct {
 	BackendConReuses         interface{} `stat_name:"backend_reuse" metric_name:"backend.connectionReuses" source_type:"Rate"`
 	BackendConRecycles       interface{} `stat_name:"backend_recycle" metric_name:"backend.connectionRecycles" source_type:"Rate"`
 	BackendConRetries        interface{} `stat_name:"backend_retry" metric_name:"backend.connectionRetries" source_type:"Rate"`
+	BackendRespUncacheable   interface{} `stat_name:"beresp_uncacheable" metric_name:"backend.respUncacheable" source_type:"Rate"`
+	BackendRespShortlived    interface{} `stat_name:"beresp_shortlived" metric_name:"backend.respShortlived" source_type:"Rate"`
 	FetchHead                interface{} `stat_name:"fetch_head" metric_name:"fetch.head" source_type:"Rate"`
 	FetchContentLength       interface{} `stat_name:"fetch_length" metric_name:"fetch.contentLength" source_type:"Rate"`
 	FetchChuncked            interface{} `stat_name:"fetch_chunked" metric_name:"fetch.chuncked" source_type:"Rate"`
@@ -59,6 +61,8 @@ type varnishDefinition struct {
 	MainObjectheads          interface{} `stat_name:"n_objecthead" metric_name:"main.objectheads" source_type:"Gauge"`
 	MainBackends             interface{} `stat_name:"n_backend" metric_name:"main.backends" source_type:"Gauge"`
 	MainExpired              interface{} `stat_name:"n_expired" metric_name:"main.expired" source_type:"Rate"`
+	MainPipe                 interface{} `stat_name:"n_pipe" metric_name:"main.pipe" source_type:"Rate"`
+	MainPipeLimited          interface{} `stat_name:"pipe_limited" metric_name:"main.pipe_limited" source_type:"Rate"`
 	LruNuked                 interface{} `stat_name:"n_lru_nuked" metric_name:"lru.nuked" source_type:"Rate"`
 	LruMoved                 interface{} `stat_name:"n_lru_moved" metric_name:"lru.moved" source_type:"Rate"`
 	LruLimited               interface{} `stat_name:"n_lru_limited" metric_name:"lru.limited" source_type:"Rate"`
@@ -79,6 +83,12 @@ type varnishDefinition struct {
 	SessClosedError          interface{} `stat_name:"sess_closed_err" metric_name:"sess.closedError" source_type:"Rate"`
 	SessReadAhead            interface{} `stat_name:"sess_readahead" metric_name:"sess.readAhead" source_type:"Rate"`
 	SessHerd                 interface{} `stat_name:"sess_herd" metric_name:"sess.herd" source_type:"Rate"`
+	SessFailEconnaborted     interface{} `stat_name:"sess_fail_econnaborted" metric_name:"sess.sessFailEconnaborted" source_type:"Rate"`
+	SessFailEmfile           interface{} `stat_name:"sess_fail_emfile" metric_name:"sess.sessFailEmfile" source_type:"Rate"`
+	SessFailEbadf            interface{} `stat_name:"sess_fail_ebadf" metric_name:"sess.sessFailEbadf" source_type:"Rate"`
+	SessFailEnomem           interface{} `stat_name:"sess_fail_enomem" metric_name:"sess.sessFailEnomem" source_type:"Rate"`
+	SessFailEintr            interface{} `stat_name:"sess_fail_eintr" metric_name:"sess.sessFailEintr" source_type:"Rate"`
+	SessFailOther            interface{} `stat_name:"sess_fail_other" metric_name:"sess.sessFailOther" source_type:"Rate"`
 	SessClientClose          interface{} `stat_name:"sc_rem_close" metric_name:"sess.clientClose" source_type:"Rate"`
 	SessClientReqClose       interface{} `stat_name:"sc_req_close" metric_name:"sess.clientReqClose" source_type:"Rate"`
 	SessReqHTTP10Close       interface{} `stat_name:"sc_req_http10" metric_name:"sess.requestHTTP10Close" source_type:"Rate"`
@@ -87,6 +97,7 @@ type varnishDefinition struct {
 	SessJunkClose            interface{} `stat_name:"sc_rx_junk" metric_name:"sess.junkClose" source_type:"Rate"`
 	SessOverflowClose        interface{} `stat_name:"sc_rx_overflow" metric_name:"sess.overflowClose" source_type:"Rate"`
 	SessTimeoutClose         interface{} `stat_name:"sc_rx_timeout" metric_name:"sess.timeoutClose" source_type:"Rate"`
+	SessCloseIdle            interface{} `stat_name:"sc_rx_close_idle" metric_name:"sess.closeIdle" source_type:"Rate"`
 	SessPipeTxnClose         interface{} `stat_name:"sc_tx_pipe" metric_name:"sess.pipeTxnClose" source_type:"Rate"`
 	SessErrorTxnClose        interface{} `stat_name:"sc_tx_error" metric_name:"sess.errorTxnClose" source_type:"Rate"`
 	SessEOFTxnClose          interface{} `stat_name:"sc_tx_eof" metric_name:"sess.eofTxnClose" source_type:"Rate"`
@@ -149,9 +160,11 @@ type varnishDefinition struct {
 
 // lockDefinition represents the data for a VarnishLockSample event
 type lockDefinition struct {
-	Created   interface{} `stat_name:"creat" metric_name:"lock.created" source_type:"Rate"`
-	Destroyed interface{} `stat_name:"destroy" metric_name:"lock.destroyed" source_type:"Rate"`
-	LockOps   interface{} `stat_name:"locks" metric_name:"lock.locks" source_type:"Rate"`
+	Created    interface{} `stat_name:"creat" metric_name:"lock.created" source_type:"Rate"`
+	Destroyed  interface{} `stat_name:"destroy" metric_name:"lock.destroyed" source_type:"Rate"`
+	LockOps    interface{} `stat_name:"locks" metric_name:"lock.locks" source_type:"Rate"`
+	DbgBusy    interface{} `stat_name:"dbg_busy" metric_name:"lock.dbg_busy" source_type:"Rate"`
+	DbgTryFail interface{} `stat_name:"dbg_try_fail" metric_name:"lock.dbg_try_fail" source_type:"Rate"`
 }
 
 // mempoolDefinition represents the data for a VarnishMempoolSample event
@@ -182,18 +195,24 @@ type storageDefinition struct {
 
 // backendDefinition represents the data to be set for a Backend Entity and VarnishBackendSample event
 type backendDefinition struct {
-	Happy           interface{} `stat_name:"happy" metric_name:"backend.happy" source_type:"Gauge"`
-	ReqHeader       interface{} `stat_name:"bereq_hdrbytes" metric_name:"net.backend.requestHeaderInBytes" source_type:"Rate"`
-	ReqBody         interface{} `stat_name:"bereq_bodybytes" metric_name:"net.backend.requestBodyInBytes" source_type:"Rate"`
-	RespHeader      interface{} `stat_name:"beresp_hdrbytes" metric_name:"net.backend.responseHeaderInBytes" source_type:"Rate"`
-	RespBody        interface{} `stat_name:"beresp_bodybytes" metric_name:"net.backend.responseBodyInBytes" source_type:"Rate"`
-	PipeHeader      interface{} `stat_name:"pipe_hdrbytes" metric_name:"net.backend.pipeHeaderInBytes" source_type:"Rate"`
-	PipeOut         interface{} `stat_name:"pipe_out" metric_name:"net.backend.pipeOutInBytes" source_type:"Rate"`
-	PipeIn          interface{} `stat_name:"pipe_in" metric_name:"net.backend.pipeInInBytes" source_type:"Rate"`
-	Connections     interface{} `stat_name:"conn" metric_name:"backend.connections" source_type:"Gauge"`
-	Req             interface{} `stat_name:"req" metric_name:"net.backend.requests" source_type:"Rate"`
-	UnhealtyFetches interface{} `stat_name:"unhealthy" metric_name:"backend.unhealthyFetches" source_type:"Rate"`
-	BusyFetches     interface{} `stat_name:"busy" metric_name:"backend.busyFetches" source_type:"Rate"`
-	ConFailed       interface{} `stat_name:"fail" metric_name:"backend.connectionsFailed" source_type:"Rate"`
-	ConNotAttempted interface{} `stat_name:"helddown" metric_name:"backend.connectionsNotAttempted" source_type:"Rate"`
+	Happy                  interface{} `stat_name:"happy" metric_name:"backend.happy" source_type:"Gauge"`
+	ReqHeader              interface{} `stat_name:"bereq_hdrbytes" metric_name:"net.backend.requestHeaderInBytes" source_type:"Rate"`
+	ReqBody                interface{} `stat_name:"bereq_bodybytes" metric_name:"net.backend.requestBodyInBytes" source_type:"Rate"`
+	RespHeader             interface{} `stat_name:"beresp_hdrbytes" metric_name:"net.backend.responseHeaderInBytes" source_type:"Rate"`
+	RespBody               interface{} `stat_name:"beresp_bodybytes" metric_name:"net.backend.responseBodyInBytes" source_type:"Rate"`
+	PipeHeader             interface{} `stat_name:"pipe_hdrbytes" metric_name:"net.backend.pipeHeaderInBytes" source_type:"Rate"`
+	PipeOut                interface{} `stat_name:"pipe_out" metric_name:"net.backend.pipeOutInBytes" source_type:"Rate"`
+	PipeIn                 interface{} `stat_name:"pipe_in" metric_name:"net.backend.pipeInInBytes" source_type:"Rate"`
+	Connections            interface{} `stat_name:"conn" metric_name:"backend.connections" source_type:"Gauge"`
+	Req                    interface{} `stat_name:"req" metric_name:"net.backend.requests" source_type:"Rate"`
+	UnhealtyFetches        interface{} `stat_name:"unhealthy" metric_name:"backend.unhealthyFetches" source_type:"Rate"`
+	BusyFetches            interface{} `stat_name:"busy" metric_name:"backend.busyFetches" source_type:"Rate"`
+	ConFailed              interface{} `stat_name:"fail" metric_name:"backend.connectionsFailed" source_type:"Rate"`
+	ConFailedEaccess       interface{} `stat_name:"fail_eacces" metric_name:"backend.connectionsFailedEacces" source_type:"Rate"`
+	ConFailedEconnrefused  interface{} `stat_name:"fail_econnrefused" metric_name:"backend.connectionsFailedEconnrefused" source_type:"Rate"`
+	ConFailedEtimedout     interface{} `stat_name:"fail_etimedout" metric_name:"backend.connectionsFailedEtimedout" source_type:"Rate"`
+	ConFailedEaddrnotavail interface{} `stat_name:"fail_eaddrnotavail" metric_name:"backend.connectionsFailedEaddrnotavail" source_type:"Rate"`
+	ConFailedEnetunreach   interface{} `stat_name:"fail_enetunreach" metric_name:"backend.connectionsFailedEnetunreach" source_type:"Rate"`
+	ConFailedOther         interface{} `stat_name:"fail_other" metric_name:"backend.connectionsFailedOther" source_type:"Rate"`
+	ConNotAttempted        interface{} `stat_name:"helddown" metric_name:"backend.connectionsNotAttempted" source_type:"Rate"`
 }
