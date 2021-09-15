@@ -1,4 +1,3 @@
-//nolint:goerr113
 package metrics
 
 import (
@@ -37,13 +36,13 @@ func parseStats(statsData []byte) (*varnishDefinition, map[string]*backendDefini
 	case 1:
 		counters, ok := stats["counters"].(map[string]interface{})
 		if !ok {
-			return nil, nil, fmt.Errorf("No 'counters' key found")
+			return nil, nil, fmt.Errorf("no 'counters' key found")
 		}
 
 		processStats(counters, varnishSystem, backends)
 
 	default:
-		return nil, nil, fmt.Errorf("Unsupported varnishstat results version: %v", version)
+		return nil, nil, fmt.Errorf("unsupported varnishstat results version: %v", version)
 	}
 
 	return varnishSystem, backends, nil
@@ -81,7 +80,6 @@ func processStats(stats map[string]interface{}, varnishSystem *varnishDefinition
 		}
 		// all other metrics under varnish system
 		parseAndSetStat(varnishSystem, fullStatName, statValue)
-
 	}
 }
 
