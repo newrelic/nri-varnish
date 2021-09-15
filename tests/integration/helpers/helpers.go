@@ -21,7 +21,7 @@ const (
 // 1st - Standard Output
 // 2nd - Standard Error
 // 3rd - Runtime error, if any
-func ExecInContainer(t *testing.T, timeout time.Duration, container string, command []string, envVars ...string) (string, string) {
+func ExecInContainer(t *testing.T, timeout time.Duration, container string, command []string, envVars ...string) (string, string, error) {
 	t.Helper()
 
 	cmdLine := make([]string, 0, 3+len(command))
@@ -43,15 +43,12 @@ func ExecInContainer(t *testing.T, timeout time.Duration, container string, comm
 	cmd.Stdout = &outBuffer
 	cmd.Stderr = &errBuffer
 
-	if err := cmd.Run(); err != nil {
-		t.Errorf("Integration command failed to run: %s", err)
-		t.Fail()
-	}
+	err := cmd.Run()
 
 	stdout := outBuffer.String()
 	stderr := errBuffer.String()
 
-	return stdout, stderr
+	return stdout, stderr, err
 }
 
 // contextWithDeadline returns context which will timeout before t.Deadline().
