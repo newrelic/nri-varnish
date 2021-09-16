@@ -6,7 +6,7 @@ integrations:
 
     PARAMS_CONFIG_FILE: <The location of the varnish.params configuration file. If omitted will look in /etc/default/varnish/varnish.params and /etc/sysconfig/varnish/varnish.params>
 
-    VARNISH_NAME: <Optional. Specify the varnishd working directory (see varnishd -n)>
+    VARNISH_NAME: <Optional. Name used when executing 'varnishd' daemon with a custom '-n' flag>
 
   interval: 15s
   labels:
