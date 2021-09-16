@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.4.0 (2021-09-16)
+### Added
+- Add support for V1 varnishstat output present on Varnish version > v6.4
+- Add varnish_name config to allow specify an instnace name for varnishstat (-n)
+
 ## 2.3.0 (2021-08-27)
 ### Added
 
