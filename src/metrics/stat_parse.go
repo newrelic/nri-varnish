@@ -99,20 +99,33 @@ func getStatValue(stat interface{}) (interface{}, error) {
 }
 
 func parseAndSetStat(varnishSystem *varnishDefinition, fullStatName string, statValue interface{}) {
-	// Parse out into structs
-	if strings.HasPrefix(fullStatName, "LCK.") {
+	prefix := splitPrefix(fullStatName, ".")
+	switch prefix {
+	case "LCK":
 		// locks
 		setLockValue(varnishSystem.locks, fullStatName, statValue)
-	} else if strings.HasPrefix(fullStatName, "SMF.") || strings.HasPrefix(fullStatName, "SMU.") || strings.HasPrefix(fullStatName, "SMA.") {
+	case "SMF", "SMU", "SMA":
 		// storage
 		setStorageValue(varnishSystem.storages, fullStatName, statValue)
-	} else if strings.HasPrefix(fullStatName, "MEMPOOL.") {
+	case "MEMPOOL":
 		// mempools
 		setMempoolValue(varnishSystem.mempools, fullStatName, statValue)
-	} else {
+	default:
 		// main sample
 		setSystemValue(varnishSystem, fullStatName, statValue)
 	}
+}
+
+// splitPrefix returns the substring of s before the sep without including it.
+// If sep does not exist it returns the empty string.
+func splitPrefix(s string, sep string) string {
+	const maxSliceSize = 2 // Just need one element for the prefix and other for the rest of the string.
+	prefixArray := strings.SplitN(s, sep, maxSliceSize)
+	if len(prefixArray) == 0 || len(prefixArray) == 1 {
+		return ""
+	}
+
+	return prefixArray[0]
 }
 
 // The following setXValue functions are just repeated code but due to Go not having generics it's

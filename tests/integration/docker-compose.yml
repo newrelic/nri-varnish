@@ -25,3 +25,14 @@ services:
     - ./varnish/default.vcl:/etc/varnish/default.vcl
     # Fake varnish params file used to test inventory collection.
     - ../../src/testdata/varnish.params:/testdata/varnish.params
+
+  nri-varnish-named-instance:
+    container_name: varnish-named-instance
+    build:
+      context: ../../
+      args: 
+        VARNISH_TAG: "6.6"
+      dockerfile: tests/integration/Dockerfile
+    volumes:
+    - ./varnish/default.vcl:/etc/varnish/default.vcl
+    command: ["-n","customInstanceName"]

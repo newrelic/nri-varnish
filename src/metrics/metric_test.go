@@ -28,7 +28,7 @@ func TestCollectMetrics(t *testing.T) {
 		t.Fatalf("Unexpected error %s", err.Error())
 	}
 
-	if err := CollectMetrics(systemEntity, i); err != nil {
+	if err := CollectMetrics(systemEntity, i, ""); err != nil {
 		t.Fatalf("Unexpected error: %s", err.Error())
 	}
 
@@ -157,7 +157,7 @@ func TestCollectMetrics_ExecError(t *testing.T) {
 		t.Fatalf("Unexpected error %s", err.Error())
 	}
 
-	if err := CollectMetrics(systemEntity, i); err == nil {
+	if err := CollectMetrics(systemEntity, i, ""); err == nil {
 		t.Error("Expected error")
 	}
 }
@@ -171,7 +171,7 @@ func setENV(t *testing.T, envName, value string) {
 func fakeExecCommand(command string, args ...string) (cmd *exec.Cmd) {
 	cs := []string{"-test.run=TestHelperProcess", "--", command}
 	cs = append(cs, args...)
-	cmd = exec.Command(os.Args[0], cs...)
+	cmd = exec.Command(os.Args[0], cs...) //nolint:gosec
 	return cmd
 }
 
