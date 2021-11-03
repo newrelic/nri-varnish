@@ -201,6 +201,51 @@ const varnishStatTestResult = `{
 		"description": "Number of objects purged to achieve database waterlevel",
 		"flag": "c", "format": "i",
 		"value": 106000
+	},
+	"MSE_STORE.store1.g_objects": {
+		"description": "Number of objects in the store",
+		"flag": "g", "format": "i",
+		"value": 2532177
+	},
+	"MSE_STORE.store1.c_aio_queue": {
+		"description": "Number of times a thread has been queued for AIO",
+		"flag": "c", "format": "i",
+		"value": 1
+	},
+	"MSE_STORE.store1.c_aio_finished_bytes": {
+		"description": "Number AIO bytes executed",
+		"flag": "c", "format": "B",
+		"value": 179596279808
+	},
+	"MSE_STORE.store1.c_aio_finished_read": {
+		"description": "Number AIO read operations executed",
+		"flag": "c", "format": "i",
+		"value": 2591278
+	},
+	"MSE_STORE.store1.c_aio_finished_write": {
+		"description": "Number AIO write operations executed",
+		"flag": "c", "format": "i",
+		"value": 22320642
+	},
+	"MSE_STORE.store1.c_waterlevel_queue": {
+		"description": "Number of times a thread has been queued waiting for store space",
+		"flag": "c", "format": "i",
+		"value": 4
+	},
+	"MSE_STORE.store1.c_waterlevel_purge": {
+		"description": "Number of objects purged to achieve store waterlevel",
+		"flag": "c", "format": "i",
+		"value": 5
+	},
+	"MSE_STORE.store1.g_ykey_keys": {
+		"description": "Number of YKeys registered",
+		"flag": "g", "format": "i",
+		"value": 7661493
+	},
+	"MSE_STORE.store1.c_ykey_purged": {
+		"description": "Number of objects purged with YKey",
+		"flag": "c", "format": "i",
+		"value": 2250426
 	}
 }`
 
@@ -249,6 +294,19 @@ func Test_parseStats_Full(t *testing.T) {
 				Available:    float64(2178883584),
 				ThreadQueued: float64(2),
 				PurgeObjects: float64(106000),
+			},
+		},
+		store: map[string]*storeDefinition{
+			"store1": {
+				Objects:  	  float64(2532177),
+				AioQueue: 	  float64(1),
+				AioBytes: 	  float64(179596279808),
+				AioRead:  	  float64(2591278),
+				AioWrite: 	  float64(22320642),
+				ThreadQueue:  float64(4),
+				PurgeObjects: float64(5),
+				YkeysReg: 	  float64(7661493),
+				YkeysPurged:  float64(2250426),
 			},
 		},
 	}
@@ -450,6 +508,7 @@ func Test_parseStats_FullV1(t *testing.T) {
 			},
 		},
 		book: map[string]*bookDefinition{},
+		store: map[string]*storeDefinition{},
 	}
 
 	expectedBackends := map[string]*backendDefinition{

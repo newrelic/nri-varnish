@@ -157,6 +157,7 @@ type varnishDefinition struct {
 	mempools map[string]*mempoolDefinition
 	storages map[string]*storageDefinition
 	book     map[string]*bookDefinition
+	store	 map[string]*storeDefinition
 }
 
 // lockDefinition represents the data for a VarnishLockSample event
@@ -189,6 +190,18 @@ type bookDefinition struct {
 	Available    interface{} `stat_name:"g_space" metric_name:"book.availableInBytes" source_type:"Gauge"`
 	ThreadQueued interface{} `stat_name:"c_waterlevel_queue" metric_name:"book.threadQueued" source_type:"Rate"`
 	PurgeObjects interface{} `stat_name:"c_waterlevel_purge" metric_name:"book.purgeObjects" source_type:"Rate"`
+}
+
+type storeDefinition struct {
+	Objects 	 interface{} `stat_name:"g_objects" metric_name:"store.numOfObjects" source_type:"Gauge"`
+	AioQueue 	 interface{} `stat_name:"c_aio_queue" metric_name:"store.numOfAioQueue" source_type:"Rate"`
+	AioBytes 	 interface{} `stat_name:"c_aio_finished_bytes" metric_name:"store.numOfAioBytes" source_type:"Rate"`
+	AioRead 	 interface{} `stat_name:"c_aio_finished_read" metric_name:"store.numOfAioRead" source_type:"Rate"`
+	AioWrite 	 interface{} `stat_name:"c_aio_finished_write" metric_name:"store.numOfAioWrite" source_type:"Rate"`
+	ThreadQueue  interface{} `stat_name:"c_waterlevel_queue" metric_name:"store.threadQueue" source_type:"Rate"`
+	PurgeObjects interface{} `stat_name:"c_waterlevel_purge" metric_name:"store.purgeObjects" source_type:"Rate"`
+	YkeysReg	 interface{} `stat_name:"g_ykey_keys" metric_name:"store.numOfYkeysReg" source_type:"Gauge"`
+	YkeysPurged	 interface{} `stat_name:"c_ykey_purged" metric_name:"store.numOfYkeysPurged" source_type:"Rate"`
 }
 
 // storageDefinition represents the data for a VarnishStorageSample event

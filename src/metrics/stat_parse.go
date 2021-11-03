@@ -21,6 +21,7 @@ func parseStats(statsData []byte) (*varnishDefinition, map[string]*backendDefini
 		mempools: make(map[string]*mempoolDefinition),
 		storages: make(map[string]*storageDefinition),
 		book:     make(map[string]*bookDefinition),
+		store:	  make(map[string]*storeDefinition),
 	}
 
 	backends := make(map[string]*backendDefinition)
@@ -114,6 +115,9 @@ func parseAndSetStat(varnishSystem *varnishDefinition, fullStatName string, stat
 	case "MSE_BOOK":
 		// book
 		setBookValue(varnishSystem.book, fullStatName, statValue)
+	case "MSE_STORE":
+		// store
+		setStoreValue(varnishSystem.store, fullStatName, statValue)
 	default:
 		// main sample
 		setSystemValue(varnishSystem, fullStatName, statValue)
@@ -204,7 +208,20 @@ func setBookValue(bookMap map[string]*bookDefinition, fullStatName string, statV
 	}
 
 	if err := setValue(book, statName, statValue); err != nil {
-		log.Debug("Error setting metric value for stat '%s' on mempool '%s': %s", statName, bookName, err.Error())
+		log.Debug("Error setting metric value for stat '%s' on book '%s': %s", statName, bookName, err.Error())
+	}
+}
+
+func setStoreValue(storeMap map[string]*storeDefinition, fullStatName string, statValue interface{}) {
+	storeName, statName := parseStatName(fullStatName)
+	store, ok := storeMap[storeName]
+	if !ok {
+		store = new(storeDefinition)
+		storeMap[storeName] = store
+	}
+
+	if err := setValue(store, statName, statValue); err != nil {
+		log.Debug("Error setting metric value for stat '%s' on store '%s': %s", statName, storeName, err.Error())
 	}
 }
 

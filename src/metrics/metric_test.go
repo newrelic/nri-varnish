@@ -91,6 +91,21 @@ func TestCollectMetrics(t *testing.T) {
 			"book.threadQueued":	 float64(0),
 			"book.purgeObjects":     float64(0),
 		},
+		{ // store
+			"displayName":            systemEntity.Metadata.Name,
+			"entityName":             systemEntity.Metadata.Namespace + ":" + systemEntity.Metadata.Name,
+			"event_type":             "VarnishStoreSample",
+			"store":                  "store1",
+			"store.numOfObjects":     float64(2532177),
+			"store.numOfAioQueue":	  float64(0),
+			"store.numOfAioBytes": 	  float64(0),
+			"store.numOfAioRead":     float64(0),
+			"store.numOfAioWrite":    float64(0),
+			"store.threadQueue":      float64(0),
+			"store.purgeObjects":     float64(0),
+			"store.numOfYkeysReg": 	  float64(7661493),
+			"store.numOfYkeysPurged": float64(0),
+		},
 	}
 
 	for _, set := range systemEntity.Metrics {
