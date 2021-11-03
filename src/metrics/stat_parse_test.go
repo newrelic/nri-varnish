@@ -298,14 +298,14 @@ func Test_parseStats_Full(t *testing.T) {
 		},
 		store: map[string]*storeDefinition{
 			"store1": {
-				Objects:  	  float64(2532177),
-				AioQueue: 	  float64(1),
-				AioBytes: 	  float64(179596279808),
-				AioRead:  	  float64(2591278),
-				AioWrite: 	  float64(22320642),
+				Objects:      float64(2532177),
+				AioQueue:     float64(1),
+				AioBytes:     float64(179596279808),
+				AioRead:      float64(2591278),
+				AioWrite:     float64(22320642),
 				ThreadQueue:  float64(4),
 				PurgeObjects: float64(5),
-				YkeysReg: 	  float64(7661493),
+				YkeysReg:     float64(7661493),
 				YkeysPurged:  float64(2250426),
 			},
 		},
@@ -507,7 +507,7 @@ func Test_parseStats_FullV1(t *testing.T) {
 				Pool: float64(10),
 			},
 		},
-		book: map[string]*bookDefinition{},
+		book:  map[string]*bookDefinition{},
 		store: map[string]*storeDefinition{},
 	}
 
