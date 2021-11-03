@@ -449,6 +449,7 @@ func Test_parseStats_FullV1(t *testing.T) {
 				Pool: float64(10),
 			},
 		},
+		book: map[string]*bookDefinition{},
 	}
 
 	expectedBackends := map[string]*backendDefinition{
