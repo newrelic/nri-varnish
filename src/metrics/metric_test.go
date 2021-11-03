@@ -88,6 +88,7 @@ func TestCollectMetrics(t *testing.T) {
 			"book":                  "book1",
 			"book.allocInBytes":     float64(3189825536),
 			"book.availableInBytes": float64(2178883584),
+			"book.threadQueued":	 float64(0),
 			"book.purgeObjects":     float64(0),
 		},
 	}

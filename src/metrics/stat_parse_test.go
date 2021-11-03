@@ -192,6 +192,11 @@ const varnishStatTestResult = `{
 		"flag": "g", "format": "B",
 		"value": 2178883584
 	},
+	"MSE_BOOK.book1.c_waterlevel_queue": {
+		"description": "Number of times a thread has been queued waiting for database space",
+		"flag": "c", "format": "i",
+		"value": 2
+	},
 	"MSE_BOOK.book1.c_waterlevel_purge": {
 		"description": "Number of objects purged to achieve database waterlevel",
 		"flag": "c", "format": "i",
@@ -242,6 +247,7 @@ func Test_parseStats_Full(t *testing.T) {
 			"book1": {
 				Alloc:        float64(3189825536),
 				Available:    float64(2178883584),
+				ThreadQueued: float64(2),
 				PurgeObjects: float64(106000),
 			},
 		},

@@ -183,9 +183,11 @@ type mempoolDefinition struct {
 	RanDry        interface{} `stat_name:"randry" metric_name:"mempool.ranDry" source_type:"Rate"`
 }
 
+// bookDefinition represents the data for a VarnishBookSample event
 type bookDefinition struct {
 	Alloc        interface{} `stat_name:"g_bytes" metric_name:"book.allocInBytes" source_type:"Gauge"`
 	Available    interface{} `stat_name:"g_space" metric_name:"book.availableInBytes" source_type:"Gauge"`
+	ThreadQueued interface{} `stat_name:"c_waterlevel_queue" metric_name:"book.threadQueued" source_type:"Rate"`
 	PurgeObjects interface{} `stat_name:"c_waterlevel_purge" metric_name:"book.purgeObjects" source_type:"Rate"`
 }
 
