@@ -106,6 +106,14 @@ func TestCollectMetrics(t *testing.T) {
 			"store.numOfYkeysReg":    float64(7661493),
 			"store.numOfYkeysPurged": float64(0),
 		},
+		{ // massive storage
+			"displayName":                      systemEntity.Metadata.Name,
+			"entityName":                       systemEntity.Metadata.Namespace + ":" + systemEntity.Metadata.Name,
+			"event_type":                       "VarnishMassiveStorageSample",
+			"massiveStorage":                   "storage_engine1",
+			"massiveStorage.numOfYkeysReg":    float64(257374),
+			"massiveStorage.numOfYkeysPurged": float64(0),
+		},
 	}
 
 	for _, set := range systemEntity.Metrics {

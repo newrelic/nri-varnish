@@ -246,6 +246,16 @@ const varnishStatTestResult = `{
 		"description": "Number of objects purged with YKey",
 		"flag": "c", "format": "i",
 		"value": 2250426
+	},
+	"MSE.storage_engine1.g_ykey_keys": {
+		"description": "Number of YKeys registered",
+		"flag": "g", "format": "i",
+		"value": 257374
+	},
+	"MSE.storage_engine1.c_ykey_purged": {
+		"description": "Number of objects purged with YKey",
+		"flag": "c", "format": "i",
+		"value": 65536
 	}
 }`
 
@@ -307,6 +317,12 @@ func Test_parseStats_Full(t *testing.T) {
 				PurgeObjects: float64(5),
 				YkeysReg:     float64(7661493),
 				YkeysPurged:  float64(2250426),
+			},
+		},
+		massiveStorage: map[string]*massiveStorageDefinition{
+			"storage_engine1": {
+				YkeysReg:    float64(257374),
+				YkeysPurged: float64(65536),
 			},
 		},
 	}
@@ -507,8 +523,9 @@ func Test_parseStats_FullV1(t *testing.T) {
 				Pool: float64(10),
 			},
 		},
-		book:  map[string]*bookDefinition{},
-		store: map[string]*storeDefinition{},
+		book:           map[string]*bookDefinition{},
+		store:          map[string]*storeDefinition{},
+		massiveStorage: map[string]*massiveStorageDefinition{},
 	}
 
 	expectedBackends := map[string]*backendDefinition{

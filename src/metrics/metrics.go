@@ -108,6 +108,13 @@ func processVarnishSystem(systemEntity *integration.Entity, varnishSystem *varni
 			log.Warn("Error setting metrics for Store %s: %s", storeName, err.Error())
 		}
 	}
+
+	// Process massive storage samples
+	for massiveStorageName, massiveStorage := range varnishSystem.massiveStorage {
+		if err := processSubSample(massiveStorage, "VarnishMassiveStorageSample", "massiveStorage", massiveStorageName, systemEntity); err != nil {
+			log.Warn("Error setting metrics for Massive Storage %s: %s", massiveStorageName, err.Error())
+		}
+	}
 }
 
 func processSubSample(subStructure interface{}, sampleName, idAttribute, idAttributeValue string, systemEntity *integration.Entity) error {

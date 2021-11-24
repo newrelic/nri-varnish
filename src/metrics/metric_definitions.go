@@ -153,11 +153,12 @@ type varnishDefinition struct {
 	MainGunzip               interface{} `stat_name:"n_gunzip" metric_name:"main.gunzip" source_type:"Rate"`
 	MainGunzipTest           interface{} `stat_name:"n_test_gunzip" metric_name:"main.gunzipTest" source_type:"Rate"`
 
-	locks    map[string]*lockDefinition
-	mempools map[string]*mempoolDefinition
-	storages map[string]*storageDefinition
-	book     map[string]*bookDefinition
-	store    map[string]*storeDefinition
+	locks          map[string]*lockDefinition
+	mempools       map[string]*mempoolDefinition
+	storages       map[string]*storageDefinition
+	book           map[string]*bookDefinition
+	store          map[string]*storeDefinition
+	massiveStorage map[string]*massiveStorageDefinition
 }
 
 // lockDefinition represents the data for a VarnishLockSample event
@@ -213,6 +214,11 @@ type storageDefinition struct {
 	AllocOustanding interface{} `stat_name:"g_alloc" metric_name:"storage.allocOustanding" source_type:"Gauge"`
 	Outstanding     interface{} `stat_name:"g_bytes" metric_name:"storage.outstandingInBytes" source_type:"Gauge"`
 	Available       interface{} `stat_name:"g_space" metric_name:"storage.availableInBytes" source_type:"Gauge"`
+}
+
+type massiveStorageDefinition struct {
+	YkeysReg    interface{} `stat_name:"g_ykey_keys" metric_name:"massiveStorage.numOfYkeysReg" source_type:"Gauge"`
+	YkeysPurged interface{} `stat_name:"c_ykey_purged" metric_name:"massiveStorage.numOfYkeysPurged" source_type:"Rate"`
 }
 
 // backendDefinition represents the data to be set for a Backend Entity and VarnishBackendSample event
