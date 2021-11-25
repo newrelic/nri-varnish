@@ -1,7 +1,6 @@
 package main
 
 import (
-
 	args2 "github.com/newrelic/nri-varnish/src/args"
 	"reflect"
 	"testing"

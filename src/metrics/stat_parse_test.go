@@ -176,6 +176,86 @@ const varnishStatTestResult = `{
 		"description": "Backend requests sent",
 		"flag": "c", "format": "i",
 		"value": 1
+	},
+	"VBE.boot.web1.unhealthy": {
+		"description": "Backend requests sent",
+		"flag": "c", "format": "i",
+		"value": 1
+	},
+	"MSE_BOOK.book1.g_bytes": {
+		"description": "Number of bytes used in the book database.",
+		"flag": "g", "format": "B",
+		"value": 3189825536
+	},
+	"MSE_BOOK.book1.g_space": {
+		"description": "Number of bytes available in the book database.",
+		"flag": "g", "format": "B",
+		"value": 2178883584
+	},
+	"MSE_BOOK.book1.c_waterlevel_queue": {
+		"description": "Number of times a thread has been queued waiting for database space",
+		"flag": "c", "format": "i",
+		"value": 2
+	},
+	"MSE_BOOK.book1.c_waterlevel_purge": {
+		"description": "Number of objects purged to achieve database waterlevel",
+		"flag": "c", "format": "i",
+		"value": 106000
+	},
+	"MSE_STORE.store1.g_objects": {
+		"description": "Number of objects in the store",
+		"flag": "g", "format": "i",
+		"value": 2532177
+	},
+	"MSE_STORE.store1.c_aio_queue": {
+		"description": "Number of times a thread has been queued for AIO",
+		"flag": "c", "format": "i",
+		"value": 1
+	},
+	"MSE_STORE.store1.c_aio_finished_bytes": {
+		"description": "Number AIO bytes executed",
+		"flag": "c", "format": "B",
+		"value": 179596279808
+	},
+	"MSE_STORE.store1.c_aio_finished_read": {
+		"description": "Number AIO read operations executed",
+		"flag": "c", "format": "i",
+		"value": 2591278
+	},
+	"MSE_STORE.store1.c_aio_finished_write": {
+		"description": "Number AIO write operations executed",
+		"flag": "c", "format": "i",
+		"value": 22320642
+	},
+	"MSE_STORE.store1.c_waterlevel_queue": {
+		"description": "Number of times a thread has been queued waiting for store space",
+		"flag": "c", "format": "i",
+		"value": 4
+	},
+	"MSE_STORE.store1.c_waterlevel_purge": {
+		"description": "Number of objects purged to achieve store waterlevel",
+		"flag": "c", "format": "i",
+		"value": 5
+	},
+	"MSE_STORE.store1.g_ykey_keys": {
+		"description": "Number of YKeys registered",
+		"flag": "g", "format": "i",
+		"value": 7661493
+	},
+	"MSE_STORE.store1.c_ykey_purged": {
+		"description": "Number of objects purged with YKey",
+		"flag": "c", "format": "i",
+		"value": 2250426
+	},
+	"MSE.storage_engine1.g_ykey_keys": {
+		"description": "Number of YKeys registered",
+		"flag": "g", "format": "i",
+		"value": 257374
+	},
+	"MSE.storage_engine1.c_ykey_purged": {
+		"description": "Number of objects purged with YKey",
+		"flag": "c", "format": "i",
+		"value": 65536
 	}
 }`
 
@@ -218,20 +298,48 @@ func Test_parseStats_Full(t *testing.T) {
 				RanDry:        float64(0),
 			},
 		},
+		book: map[string]*bookDefinition{
+			"book1": {
+				Alloc:        float64(3189825536),
+				Available:    float64(2178883584),
+				ThreadQueued: float64(2),
+				PurgeObjects: float64(106000),
+			},
+		},
+		store: map[string]*storeDefinition{
+			"store1": {
+				Objects:      float64(2532177),
+				AioQueue:     float64(1),
+				AioBytes:     float64(179596279808),
+				AioRead:      float64(2591278),
+				AioWrite:     float64(22320642),
+				ThreadQueue:  float64(4),
+				PurgeObjects: float64(5),
+				YkeysReg:     float64(7661493),
+				YkeysPurged:  float64(2250426),
+			},
+		},
+		massiveStorage: map[string]*massiveStorageDefinition{
+			"storage_engine1": {
+				YkeysReg:    float64(257374),
+				YkeysPurged: float64(65536),
+			},
+		},
 	}
 
 	expectedBackends := map[string]*backendDefinition{
 		"boot.web1": {
-			Happy:       float64(0),
-			ReqHeader:   float64(381),
-			ReqBody:     float64(0),
-			RespHeader:  float64(229),
-			RespBody:    float64(2326),
-			PipeHeader:  float64(0),
-			PipeOut:     float64(0),
-			PipeIn:      float64(0),
-			Connections: float64(0),
-			Req:         float64(1),
+			Happy:           float64(0),
+			ReqHeader:       float64(381),
+			ReqBody:         float64(0),
+			RespHeader:      float64(229),
+			RespBody:        float64(2326),
+			PipeHeader:      float64(0),
+			PipeOut:         float64(0),
+			PipeIn:          float64(0),
+			Connections:     float64(0),
+			Req:             float64(1),
+			UnhealtyFetches: float64(1),
 		},
 	}
 
@@ -415,6 +523,9 @@ func Test_parseStats_FullV1(t *testing.T) {
 				Pool: float64(10),
 			},
 		},
+		book:           map[string]*bookDefinition{},
+		store:          map[string]*storeDefinition{},
+		massiveStorage: map[string]*massiveStorageDefinition{},
 	}
 
 	expectedBackends := map[string]*backendDefinition{

@@ -81,6 +81,39 @@ func TestCollectMetrics(t *testing.T) {
 			"mempool.surplus":              float64(0),
 			"mempool.ranDry":               float64(0),
 		},
+		{ // book
+			"displayName":           systemEntity.Metadata.Name,
+			"entityName":            systemEntity.Metadata.Namespace + ":" + systemEntity.Metadata.Name,
+			"event_type":            "VarnishBookSample",
+			"book":                  "book1",
+			"book.allocInBytes":     float64(3189825536),
+			"book.availableInBytes": float64(2178883584),
+			"book.threadQueued":     float64(0),
+			"book.purgeObjects":     float64(0),
+		},
+		{ // store
+			"displayName":            systemEntity.Metadata.Name,
+			"entityName":             systemEntity.Metadata.Namespace + ":" + systemEntity.Metadata.Name,
+			"event_type":             "VarnishStoreSample",
+			"store":                  "store1",
+			"store.numOfObjects":     float64(2532177),
+			"store.numOfAioQueue":    float64(0),
+			"store.numOfAioBytes":    float64(0),
+			"store.numOfAioRead":     float64(0),
+			"store.numOfAioWrite":    float64(0),
+			"store.threadQueue":      float64(0),
+			"store.purgeObjects":     float64(0),
+			"store.numOfYkeysReg":    float64(7661493),
+			"store.numOfYkeysPurged": float64(0),
+		},
+		{ // massive storage
+			"displayName":                     systemEntity.Metadata.Name,
+			"entityName":                      systemEntity.Metadata.Namespace + ":" + systemEntity.Metadata.Name,
+			"event_type":                      "VarnishMassiveStorageSample",
+			"massiveStorage":                  "storage_engine1",
+			"massiveStorage.numOfYkeysReg":    float64(257374),
+			"massiveStorage.numOfYkeysPurged": float64(0),
+		},
 	}
 
 	for _, set := range systemEntity.Metrics {
@@ -118,6 +151,7 @@ func TestCollectMetrics(t *testing.T) {
 		"net.backend.pipeInInBytes":         float64(0),
 		"backend.connections":               float64(0),
 		"net.backend.requests":              float64(0),
+		"backend.unhealthyFetches":          float64(0),
 	}
 
 	backendResult := backendEntity.Metrics[0].Metrics

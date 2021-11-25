@@ -17,9 +17,12 @@ func parseStats(statsData []byte) (*varnishDefinition, map[string]*backendDefini
 	}
 
 	varnishSystem := &varnishDefinition{
-		locks:    make(map[string]*lockDefinition),
-		mempools: make(map[string]*mempoolDefinition),
-		storages: make(map[string]*storageDefinition),
+		locks:          make(map[string]*lockDefinition),
+		mempools:       make(map[string]*mempoolDefinition),
+		storages:       make(map[string]*storageDefinition),
+		book:           make(map[string]*bookDefinition),
+		store:          make(map[string]*storeDefinition),
+		massiveStorage: make(map[string]*massiveStorageDefinition),
 	}
 
 	backends := make(map[string]*backendDefinition)
@@ -110,6 +113,15 @@ func parseAndSetStat(varnishSystem *varnishDefinition, fullStatName string, stat
 	case "MEMPOOL":
 		// mempools
 		setMempoolValue(varnishSystem.mempools, fullStatName, statValue)
+	case "MSE_BOOK":
+		// book
+		setBookValue(varnishSystem.book, fullStatName, statValue)
+	case "MSE_STORE":
+		// store
+		setStoreValue(varnishSystem.store, fullStatName, statValue)
+	case "MSE":
+		// massive storage
+		setMassiveStorageValue(varnishSystem.massiveStorage, fullStatName, statValue)
 	default:
 		// main sample
 		setSystemValue(varnishSystem, fullStatName, statValue)
@@ -188,6 +200,45 @@ func setMempoolValue(mempoolMap map[string]*mempoolDefinition, fullStatName stri
 
 	if err := setValue(mempool, statName, statValue); err != nil {
 		log.Debug("Error setting metric value for stat '%s' on mempool '%s': %s", statName, mempoolName, err.Error())
+	}
+}
+
+func setBookValue(bookMap map[string]*bookDefinition, fullStatName string, statValue interface{}) {
+	bookName, statName := parseStatName(fullStatName)
+	book, ok := bookMap[bookName]
+	if !ok {
+		book = new(bookDefinition)
+		bookMap[bookName] = book
+	}
+
+	if err := setValue(book, statName, statValue); err != nil {
+		log.Debug("Error setting metric value for stat '%s' on book '%s': %s", statName, bookName, err.Error())
+	}
+}
+
+func setStoreValue(storeMap map[string]*storeDefinition, fullStatName string, statValue interface{}) {
+	storeName, statName := parseStatName(fullStatName)
+	store, ok := storeMap[storeName]
+	if !ok {
+		store = new(storeDefinition)
+		storeMap[storeName] = store
+	}
+
+	if err := setValue(store, statName, statValue); err != nil {
+		log.Debug("Error setting metric value for stat '%s' on store '%s': %s", statName, storeName, err.Error())
+	}
+}
+
+func setMassiveStorageValue(massiveStorageMap map[string]*massiveStorageDefinition, fullStatName string, statValue interface{}) {
+	massiveStorageName, statName := parseStatName(fullStatName)
+	massiveStorage, ok := massiveStorageMap[massiveStorageName]
+	if !ok {
+		massiveStorage = new(massiveStorageDefinition)
+		massiveStorageMap[massiveStorageName] = massiveStorage
+	}
+
+	if err := setValue(massiveStorage, statName, statValue); err != nil {
+		log.Debug("Error setting metric value for stat '%s' on store '%s': %s", statName, massiveStorageName, err.Error())
 	}
 }
 
