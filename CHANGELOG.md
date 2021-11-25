@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.5.0 (2021-11-25)
+### Added
+- Add monitoring to Varnish Plus attributes
+
 ## 2.4.0 (2021-09-16)
 ### Added
 - Add support for V1 varnishstat output present on Varnish version > v6.4
