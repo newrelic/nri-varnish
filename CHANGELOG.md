@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.5.1 (2022-01-10)
+### Fixed
+- Fix negative values (#42)
+
 ## 2.5.0 (2021-11-25)
 ### Added
 - Add monitoring to Varnish Plus attributes
