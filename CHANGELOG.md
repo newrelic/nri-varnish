@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.5.2 (2022-05-11)
+### Changed
+- Use Go 1.18
+- Bump SDK to version v3.7.3 that introduce the store file entries TTL.
+
 ## 2.5.1 (2022-01-10)
 ### Fixed
 - Fix negative values (#42)
