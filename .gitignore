@@ -45,3 +45,6 @@ debug
 # Intellij
 .idea
 vendor
+
+# Release toolkit
+CHANGELOG.partial.md
