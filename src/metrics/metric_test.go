@@ -7,7 +7,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/newrelic/infra-integrations-sdk/integration"
+	"github.com/newrelic/infra-integrations-sdk/v3/integration"
 )
 
 func TestCollectMetrics(t *testing.T) {

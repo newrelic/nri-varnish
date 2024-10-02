@@ -7,7 +7,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/newrelic/infra-integrations-sdk/log"
+	"github.com/newrelic/infra-integrations-sdk/v3/log"
 )
 
 func parseStats(statsData []byte) (*varnishDefinition, map[string]*backendDefinition, error) {

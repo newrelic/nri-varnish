@@ -3,8 +3,8 @@ module github.com/newrelic/nri-varnish
 go 1.23.1
 
 require (
-	github.com/newrelic/infra-integrations-sdk v3.8.2+incompatible
-	github.com/stretchr/testify v1.8.0
+	github.com/newrelic/infra-integrations-sdk/v3 v3.9.1
+	github.com/stretchr/testify v1.9.0
 	github.com/xeipuuv/gojsonschema v1.2.0
 )
 

@@ -12,8 +12,8 @@ import (
 	args2 "github.com/newrelic/nri-varnish/src/args"
 	metrics2 "github.com/newrelic/nri-varnish/src/metrics"
 
-	"github.com/newrelic/infra-integrations-sdk/integration"
-	"github.com/newrelic/infra-integrations-sdk/log"
+	"github.com/newrelic/infra-integrations-sdk/v3/integration"
+	"github.com/newrelic/infra-integrations-sdk/v3/log"
 )
 
 // Known locations of varnish.params on specific Linux Distros

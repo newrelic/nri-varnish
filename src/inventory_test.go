@@ -5,8 +5,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/newrelic/infra-integrations-sdk/data/inventory"
-	"github.com/newrelic/infra-integrations-sdk/integration"
+	"github.com/newrelic/infra-integrations-sdk/v3/data/inventory"
+	"github.com/newrelic/infra-integrations-sdk/v3/integration"
 )
 
 func TestCollectInventory_Normal(t *testing.T) {
