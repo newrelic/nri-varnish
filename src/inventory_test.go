@@ -1,9 +1,10 @@
 package main
 
 import (
-	args2 "github.com/newrelic/nri-varnish/src/args"
 	"reflect"
 	"testing"
+
+	args2 "github.com/newrelic/nri-varnish/src/args"
 
 	"github.com/newrelic/infra-integrations-sdk/v3/data/inventory"
 	"github.com/newrelic/infra-integrations-sdk/v3/integration"
