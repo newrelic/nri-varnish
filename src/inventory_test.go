@@ -1,12 +1,13 @@
 package main
 
 import (
-	args2 "github.com/newrelic/nri-varnish/src/args"
 	"reflect"
 	"testing"
 
-	"github.com/newrelic/infra-integrations-sdk/data/inventory"
-	"github.com/newrelic/infra-integrations-sdk/integration"
+	args2 "github.com/newrelic/nri-varnish/src/args"
+
+	"github.com/newrelic/infra-integrations-sdk/v3/data/inventory"
+	"github.com/newrelic/infra-integrations-sdk/v3/integration"
 )
 
 func TestCollectInventory_Normal(t *testing.T) {

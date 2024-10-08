@@ -4,7 +4,7 @@ package args
 import (
 	"errors"
 
-	sdkArgs "github.com/newrelic/infra-integrations-sdk/args"
+	sdkArgs "github.com/newrelic/infra-integrations-sdk/v3/args"
 )
 
 // ArgumentList struct that holds all Varnish arguments
