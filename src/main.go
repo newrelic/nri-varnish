@@ -127,7 +127,7 @@ func collectParamsFile(systemEntity *integration.Entity, argsParamLoc string) er
 // Debian/Ubuntu and RHEL/CentOS systems.
 func determineParamsFileLoc(argsParamLoc string) (*string, error) {
 	if argsParamLoc != "" {
-		if _, err := os.Stat(argsParamLoc); os.IsNotExist(err) {
+		if _, err := os.Stat(argsParamLoc); err != nil {
 			return nil, err
 		}
 		return &argsParamLoc, nil
@@ -135,17 +135,18 @@ func determineParamsFileLoc(argsParamLoc string) (*string, error) {
 
 	// Try Debian/Ubuntu path
 	paramsLoc := debianUbuntuParamsLoc
-	if _, err := os.Stat(paramsLoc); !os.IsNotExist(err) {
+	if _, err := os.Stat(paramsLoc); err == nil {
 		return &paramsLoc, nil
 	}
 
 	// Try RHEL/CentOS
 	paramsLoc = rhelCentosParamsLoc
-	if _, err := os.Stat(paramsLoc); !os.IsNotExist(err) {
+	if _, err := os.Stat(paramsLoc); err == nil {
 		return &paramsLoc, nil
 	}
 
-	return nil, errors.New("varnish.params file could not be found")
+	errParamsFileNotFound := errors.New("varnish.params file could not be found at the specified paths")
+	return nil, fmt.Errorf("%w: %s or %s", errParamsFileNotFound, debianUbuntuParamsLoc, rhelCentosParamsLoc)
 }
 
 func parseParamsFile(file *os.File) (map[string]string, error) {
