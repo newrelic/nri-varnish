@@ -24,9 +24,10 @@ const (
 )
 
 var (
-	integrationVersion = "0.0.0"
-	gitCommit          = ""
-	buildDate          = ""
+	integrationVersion    = "0.0.0"
+	gitCommit             = ""
+	buildDate             = ""
+	errParamsFileNotFound = errors.New("varnish.params file could not be found at the specified paths")
 )
 
 func main() {
@@ -145,7 +146,6 @@ func determineParamsFileLoc(argsParamLoc string) (*string, error) {
 		return &paramsLoc, nil
 	}
 
-	errParamsFileNotFound := errors.New("varnish.params file could not be found at the specified paths")
 	return nil, fmt.Errorf("%w: %s or %s", errParamsFileNotFound, debianUbuntuParamsLoc, rhelCentosParamsLoc)
 }
 
