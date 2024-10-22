@@ -24,10 +24,10 @@ const (
 )
 
 var (
-	integrationVersion    = "0.0.0"
-	gitCommit             = ""
-	buildDate             = ""
-	errParamsFileNotFound = errors.New("varnish.params file could not be found at the specified paths")
+	integrationVersion       = "0.0.0"
+	gitCommit                = ""
+	buildDate                = ""
+	errCheckingVarnishParams = errors.New("error occurred while checking for the existence of varnish.params at locations")
 )
 
 func main() {
@@ -134,19 +134,27 @@ func determineParamsFileLoc(argsParamLoc string) (*string, error) {
 		return &argsParamLoc, nil
 	}
 
+	var debianParamsLocErr, rhelParamsLocErr error
 	// Try Debian/Ubuntu path
 	paramsLoc := debianUbuntuParamsLoc
-	if _, err := os.Stat(paramsLoc); err == nil {
+	if _, debianParamsLocErr = os.Stat(paramsLoc); debianParamsLocErr == nil {
 		return &paramsLoc, nil
 	}
 
 	// Try RHEL/CentOS
 	paramsLoc = rhelCentosParamsLoc
-	if _, err := os.Stat(paramsLoc); err == nil {
+	if _, rhelParamsLocErr = os.Stat(paramsLoc); rhelParamsLocErr == nil {
 		return &paramsLoc, nil
 	}
 
-	return nil, fmt.Errorf("%w: %s or %s", errParamsFileNotFound, debianUbuntuParamsLoc, rhelCentosParamsLoc)
+	// Debug log to print the reasons for errors
+	log.Debug("%s: '%s' - %s, '%s' - %s",
+		errCheckingVarnishParams,
+		debianUbuntuParamsLoc, debianParamsLocErr.Error(),
+		rhelCentosParamsLoc, rhelParamsLocErr.Error())
+
+	return nil, fmt.Errorf("%w: '%s' and '%s'",
+		errCheckingVarnishParams, debianUbuntuParamsLoc, rhelCentosParamsLoc)
 }
 
 func parseParamsFile(file *os.File) (map[string]string, error) {
