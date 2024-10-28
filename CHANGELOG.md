@@ -9,7 +9,9 @@ Unreleased section should follow [Release Toolkit](https://github.com/newrelic/r
 
 ## Unreleased
 
-### bugfix
+## v2.6.1 - 2024-10-28
+
+### 🐞 Bug fixes
 - Fixed error management while checking existence of varnish.params file
 
 ## v2.6.0 - 2024-10-14
