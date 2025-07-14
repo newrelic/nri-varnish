@@ -1,5 +1,5 @@
 ARG VARNISH_TAG=6.6
-FROM golang:1.23.6-bookworm as builder
+FROM golang:1.24.5-bookworm as builder
 ARG CGO_ENABLED=0
 WORKDIR /go/src/github.com/newrelic/nri-varnish
 COPY . .
